@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import { FloatingContactWidget } from "@/components/floating-contact-widget";
 import { ModalProvider } from "@/components/modal/modal-provider";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <ModalProvider>
           <SiteHeader />
           <main>{children}</main>
+          <FloatingContactWidget />
           <SiteFooter />
         </ModalProvider>
       </body>

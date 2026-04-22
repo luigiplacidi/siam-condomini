@@ -39,39 +39,20 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="grid gap-4">
-            <div className="relative h-[360px] overflow-hidden rounded-[2rem] border border-border shadow-soft">
-              <Image
-                src="/images/stock/property.jpg"
-                alt="Condominio moderno"
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/75 via-primary/20 to-transparent" />
-              <div className="absolute bottom-0 p-6 text-white">
-                <p className="text-xs uppercase tracking-[0.14em] text-white/85">SIAM Condomini</p>
-                <p className="mt-2 max-w-sm text-base font-medium leading-relaxed">
-                  Gestione trasparente, risposte rapide e comunicazione semplice per il tuo condominio.
-                </p>
-              </div>
-            </div>
-
-            <div className="rounded-2xl border border-border bg-white p-4 shadow-soft">
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Evoluzione sito</p>
-              <div className="mt-3 grid grid-cols-[1fr_1.4fr] items-center gap-4">
-                <Image
-                  src="/images/brand/old-site.jpg"
-                  alt="Immagine del vecchio sito SIAM"
-                  width={200}
-                  height={140}
-                  className="rounded-xl border border-border object-cover"
-                />
-                <p className="text-sm text-muted-foreground">
-                  Nuova veste grafica con CTA immediate, modali riutilizzabili e percorsi chiari per condomini
-                  attivi e nuovi clienti.
-                </p>
-              </div>
+          <div className="relative h-[360px] overflow-hidden rounded-[2rem] border border-border shadow-soft">
+            <Image
+              src="/images/stock/property.jpg"
+              alt="Condominio moderno"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/75 via-primary/20 to-transparent" />
+            <div className="absolute bottom-0 p-6 text-white">
+              <p className="text-xs uppercase tracking-[0.14em] text-white/85">SIAM Condomini</p>
+              <p className="mt-2 max-w-sm text-base font-medium leading-relaxed">
+                Gestione trasparente, risposte rapide e comunicazione semplice per il tuo condominio.
+              </p>
             </div>
           </div>
         </div>
@@ -124,7 +105,10 @@ export default async function HomePage() {
             </p>
             <ul className="mt-6 grid gap-3 text-sm text-foreground">
               {trustBullets.map((item) => (
-                <li key={item} className="inline-flex items-start gap-3 rounded-xl border border-border bg-secondary/45 px-4 py-3">
+                <li
+                  key={item}
+                  className="inline-flex items-start gap-3 rounded-xl border border-border bg-secondary/45 px-4 py-3"
+                >
                   <ShieldCheck className="mt-0.5 h-4 w-4 text-accent" />
                   <span>{item}</span>
                 </li>

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { contactInfo, navItems, reservedAreaUrl } from "@/lib/site-content";
+import { contactInfo, navItems } from "@/lib/site-content";
 import { cn } from "@/lib/utils";
 import { ModalTriggerButton, RawModalTrigger } from "@/components/modal/modal-trigger-button";
 
@@ -56,7 +56,7 @@ export function SiteHeader() {
             </a>
           </div>
 
-          <div className="flex items-center gap-2 sm:hidden">
+          <div className="ml-auto flex items-center gap-2 sm:hidden">
             <a
               href={`tel:${contactInfo.phone}`}
               className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/12"
@@ -72,15 +72,6 @@ export function SiteHeader() {
               <Mail className="h-4 w-4" />
             </a>
           </div>
-
-          <a
-            href={reservedAreaUrl}
-            className="rounded-lg bg-white/12 px-3 py-1 font-medium text-white transition hover:bg-white/20"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Area condomini
-          </a>
         </div>
       </div>
 
@@ -93,9 +84,8 @@ export function SiteHeader() {
         )}
       >
         <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4 px-4">
-          <Link href="/" className="inline-flex items-center gap-3">
+          <Link href="/" className="inline-flex items-center">
             <Image src="/images/brand/logo-siam.png" alt="SIAM Condomini" width={112} height={42} className="h-10 w-auto" priority />
-            <span className="hidden text-sm font-semibold text-primary md:inline">SIAM Condomini</span>
           </Link>
 
           <nav className="hidden items-center gap-6 md:flex">
