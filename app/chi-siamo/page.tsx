@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 import { ModalTriggerButton } from "@/components/modal/modal-trigger-button";
 import { brand, serviceGroups } from "@/lib/site-content";
@@ -12,24 +13,49 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="section-shell pt-20">
-        <p className="kicker">Chi siamo</p>
-        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-primary sm:text-5xl">
-          SIAM al servizio del tuo condominio
-        </h1>
-        <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground">{brand.aboutShort}</p>
-        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-          Tramite il sito web favoriamo la comunicazione con i condomini, l'accesso alla documentazione e la
-          trasparenza della gestione. Per chi cerca un nuovo amministratore e sempre possibile richiedere un
-          preventivo rapido.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <ModalTriggerButton modalId="quoteModal" size="lg">
-            Richiedi preventivo
-          </ModalTriggerButton>
-          <ModalTriggerButton modalId="documentRequestModal" size="lg" variant="secondary">
-            Richiedi documentazione
-          </ModalTriggerButton>
+      <section className="section-shell pt-14">
+        <div className="grid gap-8 lg:grid-cols-[1.04fr_0.96fr] lg:items-center">
+          <div>
+            <p className="kicker">Chi siamo</p>
+            <h1 className="mt-3 text-4xl font-semibold tracking-tight text-primary sm:text-5xl">
+              SIAM al servizio del tuo condominio
+            </h1>
+            <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground">{brand.aboutShort}</p>
+            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+              Tramite il sito web favoriamo la comunicazione con i condomini, l'accesso alla documentazione e la
+              trasparenza della gestione. Per chi cerca un nuovo amministratore e sempre possibile richiedere un
+              preventivo rapido.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <ModalTriggerButton modalId="quoteModal" size="lg">
+                Richiedi preventivo
+              </ModalTriggerButton>
+              <ModalTriggerButton modalId="documentRequestModal" size="lg" variant="secondary">
+                Richiedi documentazione
+              </ModalTriggerButton>
+            </div>
+          </div>
+
+          <div className="grid gap-4">
+            <div className="relative h-72 overflow-hidden rounded-3xl border border-border shadow-soft">
+              <Image src="/images/stock/meeting.jpg" alt="Team SIAM in riunione" fill className="object-cover" />
+            </div>
+            <div className="grid grid-cols-[0.9fr_1.1fr] gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft">
+              <Image
+                src="/images/brand/old-site.jpg"
+                alt="Screenshot vecchio sito"
+                width={180}
+                height={140}
+                className="h-full rounded-xl border border-border object-cover"
+              />
+              <div className="text-sm text-muted-foreground">
+                <p className="font-semibold text-primary">Dal vecchio sito a una presenza digitale moderna</p>
+                <p className="mt-2">
+                  Il nuovo progetto organizza meglio servizi e richieste rapide, con focus su chiarezza e usabilita.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

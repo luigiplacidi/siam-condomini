@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Clock3, Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
 
 import { ModalTriggerButton } from "@/components/modal/modal-trigger-button";
 import { contactInfo } from "@/lib/site-content";
@@ -13,14 +14,16 @@ export default function ContactPage() {
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address)}`;
 
   return (
-    <section className="section-shell pt-20 pb-20">
+    <section className="section-shell pt-14 pb-20">
       <p className="kicker">Contatti</p>
-      <h1 className="mt-3 text-4xl font-semibold tracking-tight text-primary sm:text-5xl">Mettiti in contatto con SIAM</h1>
+      <h1 className="mt-3 text-4xl font-semibold tracking-tight text-primary sm:text-5xl">
+        Mettiti in contatto con SIAM
+      </h1>
       <p className="mt-4 max-w-3xl text-sm text-muted-foreground">
         Chiamaci, scrivici o invia una richiesta rapida tramite le modali del sito.
       </p>
 
-      <div className="mt-10 grid gap-5 md:grid-cols-2">
+      <div className="mt-10 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
         <article className="rounded-3xl border border-border bg-white p-6 shadow-soft">
           <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Contatti diretti</p>
           <ul className="mt-5 grid gap-4 text-sm">
@@ -51,18 +54,27 @@ export default function ContactPage() {
           </ul>
         </article>
 
-        <article className="rounded-3xl border border-border bg-gradient-to-br from-primary to-accent p-6 text-white shadow-soft">
-          <p className="text-sm font-semibold uppercase tracking-wide text-white/90">Azioni rapide</p>
-          <div className="mt-5 grid gap-3">
-            <ModalTriggerButton modalId="contactModal" variant="secondary" className="w-full justify-start">
-              Contattaci
-            </ModalTriggerButton>
-            <ModalTriggerButton modalId="quoteModal" variant="ghost" className="w-full justify-start border border-white/30 text-white hover:bg-white/15">
-              Richiedi preventivo
-            </ModalTriggerButton>
-            <ModalTriggerButton modalId="faultReportModal" variant="danger" className="w-full justify-start">
-              Segnala guasto
-            </ModalTriggerButton>
+        <article className="overflow-hidden rounded-3xl border border-border bg-white shadow-soft">
+          <div className="relative h-56">
+            <Image src="/images/stock/building.jpg" alt="Edificio condominiale" fill className="object-cover" />
+          </div>
+          <div className="bg-gradient-to-br from-primary to-accent p-6 text-white">
+            <p className="text-sm font-semibold uppercase tracking-wide text-white/90">Azioni rapide</p>
+            <div className="mt-5 grid gap-3">
+              <ModalTriggerButton modalId="contactModal" variant="secondary" className="w-full justify-start">
+                Contattaci
+              </ModalTriggerButton>
+              <ModalTriggerButton
+                modalId="quoteModal"
+                variant="ghost"
+                className="w-full justify-start border border-white/30 text-white hover:bg-white/15"
+              >
+                Richiedi preventivo
+              </ModalTriggerButton>
+              <ModalTriggerButton modalId="faultReportModal" variant="danger" className="w-full justify-start">
+                Segnala guasto
+              </ModalTriggerButton>
+            </div>
           </div>
         </article>
       </div>

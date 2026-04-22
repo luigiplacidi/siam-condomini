@@ -1,9 +1,10 @@
 "use client";
 
-import { AlertTriangle, Menu, X } from "lucide-react";
+import { Mail, MapPin, Menu, Phone, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { contactInfo, navItems, reservedAreaUrl } from "@/lib/site-content";
 import { cn } from "@/lib/utils";
@@ -12,24 +13,89 @@ import { ModalTriggerButton, RawModalTrigger } from "@/components/modal/modal-tr
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 14);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const transparentNav = pathname === "/" && !isScrolled;
 
   return (
-    <>
-      <div className="sticky top-0 z-50 border-b border-danger/20 bg-danger/10">
-        <div className="mx-auto flex h-11 max-w-6xl items-center justify-between px-4 text-xs font-medium text-danger sm:text-sm">
-          <span className="inline-flex items-center gap-2">
-            <AlertTriangle className="h-4 w-4" />
-            Numero urgenze sempre attivo
-          </span>
-          <a href={`tel:${contactInfo.emergencyPhone}`} className="font-semibold underline underline-offset-4">
-            {contactInfo.emergencyPhoneDisplay}
+    <header className="sticky top-0 z-50">
+      <div
+        className={cn(
+          "border-b transition-colors",
+          transparentNav ? "border-white/20 bg-primary/90 text-white" : "border-primary/20 bg-primary text-white"
+        )}
+      >
+        <div className="mx-auto flex h-11 max-w-6xl items-center justify-between gap-3 px-4 text-xs sm:text-sm">
+          <div className="hidden items-center gap-5 sm:flex">
+            <a href={`tel:${contactInfo.phone}`} className="inline-flex items-center gap-2 text-white/95 hover:text-white">
+              <Phone className="h-3.5 w-3.5" />
+              {contactInfo.phoneDisplay}
+            </a>
+            <a
+              href={`mailto:${contactInfo.email}`}
+              className="inline-flex items-center gap-2 text-white/95 hover:text-white"
+            >
+              <Mail className="h-3.5 w-3.5" />
+              {contactInfo.email}
+            </a>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address)}`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-white/95 hover:text-white"
+            >
+              <MapPin className="h-3.5 w-3.5" />
+              L'Aquila
+            </a>
+          </div>
+
+          <div className="flex items-center gap-2 sm:hidden">
+            <a
+              href={`tel:${contactInfo.phone}`}
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/12"
+              aria-label="Chiama SIAM"
+            >
+              <Phone className="h-4 w-4" />
+            </a>
+            <a
+              href={`mailto:${contactInfo.email}`}
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/12"
+              aria-label="Scrivi a SIAM"
+            >
+              <Mail className="h-4 w-4" />
+            </a>
+          </div>
+
+          <a
+            href={reservedAreaUrl}
+            className="rounded-lg bg-white/12 px-3 py-1 font-medium text-white transition hover:bg-white/20"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Area condomini
           </a>
         </div>
       </div>
-      <header className="sticky top-11 z-40 border-b border-border/80 bg-white/85 backdrop-blur-md">
+
+      <div
+        className={cn(
+          "border-b transition-all",
+          transparentNav
+            ? "border-white/35 bg-white/65 backdrop-blur-md"
+            : "border-border bg-white/95 shadow-[0_8px_20px_rgba(14,35,58,0.08)] backdrop-blur-md"
+        )}
+      >
         <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4 px-4">
-          <Link href="/" className="text-xl font-semibold tracking-tight text-primary">
-            SIAM Condomini
+          <Link href="/" className="inline-flex items-center gap-3">
+            <Image src="/images/brand/logo-siam.png" alt="SIAM Condomini" width={112} height={42} className="h-10 w-auto" priority />
+            <span className="hidden text-sm font-semibold text-primary md:inline">SIAM Condomini</span>
           </Link>
 
           <nav className="hidden items-center gap-6 md:flex">
@@ -38,21 +104,13 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "text-sm font-medium text-muted-foreground transition hover:text-foreground",
-                  pathname === item.href && "text-foreground"
+                  "text-sm font-semibold text-muted-foreground transition hover:text-primary",
+                  pathname === item.href && "text-primary"
                 )}
               >
                 {item.label}
               </Link>
             ))}
-            <a
-              href={reservedAreaUrl}
-              className="rounded-xl border border-border px-3 py-2 text-sm font-semibold text-foreground hover:bg-secondary"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Area condomini
-            </a>
           </nav>
 
           <div className="hidden items-center gap-2 md:flex">
@@ -64,7 +122,7 @@ export function SiteHeader() {
 
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-white md:hidden"
             onClick={() => setOpen((value) => !value)}
             aria-label="Apri menu"
           >
@@ -82,22 +140,15 @@ export function SiteHeader() {
                   onClick={() => setOpen(false)}
                   className={cn(
                     "rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground",
-                    pathname === item.href && "bg-secondary text-foreground"
+                    pathname === item.href && "bg-secondary/80 text-primary"
                   )}
                 >
                   {item.label}
                 </Link>
               ))}
             </div>
+
             <div className="mt-3 grid gap-2">
-              <a
-                href={reservedAreaUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-lg border border-border px-3 py-2 text-center text-sm font-semibold"
-              >
-                Area condomini
-              </a>
               <RawModalTrigger
                 modalId="contactModal"
                 className="rounded-lg border border-border px-3 py-2 text-sm font-semibold"
@@ -115,7 +166,7 @@ export function SiteHeader() {
             </div>
           </div>
         ) : null}
-      </header>
-    </>
+      </div>
+    </header>
   );
 }
