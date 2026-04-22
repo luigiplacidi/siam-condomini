@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Clock3, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 
 import { ModalTriggerButton } from "@/components/modal/modal-trigger-button";
@@ -31,12 +31,6 @@ export default function ContactPage() {
               <Phone className="mt-0.5 h-4 w-4 text-primary" />
               <span>
                 Telefono: <a href={`tel:${contactInfo.phone}`}>{contactInfo.phoneDisplay}</a>
-              </span>
-            </li>
-            <li className="flex items-start gap-3 text-danger">
-              <Clock3 className="mt-0.5 h-4 w-4" />
-              <span>
-                Urgenze: <a href={`tel:${contactInfo.emergencyPhone}`}>{contactInfo.emergencyPhoneDisplay}</a>
               </span>
             </li>
             <li className="flex items-start gap-3">

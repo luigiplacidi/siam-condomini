@@ -30,8 +30,6 @@ export const brand = {
 export const contactInfo = {
   phone: "+390862319151",
   phoneDisplay: "(+39) 0862319151",
-  emergencyPhone: "800978551",
-  emergencyPhoneDisplay: "800 978551",
   email: "siam.condomini@gmail.com",
   address: "Via Carlo Forti, Nucleo industriale Bazzano Nord, L'Aquila"
 };

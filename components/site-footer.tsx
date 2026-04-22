@@ -56,7 +56,6 @@ export function SiteFooter() {
               <MapPin className="mt-0.5 h-4 w-4 text-primary" />
               <span>{contactInfo.address}</span>
             </li>
-            <li className="font-semibold text-danger">Urgenze: {contactInfo.emergencyPhoneDisplay}</li>
           </ul>
         </div>
       </div>
