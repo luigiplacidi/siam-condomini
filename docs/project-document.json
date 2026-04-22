@@ -1,0 +1,902 @@
+{
+  "project": {
+    "name": "SIAM Condomini Website Redesign",
+    "brandName": "SIAM Condomini",
+    "stack": {
+      "framework": "Next.js",
+      "deployment": "Vercel",
+      "styling": "Tailwind CSS",
+      "animation": "Framer Motion",
+      "icons": "Lucide React",
+      "forms": "React Hook Form + Zod"
+    },
+    "siteArchitecture": {
+      "type": "multi-page",
+      "ctaBehavior": "modal",
+      "notes": [
+        "Le pagine principali restano separate: Home, Chi siamo, News, Contatti",
+        "Tutte le CTA principali aprono modali invece di portare a pagine form dedicate",
+        "Le modali devono essere riutilizzabili da qualsiasi pagina"
+      ]
+    }
+  },
+  "contentSource": {
+    "sourceSite": "https://www.siamcondomini.com/",
+    "auditSummary": {
+      "navigation": [
+        "Home",
+        "Chi Siamo",
+        "News",
+        "Contatti"
+      ],
+      "existingPages": [
+        {
+          "slug": "/",
+          "label": "Home"
+        },
+        {
+          "slug": "/amministratori-condomini-l-aquila/",
+          "label": "Chi Siamo"
+        },
+        {
+          "slug": "/blog/",
+          "label": "News"
+        },
+        {
+          "slug": "/contatti/",
+          "label": "Contatti"
+        },
+        {
+          "slug": "/l-vademecum-per-la-cura-del-verde-condominiale/",
+          "label": "Articolo News"
+        },
+        {
+          "slug": "/bonus-110-laquila/",
+          "label": "Articolo News"
+        }
+      ]
+    }
+  },
+  "brand": {
+    "name": "SIAM Condomini",
+    "tagline": "SIAM al servizio del tuo condominio",
+    "headline": "Amministratori di condomini a L'Aquila",
+    "subheadline": "Vi garantiamo una organizzazione professionale, trasparente, competente e all’avanguardia.",
+    "aboutShort": "La SIAM opera da anni nella gestione dei condomini in tutto il territorio aquilano, con l’obiettivo di salvaguardare il condominio tramite una gestione attenta e scrupolosa sia dal punto di vista economico che di manutenzione.",
+    "mission": "Favorire la comunicazione con i condomini, facilitare l’accesso alla documentazione e garantire trasparenza.",
+    "positioningCurrent": "Studio di amministrazione condominiale a L’Aquila con servizio tradizionale e taglio istituzionale.",
+    "positioningProposed": "Amministrazione condominiale professionale e moderna, con gestione chiara, comunicazione semplice, interventi rapidi e accesso digitale ai servizi."
+  },
+  "contactInfo": {
+    "phone": "(+39) 0862319151",
+    "emergencyPhone": "800 978551",
+    "email": "siam.condomini@gmail.com",
+    "address": {
+      "street": "Via Carlo Forti",
+      "area": "Nucleo industriale Bazzano Nord",
+      "city": "L'Aquila",
+      "country": "Italia"
+    },
+    "contactNotes": [
+      "Il numero urgenze deve essere messo in evidenza nel footer e nella pagina contatti",
+      "L’email deve essere cliccabile",
+      "In home va prevista una CTA rapida per contatto e richiesta informazioni"
+    ]
+  },
+  "services": {
+    "groups": [
+      {
+        "id": "gestione",
+        "title": "Gestione",
+        "description": "Servizi operativi e amministrativi per la gestione completa del condominio.",
+        "items": [
+          "Visite periodiche con controlli in prima persona",
+          "Gestione computerizzata e personalizzata dei condomini",
+          "Gestione spese condominiali, contatti con fornitori e gestione dei contratti di manutenzione",
+          "Reperibilità telefonica fissa, mobile, fax e email",
+          "Convocazione e tenuta delle assemblee condominiali",
+          "Predisposizione ed invio del rendiconto e del preventivo",
+          "Esecuzione delibere assembleari",
+          "Controlli diretti durante i lavori di manutenzione ordinaria e straordinaria"
+        ],
+        "uiSuggestion": {
+          "component": "serviceCardsWithExpandableItems",
+          "icon": "building2"
+        }
+      },
+      {
+        "id": "consulenza",
+        "title": "Consulenza",
+        "description": "Supporto su aspetti tecnici, normativi e organizzativi del condominio.",
+        "items": [
+          "Consulenza per osservanze relative agli impianti",
+          "Consulenza per tutte le problematiche relative al condominio",
+          "Redazione di regolamenti condominiali",
+          "Collegamento continuo con un consulente legale, fiscale e del lavoro a disposizione dei condomini amministrati"
+        ],
+        "uiSuggestion": {
+          "component": "serviceCardsWithExpandableItems",
+          "icon": "scale"
+        }
+      },
+      {
+        "id": "pratiche-condominiali",
+        "title": "Pratiche condominiali",
+        "description": "Gestione documentale, fiscale e di rappresentanza del condominio.",
+        "items": [
+          "Compilazione del modello 770",
+          "Copertura assicurativa dell’amministratore e tutela dei condomini",
+          "Conservazione in archivio dei documenti per i tempi previsti dalla legge",
+          "Rappresentanza legale del condominio",
+          "Disciplina dell’uso delle cose comuni e della prestazione dei servizi"
+        ],
+        "uiSuggestion": {
+          "component": "serviceCardsWithExpandableItems",
+          "icon": "fileText"
+        }
+      }
+    ]
+  },
+  "trustSections": {
+    "welcomeSection": {
+      "title": "Benvenuti in SIAM",
+      "content": "La SIAM opera da anni nella gestione dei condomini in tutto il territorio aquilano, il suo obbiettivo principale è quello di salvaguardare il tuo condominio tramite una gestione attenta e scrupolosa sia dal punto di vista economico che di manutenzione. Tramite un insieme di moderne e dinamiche realtà possiamo garantirti un’organizzazione professionale, competente e all’avanguardia."
+    },
+    "reliabilitySection": {
+      "title": "Affidabilità",
+      "content": "Il nostro modo di operare si fonda essenzialmente su un ottimo rapporto di fiducia tra amministratore e condomini, trovando le sue basi su assoluta onestà e trasparenza, disponibilità, mediazione, chiarezza nel resoconto, rapidità di intervento, coinvolgimento costante dei consiglieri nelle decisioni importanti e continua ricerca di soluzioni che abbassino i costi ordinari e straordinari.",
+      "keyValues": [
+        "Onestà",
+        "Trasparenza",
+        "Disponibilità",
+        "Mediazione",
+        "Chiarezza nel resoconto",
+        "Rapidità di intervento",
+        "Coinvolgimento dei consiglieri",
+        "Ricerca di soluzioni per ridurre i costi"
+      ]
+    },
+    "punctualitySection": {
+      "title": "Puntualità",
+      "content": "SIAM si avvale della collaborazione di imprese e professionisti altamente qualificati nei vari settori: edile, bioarchitettura, contenimento energetico, elettrico, idraulico, termotecnico. È in grado di fornire il servizio richiesto entro 24 ore o, per i casi di urgenza, entro poche ore. In caso di problemi e/o interventi effettua sopralluoghi presso i condomìni amministrati per programmare al meglio, assieme ai consiglieri, le modalità e i costi dell’intervento.",
+      "highlights": [
+        "Intervento entro 24 ore",
+        "Urgenze entro poche ore",
+        "Sopralluoghi diretti",
+        "Rete di professionisti qualificati"
+      ]
+    }
+  },
+  "digitalAccess": {
+    "title": "Accesso ai servizi e alla documentazione",
+    "content": "Tramite il sito web SIAM intende favorire la comunicazione con i condomini, facilitare l’accesso e la richiesta della documentazione e garantire trasparenza. L’accesso all’area riservata è gratuito e disponibile per tutti i condomini tramite registrazione.",
+    "reservedAreaFeatures": [
+      "Segnalare guasti",
+      "Richiedere documentazione",
+      "Prendere visione di avvisi e scadenze",
+      "Contattare direttamente l’amministratore dal web"
+    ],
+    "newSiteRecommendation": {
+      "keepReservedAreaReference": true,
+      "notes": [
+        "Se l’area riservata esiste ancora, prevedere una CTA 'Accedi area riservata' ben visibile nell’header",
+        "Se l’area riservata non esiste più o va rifatta, mettere CTA 'Area condomini' come placeholder o reindirizzamento futuro"
+      ]
+    }
+  },
+  "pages": [
+    {
+      "slug": "/",
+      "routeName": "home",
+      "title": "Home",
+      "seo": {
+        "title": "SIAM Condomini | Amministratori di condomini a L'Aquila",
+        "description": "Amministrazione condominiale a L’Aquila con gestione professionale, trasparente e supporto rapido. Contatta SIAM Condomini o richiedi informazioni.",
+        "keywords": [
+          "amministratori di condominio L'Aquila",
+          "amministrazione condominiale L'Aquila",
+          "gestione condomini L'Aquila",
+          "amministratore condominio L'Aquila"
+        ]
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "eyebrow": "Amministrazione condominiale a L’Aquila",
+          "title": "Amministratori di condomini a L'Aquila",
+          "subtitle": "Vi garantiamo una organizzazione professionale, trasparente, competente e all’avanguardia.",
+          "description": "Servizi di amministrazione, consulenza e pratiche condominiali per una gestione attenta, chiara e puntuale.",
+          "primaryCta": {
+            "label": "Richiedi informazioni",
+            "action": "openModal",
+            "modalId": "contactModal"
+          },
+          "secondaryCta": {
+            "label": "Richiedi un preventivo",
+            "action": "openModal",
+            "modalId": "quoteModal"
+          },
+          "tertiaryCta": {
+            "label": "Segnala un guasto",
+            "action": "openModal",
+            "modalId": "faultReportModal"
+          },
+          "media": {
+            "type": "imageOrAbstractIllustration",
+            "alt": "Visual corporate per amministrazione condominiale"
+          }
+        },
+        {
+          "id": "intro",
+          "type": "splitContent",
+          "title": "SIAM al servizio del tuo condominio",
+          "content": "La SIAM opera da anni nella gestione dei condomini in tutto il territorio aquilano e punta a salvaguardare il condominio con una gestione attenta e scrupolosa, sia dal punto di vista economico che di manutenzione.",
+          "cta": {
+            "label": "Scopri chi siamo",
+            "href": "/chi-siamo"
+          }
+        },
+        {
+          "id": "servicesPreview",
+          "type": "cardsGrid",
+          "title": "Servizi",
+          "items": [
+            {
+              "title": "Gestione",
+              "summary": "Amministrazione quotidiana, assemblee, spese, fornitori e manutenzione",
+              "href": "/chi-siamo#gestione"
+            },
+            {
+              "title": "Consulenza",
+              "summary": "Supporto su impianti, regolamenti e problematiche condominiali",
+              "href": "/chi-siamo#consulenza"
+            },
+            {
+              "title": "Pratiche condominiali",
+              "summary": "Gestione fiscale, documentale, assicurativa e rappresentanza",
+              "href": "/chi-siamo#pratiche-condominiali"
+            }
+          ]
+        },
+        {
+          "id": "trust",
+          "type": "featureHighlight",
+          "title": "Affidabilità, trasparenza e rapidità",
+          "content": "Il rapporto di fiducia tra amministratore e condomini è il fondamento del metodo SIAM. Chiarezza, disponibilità, mediazione e rapidità di intervento sono gli elementi distintivi del servizio.",
+          "bullets": [
+            "Onestà e trasparenza",
+            "Disponibilità e mediazione",
+            "Rapidità di intervento",
+            "Coinvolgimento dei consiglieri",
+            "Ricerca di soluzioni per contenere i costi"
+          ]
+        },
+        {
+          "id": "punctuality",
+          "type": "statsOrHighlights",
+          "title": "Interventi organizzati e supporto operativo",
+          "highlights": [
+            "Servizi richiesti entro 24 ore",
+            "Urgenze gestite entro poche ore",
+            "Sopralluoghi diretti nei condomìni amministrati",
+            "Collaborazione con professionisti qualificati"
+          ]
+        },
+        {
+          "id": "digital",
+          "type": "featurePanel",
+          "title": "Comunicazione e documenti",
+          "content": "Attraverso il sito, i condomìni possono segnalare guasti, richiedere documentazione, consultare avvisi e scadenze e contattare direttamente l’amministratore.",
+          "cta": {
+            "label": "Richiedi documentazione",
+            "action": "openModal",
+            "modalId": "documentRequestModal"
+          }
+        },
+        {
+          "id": "newsPreview",
+          "type": "newsCards",
+          "title": "News",
+          "itemsSource": "latestNews",
+          "maxItems": 2,
+          "cta": {
+            "label": "Vai alle news",
+            "href": "/news"
+          }
+        },
+        {
+          "id": "contactCta",
+          "type": "ctaBanner",
+          "title": "Hai bisogno di informazioni o stai cercando un nuovo amministratore?",
+          "subtitle": "Contatta SIAM oppure richiedi un preventivo direttamente dal sito.",
+          "primaryCta": {
+            "label": "Contattaci",
+            "action": "openModal",
+            "modalId": "contactModal"
+          },
+          "secondaryCta": {
+            "label": "Richiedi preventivo",
+            "action": "openModal",
+            "modalId": "quoteModal"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "/chi-siamo",
+      "routeName": "about",
+      "title": "Chi Siamo",
+      "seo": {
+        "title": "Chi siamo | SIAM Condomini",
+        "description": "Scopri SIAM Condomini, amministratori di condomini a L’Aquila: gestione, consulenza e pratiche condominiali con approccio professionale e trasparente."
+      },
+      "sections": [
+        {
+          "id": "aboutIntro",
+          "type": "pageHero",
+          "title": "SIAM al servizio del tuo condominio",
+          "subtitle": "Gestione professionale dei condomini in tutto il territorio aquilano."
+        },
+        {
+          "id": "aboutText",
+          "type": "richText",
+          "content": "La SIAM opera da anni nella gestione dei condomini in tutto il territorio aquilano, con l’obiettivo di salvaguardare il condominio tramite una gestione attenta e scrupolosa sia dal punto di vista economico che di manutenzione. Tramite un insieme di moderne e dinamiche realtà garantisce un’organizzazione professionale, competente e all’avanguardia."
+        },
+        {
+          "id": "sitePurpose",
+          "type": "richText",
+          "content": "Tramite il sito web, SIAM si propone di favorire la comunicazione con i condomini, facilitare l’accesso alla documentazione e garantire trasparenza. L’accesso all’area riservata del sito è gratuito e disponibile per tutti i condomini tramite registrazione. Attraverso l’area riservata è possibile segnalare guasti, richiedere documentazione, prendere visione di avvisi e scadenze e contattare direttamente dal web il proprio amministratore."
+        },
+        {
+          "id": "preventivoNote",
+          "type": "callout",
+          "content": "Per chi cerca un nuovo amministratore, è possibile richiedere un preventivo e avere tutte le informazioni necessarie.",
+          "cta": {
+            "label": "Richiedi preventivo",
+            "action": "openModal",
+            "modalId": "quoteModal"
+          }
+        },
+        {
+          "id": "gestione",
+          "type": "serviceDetail",
+          "title": "Gestione",
+          "items": [
+            "Visite periodiche con controlli in prima persona",
+            "Gestione computerizzata e personalizzata dei condomini",
+            "Gestione spese condominiali, contatti con fornitori e gestione dei contratti di manutenzione",
+            "Reperibilità telefonica fissa, mobile, fax e email",
+            "Convocazione e tenuta delle assemblee condominiali",
+            "Predisposizione ed invio del rendiconto e del preventivo",
+            "Esecuzione delibere assembleari",
+            "Controlli diretti durante i lavori di manutenzione ordinaria e straordinaria"
+          ]
+        },
+        {
+          "id": "consulenza",
+          "type": "serviceDetail",
+          "title": "Consulenza",
+          "items": [
+            "Consulenza per osservanze relative agli impianti",
+            "Consulenza per tutte le problematiche relative al condominio",
+            "Redazione di regolamenti condominiali",
+            "In collegamento continuo con un consulente legale, fiscale e del lavoro a disposizione dei condomini amministrati"
+          ]
+        },
+        {
+          "id": "pratiche-condominiali",
+          "type": "serviceDetail",
+          "title": "Pratiche condominiali",
+          "items": [
+            "Compilazione del modello 770",
+            "Copertura assicurativa dell’amministratore e tutela dei condomini",
+            "Conservazione in archivio dei documenti per i tempi previsti dalla legge",
+            "Rappresentanza legale del condominio",
+            "Disciplina dell’uso delle cose comuni e della prestazione dei servizi"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "/news",
+      "routeName": "news",
+      "title": "News",
+      "seo": {
+        "title": "News | SIAM Condomini",
+        "description": "Aggiornamenti e articoli pubblicati da SIAM Condomini."
+      },
+      "sections": [
+        {
+          "id": "newsList",
+          "type": "blogIndex",
+          "title": "News",
+          "posts": [
+            {
+              "title": "Il vademecum per la cura del verde condominiale (anaci)",
+              "slug": "/news/il-vademecum-per-la-cura-del-verde-condominiale-anaci",
+              "originalSlug": "/l-vademecum-per-la-cura-del-verde-condominiale/",
+              "category": "anaci",
+              "publishedAt": "2020-09-11",
+              "excerpt": "Pubblicato il vademecum per la corretta gestione del verde e degli alberi all’interno dei giardini e dei parchi condominiali."
+            },
+            {
+              "title": "Bonus 110% L’Aquila",
+              "slug": "/news/bonus-110-laquila",
+              "originalSlug": "/bonus-110-laquila/",
+              "category": "news",
+              "publishedAt": "2020-09-11",
+              "excerpt": "Ecobonus e Sisma bonus: le misure per rilanciare il settore edilizio con detrazioni al 110%."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "/news/il-vademecum-per-la-cura-del-verde-condominiale-anaci",
+      "routeName": "article-green-guide",
+      "title": "Il vademecum per la cura del verde condominiale (anaci)",
+      "seo": {
+        "title": "Il vademecum per la cura del verde condominiale (anaci) | SIAM Condomini",
+        "description": "Articolo pubblicato da SIAM Condomini sul vademecum ANACI–ASSOFLORO per la gestione del verde condominiale."
+      },
+      "article": {
+        "category": "anaci",
+        "publishedAt": "2020-09-11",
+        "author": "admin",
+        "intro": "Comunicato Stampa ANACI – ASSOFLORO del 06.03.2020.",
+        "body": [
+          "Pubblicato il vademecum per la cura del verde condominiale.",
+          "Il documento nasce per aiutare l’amministratore di condominio a scegliere professionisti e aziende per la gestione e la cura di giardini e parchi di pertinenza dei condomini, sulla base di requisiti formativi e professionali, con particolare attenzione alle procedure di sicurezza.",
+          "L’articolo evidenzia l’importanza del rispetto degli obblighi legislativi, della consapevolezza delle responsabilità e della corretta manutenzione del verde per evitare danni, pericoli e contenziosi.",
+          "Sono presenti riferimenti al protocollo d’intesa ANACI-ASSOFLORO e ai link per la consultazione del documento."
+        ],
+        "externalLinks": [
+          {
+            "label": "Protocollo d’Intesa ANACI-ASSOFLORO",
+            "url": "https://www.assofloromagazine.it"
+          },
+          {
+            "label": "ANACI",
+            "url": "https://www.anaci.it"
+          },
+          {
+            "label": "Assofloro",
+            "url": "https://www.assofloromagazine.it"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "/news/bonus-110-laquila",
+      "routeName": "article-bonus-110",
+      "title": "Bonus 110% L’Aquila",
+      "seo": {
+        "title": "Bonus 110% L’Aquila | SIAM Condomini",
+        "description": "Articolo pubblicato da SIAM Condomini su Ecobonus e Sisma bonus al 110%."
+      },
+      "article": {
+        "category": "news",
+        "publishedAt": "2020-09-11",
+        "author": "admin",
+        "body": [
+          "Articolo informativo su Ecobonus e Sisma bonus con detrazione fiscale al 110% per interventi di riqualificazione energetica o miglioramento sismico.",
+          "Vengono descritti i principali interventi ammessi, come isolamento termico dell’involucro dell’edificio, sostituzione degli impianti di climatizzazione e installazione di impianti fotovoltaici.",
+          "Il testo menziona la possibilità di cessione del credito e i tetti massimi di spesa per gli interventi.",
+          "È presente anche una sezione sul Sisma bonus e una riflessione sull’impatto del provvedimento sul settore edilizio locale."
+        ]
+      }
+    },
+    {
+      "slug": "/contatti",
+      "routeName": "contact",
+      "title": "Contatti",
+      "seo": {
+        "title": "Contatti | SIAM Condomini",
+        "description": "Contatti di SIAM Condomini: telefono, email e indirizzo."
+      },
+      "sections": [
+        {
+          "id": "contactHero",
+          "type": "pageHero",
+          "title": "Contatti",
+          "subtitle": "Mettiti in contatto con SIAM Condomini."
+        },
+        {
+          "id": "contactInfo",
+          "type": "contactCards",
+          "items": [
+            {
+              "label": "Telefono",
+              "value": "(+39) 0862319151",
+              "linkType": "tel"
+            },
+            {
+              "label": "E-mail",
+              "value": "siam.condomini@gmail.com",
+              "linkType": "mailto"
+            },
+            {
+              "label": "Indirizzo",
+              "value": "Via Carlo Forti, Nucleo industriale Bazzano Nord, L'Aquila",
+              "linkType": "map"
+            }
+          ]
+        },
+        {
+          "id": "privacyNotice",
+          "type": "note",
+          "content": "Acconsento al trattamento dei dati personali come specificato nella Privacy Policy."
+        },
+        {
+          "id": "contactActions",
+          "type": "ctaGroup",
+          "primaryCta": {
+            "label": "Contattaci",
+            "action": "openModal",
+            "modalId": "contactModal"
+          },
+          "secondaryCta": {
+            "label": "Richiedi preventivo",
+            "action": "openModal",
+            "modalId": "quoteModal"
+          },
+          "tertiaryCta": {
+            "label": "Segnala guasto",
+            "action": "openModal",
+            "modalId": "faultReportModal"
+          }
+        }
+      ]
+    }
+  ],
+  "modals": [
+    {
+      "id": "contactModal",
+      "title": "Contatta SIAM Condomini",
+      "description": "Invia una richiesta rapida di informazioni.",
+      "formType": "contact",
+      "fields": [
+        {
+          "name": "fullName",
+          "label": "Nome e cognome",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "email",
+          "label": "Email",
+          "type": "email",
+          "required": true
+        },
+        {
+          "name": "phone",
+          "label": "Telefono",
+          "type": "tel",
+          "required": false
+        },
+        {
+          "name": "message",
+          "label": "Messaggio",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "name": "privacyConsent",
+          "label": "Acconsento al trattamento dei dati personali",
+          "type": "checkbox",
+          "required": true
+        }
+      ],
+      "submitLabel": "Invia richiesta"
+    },
+    {
+      "id": "quoteModal",
+      "title": "Richiedi un preventivo",
+      "description": "Compila il modulo per essere ricontattato.",
+      "formType": "quoteRequest",
+      "fields": [
+        {
+          "name": "fullName",
+          "label": "Nome e cognome",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "email",
+          "label": "Email",
+          "type": "email",
+          "required": true
+        },
+        {
+          "name": "phone",
+          "label": "Telefono",
+          "type": "tel",
+          "required": true
+        },
+        {
+          "name": "buildingType",
+          "label": "Tipologia immobile / condominio",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "notes",
+          "label": "Dettagli richiesta",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "name": "privacyConsent",
+          "label": "Acconsento al trattamento dei dati personali",
+          "type": "checkbox",
+          "required": true
+        }
+      ],
+      "submitLabel": "Richiedi preventivo"
+    },
+    {
+      "id": "faultReportModal",
+      "title": "Segnala un guasto",
+      "description": "Invia una segnalazione rapida relativa al tuo condominio.",
+      "formType": "faultReport",
+      "fields": [
+        {
+          "name": "fullName",
+          "label": "Nome e cognome",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "email",
+          "label": "Email",
+          "type": "email",
+          "required": true
+        },
+        {
+          "name": "phone",
+          "label": "Telefono",
+          "type": "tel",
+          "required": true
+        },
+        {
+          "name": "building",
+          "label": "Condominio / indirizzo",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "faultType",
+          "label": "Tipo di guasto",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "message",
+          "label": "Descrizione",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "name": "privacyConsent",
+          "label": "Acconsento al trattamento dei dati personali",
+          "type": "checkbox",
+          "required": true
+        }
+      ],
+      "submitLabel": "Invia segnalazione"
+    },
+    {
+      "id": "documentRequestModal",
+      "title": "Richiedi documentazione",
+      "description": "Richiedi documenti, avvisi o informazioni relative al tuo condominio.",
+      "formType": "documentRequest",
+      "fields": [
+        {
+          "name": "fullName",
+          "label": "Nome e cognome",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "email",
+          "label": "Email",
+          "type": "email",
+          "required": true
+        },
+        {
+          "name": "building",
+          "label": "Condominio / riferimento",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "requestType",
+          "label": "Documento richiesto",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "message",
+          "label": "Dettagli",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "name": "privacyConsent",
+          "label": "Acconsento al trattamento dei dati personali",
+          "type": "checkbox",
+          "required": true
+        }
+      ],
+      "submitLabel": "Invia richiesta"
+    }
+  ],
+  "header": {
+    "style": "sticky blurred header",
+    "logo": {
+      "type": "textLogo",
+      "value": "SIAM Condomini"
+    },
+    "navigation": [
+      {
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "label": "Chi siamo",
+        "href": "/chi-siamo"
+      },
+      {
+        "label": "News",
+        "href": "/news"
+      },
+      {
+        "label": "Contatti",
+        "href": "/contatti"
+      }
+    ],
+    "actions": [
+      {
+        "label": "Richiedi preventivo",
+        "action": "openModal",
+        "modalId": "quoteModal",
+        "style": "primary"
+      },
+      {
+        "label": "Contattaci",
+        "action": "openModal",
+        "modalId": "contactModal",
+        "style": "secondary"
+      }
+    ]
+  },
+  "footer": {
+    "columns": [
+      {
+        "title": "SIAM Condomini",
+        "items": [
+          "Amministratori di condomini a L'Aquila",
+          "Organizzazione professionale, trasparente, competente e all’avanguardia"
+        ]
+      },
+      {
+        "title": "Navigazione",
+        "links": [
+          {
+            "label": "Home",
+            "href": "/"
+          },
+          {
+            "label": "Chi siamo",
+            "href": "/chi-siamo"
+          },
+          {
+            "label": "News",
+            "href": "/news"
+          },
+          {
+            "label": "Contatti",
+            "href": "/contatti"
+          }
+        ]
+      },
+      {
+        "title": "Contatti",
+        "items": [
+          "Telefono: (+39) 0862319151",
+          "Urgenze: 800 978551",
+          "Email: siam.condomini@gmail.com",
+          "Via Carlo Forti, Nucleo industriale Bazzano Nord, L'Aquila"
+        ]
+      }
+    ],
+    "bottomBar": {
+      "copyright": "Copyright 2026 © SIAM Condomini",
+      "notes": [
+        "Mostrare anche telefono e numero urgenze nella bottom bar"
+      ]
+    }
+  },
+  "styleDirection": {
+    "designIntent": "moderno, professionale, istituzionale ma non freddo",
+    "references": [
+      "layout pulito",
+      "spazi ampi",
+      "tipografia molto leggibile",
+      "card ordinate per servizi",
+      "sezioni con forte gerarchia visiva",
+      "nessun look da sito WordPress vecchio stile"
+    ],
+    "colors": {
+      "primary": "#16324F",
+      "secondary": "#F5F7FA",
+      "accent": "#1F8A70",
+      "text": "#0F172A",
+      "mutedText": "#475569",
+      "border": "#DCE3EA",
+      "dangerOrUrgency": "#C0392B"
+    },
+    "typography": {
+      "headingFont": "Inter",
+      "bodyFont": "Inter",
+      "notes": [
+        "Headings solidi e istituzionali",
+        "Body leggibile con ottimo contrasto",
+        "No serif classico da studio vecchio"
+      ]
+    },
+    "components": {
+      "buttons": "rounded-xl, medium-weight, clear hover states",
+      "cards": "soft shadow, subtle border, 2xl radius",
+      "sections": "ample vertical spacing",
+      "modals": "clean, focused, max-width medium, high accessibility"
+    },
+    "imagery": {
+      "approach": "immagini corporate immobiliari leggere o illustrazioni astratte",
+      "avoid": [
+        "stock photo troppo finte",
+        "palazzi generici in stile anni 2000",
+        "icone datate"
+      ]
+    }
+  },
+  "uxRecommendations": {
+    "highPriority": [
+      "Mettere il numero urgenze sempre visibile",
+      "Dare grande risalto alle richieste rapide via modale",
+      "Riordinare i servizi in card più chiare",
+      "Distinguere meglio clienti esistenti e nuovi potenziali clienti",
+      "Valorizzare l’area riservata se ancora attiva"
+    ],
+    "conversionImprovements": [
+      "CTA 'Richiedi preventivo' in header e hero",
+      "CTA 'Segnala guasto' per utenti già serviti",
+      "CTA 'Richiedi documentazione' per uso pratico del sito",
+      "Contatti rapidi sempre accessibili da ogni pagina"
+    ]
+  },
+  "developerNotes": {
+    "routing": {
+      "home": "/",
+      "about": "/chi-siamo",
+      "newsIndex": "/news",
+      "contact": "/contatti",
+      "newsArticlePattern": "/news/[slug]"
+    },
+    "implementation": {
+      "modalState": "global modal store or context",
+      "forms": "shared modal form components with schema validation",
+      "cmsReady": true,
+      "suggestedCmsModel": [
+        "pages",
+        "sections",
+        "serviceGroups",
+        "newsPosts",
+        "contactInfo",
+        "siteSettings",
+        "modalForms"
+      ]
+    }
+  }
+}

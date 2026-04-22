@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RequestType {
+  CONTACT
+  QUOTE
+  FAULT
+  DOCUMENT
+}
+
+model LeadRequest {
+  id             String      @id @default(cuid())
+  type           RequestType
+  fullName       String
+  email          String
+  phone          String?
+  buildingType   String?
+  building       String?
+  faultType      String?
+  documentType   String?
+  message        String?
+  privacyConsent Boolean
+  status         String      @default("new")
+  createdAt      DateTime    @default(now())
+}
+
+model NewsPost {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  title         String
+  excerpt       String
+  category      String
+  publishedAt   DateTime
+  author        String   @default("SIAM Condomini")
+  intro         String?
+  body          Json
+  externalLinks Json?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
