@@ -1,6 +1,6 @@
 # SIAM Condomini
 
-Prima versione del nuovo sito web SIAM Condomini realizzata con Next.js, pronta per deploy su Vercel e uso database Neon via Prisma.
+Prima versione del nuovo sito web SIAM Condomini realizzata con Next.js, pronta per deploy su Vercel con database Neon tramite Prisma.
 
 ## Stack
 
@@ -10,7 +10,7 @@ Prima versione del nuovo sito web SIAM Condomini realizzata con Next.js, pronta 
 - React Hook Form + Zod
 - Prisma ORM + Neon Postgres
 
-## Setup locale
+## Quick Start
 
 1. Installa dipendenze:
 
@@ -26,13 +26,13 @@ cp .env.example .env.local
 
 3. Aggiorna `DATABASE_URL` con la connessione Neon.
 
-4. Genera schema DB:
+4. Allinea schema DB:
 
 ```bash
 npm run db:push
 ```
 
-5. (Opzionale) semina news iniziali:
+5. (Opzionale) carica news iniziali:
 
 ```bash
 npm run db:seed
@@ -52,6 +52,15 @@ npm run dev
 - `/news/[slug]`
 - `/contatti`
 
-## Modali globali
+## API
 
-Le CTA aprono modali riutilizzabili con validazione form e invio a `POST /api/lead`.
+- `POST /api/lead`: riceve submit dei form modali e salva su `LeadRequest`.
+
+## Documentazione team
+
+- Hub documentazione: [`docs/README.md`](docs/README.md)
+- Onboarding: [`docs/onboarding.md`](docs/onboarding.md)
+- Architettura: [`docs/architecture.md`](docs/architecture.md)
+- Deploy: [`docs/deploy-vercel-neon.md`](docs/deploy-vercel-neon.md)
+- Runbook manutenzione: [`docs/operations-runbook.md`](docs/operations-runbook.md)
+- Contributing: [`CONTRIBUTING.md`](CONTRIBUTING.md)
