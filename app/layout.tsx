@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import { AnimatedBackground } from "@/components/animated-background";
 import { FloatingContactWidget } from "@/components/floating-contact-widget";
 import { ModalProvider } from "@/components/modal/modal-provider";
 import { SiteFooter } from "@/components/site-footer";
@@ -31,12 +32,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="it">
       <body className={`${inter.variable} font-sans antialiased`}>
-        <ModalProvider>
-          <SiteHeader />
-          <main>{children}</main>
-          <FloatingContactWidget />
-          <SiteFooter />
-        </ModalProvider>
+        <AnimatedBackground />
+        <div className="relative z-10">
+          <ModalProvider>
+            <SiteHeader />
+            <main>{children}</main>
+            <FloatingContactWidget />
+            <SiteFooter />
+          </ModalProvider>
+        </div>
       </body>
     </html>
   );

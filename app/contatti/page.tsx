@@ -60,8 +60,8 @@ export default function ContactPage() {
               </ModalTriggerButton>
               <ModalTriggerButton
                 modalId="quoteModal"
-                variant="ghost"
-                className="w-full justify-start border border-white/30 text-white hover:bg-white/15"
+                variant="success"
+                className="w-full justify-start"
               >
                 Richiedi preventivo
               </ModalTriggerButton>

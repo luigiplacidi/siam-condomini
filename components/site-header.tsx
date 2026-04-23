@@ -107,7 +107,9 @@ export function SiteHeader() {
             <ModalTriggerButton modalId="contactModal" variant="secondary">
               Contattaci
             </ModalTriggerButton>
-            <ModalTriggerButton modalId="quoteModal">Richiedi preventivo</ModalTriggerButton>
+            <ModalTriggerButton modalId="quoteModal" variant="success">
+              Richiedi preventivo
+            </ModalTriggerButton>
           </div>
 
           <button
@@ -148,7 +150,7 @@ export function SiteHeader() {
               </RawModalTrigger>
               <RawModalTrigger
                 modalId="quoteModal"
-                className="rounded-lg bg-primary px-3 py-2 text-sm font-semibold text-white"
+                className="rounded-lg bg-accent px-3 py-2 text-sm font-semibold text-white"
                 onClick={() => setOpen(false)}
               >
                 Richiedi preventivo

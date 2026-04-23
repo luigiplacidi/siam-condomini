@@ -22,7 +22,7 @@ export function SiteFooter() {
             <ModalTriggerButton modalId="contactModal" size="sm">
               Contattaci
             </ModalTriggerButton>
-            <ModalTriggerButton modalId="quoteModal" size="sm" variant="secondary">
+            <ModalTriggerButton modalId="quoteModal" size="sm" variant="success">
               Preventivo
             </ModalTriggerButton>
           </div>

@@ -27,9 +27,9 @@ export default function AboutPage() {
               preventivo rapido.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <ModalTriggerButton modalId="quoteModal" size="lg">
-                Richiedi preventivo
-              </ModalTriggerButton>
+            <ModalTriggerButton modalId="quoteModal" size="lg" variant="success">
+              Richiedi preventivo
+            </ModalTriggerButton>
               <ModalTriggerButton modalId="documentRequestModal" size="lg" variant="secondary">
                 Richiedi documentazione
               </ModalTriggerButton>
