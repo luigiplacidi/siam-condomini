@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import { AnimatedBackground } from "@/components/animated-background";
+import { CookieBanner } from "@/components/cookies/cookie-banner";
+import { CookieControlledScripts } from "@/components/cookies/cookie-controlled-scripts";
 import { FloatingContactWidget } from "@/components/floating-contact-widget";
 import { ModalProvider } from "@/components/modal/modal-provider";
 import { SiteFooter } from "@/components/site-footer";
@@ -35,10 +37,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <AnimatedBackground />
         <div className="relative z-10">
           <ModalProvider>
+            <CookieControlledScripts />
             <SiteHeader />
             <main>{children}</main>
             <FloatingContactWidget />
             <SiteFooter />
+            <CookieBanner />
           </ModalProvider>
         </div>
       </body>

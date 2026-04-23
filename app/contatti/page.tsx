@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 import { ModalTriggerButton } from "@/components/modal/modal-trigger-button";
 import { contactInfo } from "@/lib/site-content";
@@ -74,7 +75,15 @@ export default function ContactPage() {
       </div>
 
       <p className="mt-6 text-xs text-muted-foreground">
-        Acconsento al trattamento dei dati personali come specificato nella Privacy Policy.
+        Proseguendo con l'invio, dichiari di aver letto la{" "}
+        <Link className="font-semibold text-primary underline underline-offset-2" href="/privacy-policy">
+          Privacy Policy
+        </Link>{" "}
+        e la{" "}
+        <Link className="font-semibold text-primary underline underline-offset-2" href="/cookie-policy">
+          Cookie Policy
+        </Link>
+        .
       </p>
     </section>
   );

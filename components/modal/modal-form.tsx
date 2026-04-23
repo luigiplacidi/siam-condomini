@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -64,16 +65,35 @@ export function ModalForm({ modal, onSuccess }: ModalFormProps) {
         const error = form.formState.errors[field.name]?.message;
 
         if (field.type === "checkbox") {
+          const isPrivacyField = field.name === "privacyConsent";
           return (
-            <label key={field.name} className="flex items-start gap-3 text-sm text-foreground">
-              <input
-                type="checkbox"
-                className="mt-0.5 h-4 w-4 rounded border-border"
-                {...form.register(field.name)}
-              />
-              <span>{field.label}</span>
-              {error ? <span className="text-danger">{String(error)}</span> : null}
-            </label>
+            <div key={field.name} className="space-y-1">
+              <label className="flex items-start gap-3 text-sm text-foreground">
+                <input
+                  type="checkbox"
+                  className="mt-0.5 h-4 w-4 rounded border-border"
+                  {...form.register(field.name)}
+                />
+                <span>
+                  {isPrivacyField ? (
+                    <>
+                      Acconsento al trattamento dei dati personali come descritto nella{" "}
+                      <Link href="/privacy-policy" className="font-semibold text-primary underline underline-offset-2">
+                        Privacy Policy
+                      </Link>{" "}
+                      e nella{" "}
+                      <Link href="/cookie-policy" className="font-semibold text-primary underline underline-offset-2">
+                        Cookie Policy
+                      </Link>
+                      .
+                    </>
+                  ) : (
+                    field.label
+                  )}
+                </span>
+              </label>
+              {error ? <span className="text-xs text-danger">{String(error)}</span> : null}
+            </div>
           );
         }
 

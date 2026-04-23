@@ -64,6 +64,15 @@ export function SiteFooter() {
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>Copyright 2026 © SIAM Condomini</p>
           <p>Tel: {contactInfo.phoneDisplay} | Email: {contactInfo.email}</p>
+          <p className="inline-flex items-center gap-2">
+            <Link className="underline underline-offset-2 hover:text-primary" href="/privacy-policy">
+              Privacy Policy
+            </Link>
+            <span>|</span>
+            <Link className="underline underline-offset-2 hover:text-primary" href="/cookie-policy">
+              Cookie Policy
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

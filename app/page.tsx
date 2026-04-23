@@ -63,10 +63,10 @@ export default async function HomePage() {
       </Reveal>
 
       <section className="section-shell pt-6">
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-5 md:auto-rows-fr md:grid-cols-3">
           {serviceGroups.map((group, index) => (
-            <Reveal key={group.id} delay={0.08 * index}>
-              <article className="overflow-hidden rounded-3xl border border-border bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-xl">
+            <Reveal key={group.id} delay={0.08 * index} className="h-full">
+              <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-xl">
                 <div className="relative h-40">
                   <Image
                     src={serviceImages[group.id] ?? "/images/stock/building.jpg"}
@@ -79,7 +79,7 @@ export default async function HomePage() {
                     {group.title}
                   </p>
                 </div>
-                <div className="p-6">
+                <div className="flex flex-1 flex-col p-6">
                   <p className="text-sm text-muted-foreground">{group.description}</p>
                   <ul className="mt-5 grid gap-2 text-sm text-foreground">
                     {group.items.slice(0, 4).map((item) => (
@@ -88,7 +88,7 @@ export default async function HomePage() {
                   </ul>
                   <Link
                     href={`/chi-siamo#${group.id}`}
-                    className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+                    className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
                   >
                     Vai al dettaglio <ArrowRight className="h-4 w-4" />
                   </Link>
