@@ -1,5 +1,8 @@
+"use client";
+
 import { ArrowRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 
 type NewsCarouselItem = {
   kind: "article" | "resource";
@@ -20,16 +23,134 @@ const cardToneClasses = {
   resource: "from-accent/10 via-white to-secondary/25"
 } as const;
 
+type DraggableTrackProps = {
+  children: ReactNode;
+};
+
+function DraggableTrack({ children }: DraggableTrackProps) {
+  const viewportRef = useRef<HTMLDivElement | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const isPausedRef = useRef(false);
+  const isDraggingRef = useRef(false);
+  const activePointerIdRef = useRef<number | null>(null);
+  const dragStartXRef = useRef(0);
+  const scrollStartRef = useRef(0);
+  const [isDragging, setIsDragging] = useState(false);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    const tick = () => {
+      if (!isPausedRef.current && !isDraggingRef.current) {
+        const segmentWidth = viewport.scrollWidth / 3;
+        if (segmentWidth > viewport.clientWidth) {
+          if (viewport.scrollLeft === 0) {
+            viewport.scrollLeft = segmentWidth;
+          }
+
+          viewport.scrollLeft += 0.45;
+
+          if (viewport.scrollLeft >= segmentWidth * 2) {
+            viewport.scrollLeft -= segmentWidth;
+          }
+        }
+      }
+
+      rafRef.current = window.requestAnimationFrame(tick);
+    };
+
+    rafRef.current = window.requestAnimationFrame(tick);
+
+    return () => {
+      if (rafRef.current) window.cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    const initializePosition = () => {
+      const segmentWidth = viewport.scrollWidth / 3;
+      if (segmentWidth > viewport.clientWidth && viewport.scrollLeft === 0) {
+        viewport.scrollLeft = segmentWidth;
+      }
+    };
+
+    initializePosition();
+    window.addEventListener("resize", initializePosition);
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (!isDraggingRef.current || activePointerIdRef.current !== event.pointerId) return;
+      event.preventDefault();
+      const deltaX = event.clientX - dragStartXRef.current;
+      viewport.scrollLeft = scrollStartRef.current - deltaX;
+    };
+
+    const onPointerUp = (event: PointerEvent) => {
+      if (!isDraggingRef.current || activePointerIdRef.current !== event.pointerId) return;
+      isDraggingRef.current = false;
+      activePointerIdRef.current = null;
+      setIsDragging(false);
+      isPausedRef.current = false;
+    };
+
+    window.addEventListener("pointermove", onPointerMove, { passive: false });
+    window.addEventListener("pointerup", onPointerUp);
+    window.addEventListener("pointercancel", onPointerUp);
+
+    return () => {
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerup", onPointerUp);
+      window.removeEventListener("pointercancel", onPointerUp);
+      window.removeEventListener("resize", initializePosition);
+    };
+  }, []);
+
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    isDraggingRef.current = true;
+    activePointerIdRef.current = event.pointerId;
+    setIsDragging(true);
+    isPausedRef.current = true;
+    dragStartXRef.current = event.clientX;
+    scrollStartRef.current = viewport.scrollLeft;
+  };
+
+  return (
+    <div
+      ref={viewportRef}
+      className={`news-carousel-viewport cursor-grab overflow-x-auto overscroll-x-contain scroll-smooth select-none [touch-action:pan-y] ${
+        isDragging ? "cursor-grabbing" : ""
+      }`}
+      onPointerDown={handlePointerDown}
+      onPointerEnter={() => {
+        isPausedRef.current = true;
+      }}
+      onPointerLeave={() => {
+        if (!isDraggingRef.current) {
+          isPausedRef.current = false;
+        }
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
 export function NewsCarousel({ items }: NewsCarouselProps) {
-  const loopedItems = [...items, ...items];
+  const loopedItems = useMemo(() => [...items, ...items, ...items], [items]);
 
   return (
     <div className="relative overflow-hidden rounded-[2rem] border border-border bg-white shadow-soft">
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-white to-transparent lg:w-20" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-white to-transparent lg:w-20" />
 
-      <div className="overflow-hidden">
-        <div className="news-marquee-track flex w-max gap-5 px-5 py-5">
+      <DraggableTrack>
+      <div className="flex w-max gap-5 px-5 py-5">
           {loopedItems.map((item, index) => {
             const card = (
               <article
@@ -63,17 +184,18 @@ export function NewsCarousel({ items }: NewsCarouselProps) {
                 target="_blank"
                 rel="noreferrer"
                 className="shrink-0"
+                draggable={false}
               >
                 {card}
               </a>
             ) : (
-              <Link key={`${item.href}-${index}`} href={item.href as never} className="shrink-0">
+              <Link key={`${item.href}-${index}`} href={item.href as never} className="shrink-0" draggable={false}>
                 {card}
               </Link>
             );
           })}
         </div>
-      </div>
+      </DraggableTrack>
     </div>
   );
 }
