@@ -32,7 +32,7 @@ function DraggableTrack({ children }: DraggableTrackProps) {
   const rafRef = useRef<number | null>(null);
   const isPausedRef = useRef(false);
   const isDraggingRef = useRef(false);
-  const activePointerIdRef = useRef<number | null>(null);
+  const hasDraggedRef = useRef(false);
   const dragStartXRef = useRef(0);
   const scrollStartRef = useRef(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -73,7 +73,7 @@ function DraggableTrack({ children }: DraggableTrackProps) {
 
     const initializePosition = () => {
       const segmentWidth = viewport.scrollWidth / 3;
-      if (segmentWidth > viewport.clientWidth && viewport.scrollLeft === 0) {
+      if (segmentWidth > viewport.clientWidth && viewport.scrollLeft < segmentWidth * 0.5) {
         viewport.scrollLeft = segmentWidth;
       }
     };
@@ -81,39 +81,41 @@ function DraggableTrack({ children }: DraggableTrackProps) {
     initializePosition();
     window.addEventListener("resize", initializePosition);
 
-    const onPointerMove = (event: PointerEvent) => {
-      if (!isDraggingRef.current || activePointerIdRef.current !== event.pointerId) return;
+    const onMouseMove = (event: MouseEvent) => {
+      if (!isDraggingRef.current) return;
       event.preventDefault();
       const deltaX = event.clientX - dragStartXRef.current;
+      if (Math.abs(deltaX) > 3) {
+        hasDraggedRef.current = true;
+      }
       viewport.scrollLeft = scrollStartRef.current - deltaX;
     };
 
-    const onPointerUp = (event: PointerEvent) => {
-      if (!isDraggingRef.current || activePointerIdRef.current !== event.pointerId) return;
+    const onMouseUp = () => {
+      if (!isDraggingRef.current) return;
       isDraggingRef.current = false;
-      activePointerIdRef.current = null;
       setIsDragging(false);
       isPausedRef.current = false;
     };
 
-    window.addEventListener("pointermove", onPointerMove, { passive: false });
-    window.addEventListener("pointerup", onPointerUp);
-    window.addEventListener("pointercancel", onPointerUp);
+    window.addEventListener("mousemove", onMouseMove, { passive: false });
+    window.addEventListener("mouseup", onMouseUp);
 
     return () => {
-      window.removeEventListener("pointermove", onPointerMove);
-      window.removeEventListener("pointerup", onPointerUp);
-      window.removeEventListener("pointercancel", onPointerUp);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
       window.removeEventListener("resize", initializePosition);
     };
   }, []);
 
-  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+  const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.button !== 0) return;
     const viewport = viewportRef.current;
     if (!viewport) return;
 
+    event.preventDefault();
     isDraggingRef.current = true;
-    activePointerIdRef.current = event.pointerId;
+    hasDraggedRef.current = false;
     setIsDragging(true);
     isPausedRef.current = true;
     dragStartXRef.current = event.clientX;
@@ -126,13 +128,20 @@ function DraggableTrack({ children }: DraggableTrackProps) {
       className={`news-carousel-viewport cursor-grab overflow-x-auto overscroll-x-contain scroll-smooth select-none [touch-action:pan-y] ${
         isDragging ? "cursor-grabbing" : ""
       }`}
-      onPointerDown={handlePointerDown}
+      onMouseDown={handleMouseDown}
       onPointerEnter={() => {
         isPausedRef.current = true;
       }}
       onPointerLeave={() => {
         if (!isDraggingRef.current) {
           isPausedRef.current = false;
+        }
+      }}
+      onClickCapture={(event) => {
+        if (hasDraggedRef.current) {
+          event.preventDefault();
+          event.stopPropagation();
+          hasDraggedRef.current = false;
         }
       }}
     >
@@ -150,7 +159,7 @@ export function NewsCarousel({ items }: NewsCarouselProps) {
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-white to-transparent lg:w-20" />
 
       <DraggableTrack>
-      <div className="flex w-max gap-5 px-5 py-5">
+        <div className="flex w-max gap-5 px-5 py-5">
           {loopedItems.map((item, index) => {
             const card = (
               <article
