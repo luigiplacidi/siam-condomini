@@ -181,6 +181,80 @@ export default async function HomePage() {
       </Reveal>
 
       <Reveal>
+        <section className="section-shell pt-2">
+          <div className="rounded-3xl border border-border bg-white p-8 shadow-soft">
+            <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <p className="kicker">Approfondimenti normativi</p>
+                <h2 className="mt-3 text-3xl font-semibold text-primary">
+                  Tre letture utili per chi amministra o vive il condominio
+                </h2>
+                <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+                  Una selezione di articoli tecnici SIAM e una risorsa esterna autorevole per consultare norme,
+                  sentenze e guide operative quando serve un riferimento in più.
+                </p>
+              </div>
+              <Link
+                href="/news"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4"
+              >
+                Vai a tutte le news <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="mt-8 grid gap-5 md:grid-cols-3">
+              <article className="flex h-full flex-col rounded-2xl border border-border bg-secondary/35 p-5">
+                <p className="text-xs font-semibold uppercase tracking-wide text-primary/80">Normativa</p>
+                <h3 className="mt-3 text-xl font-semibold text-primary">Prevenzione incendi e adempimenti</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Regole, gestione quotidiana e documentazione per tenere sotto controllo i principali obblighi
+                  antincendio del condominio.
+                </p>
+                <Link
+                  href="/news/prevenzione-incendi-condominio-regole-e-adempimenti"
+                  className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+                >
+                  Leggi articolo <ArrowRight className="h-4 w-4" />
+                </Link>
+              </article>
+
+              <article className="flex h-full flex-col rounded-2xl border border-border bg-secondary/35 p-5">
+                <p className="text-xs font-semibold uppercase tracking-wide text-primary/80">Impianti</p>
+                <h3 className="mt-3 text-xl font-semibold text-primary">Verifica cancelli automatizzati</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Impianti, documenti di conformita e controlli periodici quando il condominio ha automazioni o
+                  basculanti motorizzate.
+                </p>
+                <Link
+                  href="/news/verifica-cancelli-automatizzati-impianti-e-documentazione"
+                  className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+                >
+                  Leggi articolo <ArrowRight className="h-4 w-4" />
+                </Link>
+              </article>
+
+              <article className="flex h-full flex-col rounded-2xl border border-border bg-secondary/35 p-5">
+                <p className="text-xs font-semibold uppercase tracking-wide text-primary/80">Riferimenti</p>
+                <h3 className="mt-3 text-xl font-semibold text-primary">CondominioWeb</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Norme, sentenze e guide operative per amministratori, tecnici e condòmini. Un supporto utile da
+                  consultare insieme alle fonti ufficiali.
+                </p>
+                <a
+                  href="https://www.condominioweb.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+                >
+                  Vai al sito <ExternalLink className="h-4 w-4" />
+                </a>
+              </article>
+            </div>
+          </div>
+        </section>
+      </Reveal>
+
+      <Reveal>
         <section className="section-shell">
           <div className="overflow-hidden rounded-3xl border border-border bg-white shadow-soft">
             <div className="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
