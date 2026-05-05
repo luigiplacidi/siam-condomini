@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { StructuredData } from "@/components/seo/structured-data";
+import { brand } from "@/lib/site-content";
 import { getNewsPostBySlug, getNewsPosts } from "@/lib/news";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export async function generateStaticParams() {
   const posts = await getNewsPosts();
@@ -23,7 +27,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${post.title} | SIAM Condomini`,
-    description: post.excerpt
+    description: post.excerpt,
+    openGraph: {
+      title: `${post.title} | SIAM Condomini`,
+      description: post.excerpt,
+      type: "article",
+      url: `${siteUrl}/news/${slug}`
+    },
+    twitter: {
+      card: "summary",
+      title: `${post.title} | SIAM Condomini`,
+      description: post.excerpt
+    }
   };
 }
 
@@ -37,6 +52,28 @@ export default async function NewsArticlePage({ params }: PageProps) {
 
   return (
     <article className="section-shell pt-20 pb-20">
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: post.title,
+          description: post.excerpt,
+          author: {
+            "@type": "Organization",
+            name: brand.name
+          },
+          publisher: {
+            "@type": "Organization",
+            name: brand.name,
+            logo: {
+              "@type": "ImageObject",
+              url: `${siteUrl}/images/brand/logo-siam.png`
+            }
+          },
+          mainEntityOfPage: `${siteUrl}/news/${slug}`,
+          datePublished: `${post.publishedAt}T00:00:00+02:00`
+        }}
+      />
       <Link href="/news" className="text-sm font-semibold text-primary underline underline-offset-4">
         Torna alle news
       </Link>
