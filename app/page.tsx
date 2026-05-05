@@ -255,24 +255,24 @@ export default async function HomePage() {
 
                 <div className="grid gap-4 p-8">
                   <div className="rounded-2xl border border-border bg-secondary/45 p-5">
-                    <p className="text-sm font-semibold text-primary">Quando usarlo</p>
+                    <p className="text-sm font-semibold text-primary">Perché visitarlo</p>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      Per approfondire temi tecnici o giuridici, verificare orientamenti giurisprudenziali e trovare
-                      guide operative utili alla gestione quotidiana del condominio.
+                      Per trovare rapidamente approfondimenti chiari su norme, sentenze e questioni pratiche del
+                      condominio, con un taglio autorevole e operativo.
                     </p>
                   </div>
                   <div className="rounded-2xl border border-border bg-secondary/45 p-5">
-                    <p className="text-sm font-semibold text-primary">Come lo integriamo qui</p>
+                    <p className="text-sm font-semibold text-primary">Cosa ci trovi</p>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      Lo trattiamo come risorsa esterna di approfondimento, affiancata agli articoli SIAM e ai
-                      riferimenti normativi ufficiali.
+                      Una raccolta ampia di articoli, guide e commenti utili per chi vuole capire meglio un tema
+                      prima di prendere una decisione o affrontare un problema concreto.
                     </p>
                   </div>
                   <div className="rounded-2xl border border-border bg-secondary/45 p-5">
-                    <p className="text-sm font-semibold text-primary">Accesso rapido</p>
+                    <p className="text-sm font-semibold text-primary">Vai quando vuoi</p>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      Un collegamento visibile ma discreto, utile per chi cerca subito casi pratici, sentenze e
-                      aggiornamenti.
+                      Un accesso semplice e immediato a un punto di riferimento esterno, utile quando ti serve un
+                      approfondimento in più.
                     </p>
                   </div>
                 </div>
