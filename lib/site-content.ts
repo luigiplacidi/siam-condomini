@@ -175,6 +175,95 @@ export type NewsArticle = {
 
 export const staticNewsPosts: NewsArticle[] = [
   {
+    slug: "prevenzione-incendi-condominio-regole-e-adempimenti",
+    title: "Prevenzione incendi in condominio: regole, adempimenti e gestione quotidiana",
+    excerpt:
+      "Un articolo operativo sulle principali regole di prevenzione incendi che interessano gli edifici residenziali e il lavoro dell'amministratore.",
+    category: "Prevenzione incendi",
+    publishedAt: "2026-04-30",
+    author: "SIAM Condomini",
+    intro:
+      "La prevenzione incendi in condominio non riguarda solo i grandi edifici: e un tema di organizzazione, controllo e manutenzione che interessa molte parti comuni.",
+    body: [
+      "Il DM 25 gennaio 2019 ha aggiornato le norme di sicurezza antincendio per gli edifici di civile abitazione, introducendo un quadro piu attento alla gestione della sicurezza e alle misure da applicare anche negli edifici esistenti.",
+      "Per l'amministratore il punto centrale non e soltanto l'adeguamento formale, ma la tenuta ordinata della documentazione, la manutenzione delle parti comuni e la consapevolezza di quali spazi possano richiedere verifiche e aggiornamenti.",
+      "In condominio la prevenzione incendi vive nella pratica quotidiana: corretta gestione delle vie di esodo, attenzione ai locali tecnici, verifica dei materiali e coordinamento con i professionisti quando si interviene su impianti o facciate.",
+      "L'approccio migliore resta quello semplice ma rigoroso: sapere quali obblighi esistono, controllare cosa manca e tenere il condominio in uno stato di manutenzione che riduca il rischio prima ancora dell'adempimento documentale."
+    ],
+    externalLinks: [
+      {
+        label: "Gazzetta Ufficiale - DM 25 gennaio 2019",
+        url: "https://www.gazzettaufficiale.it/eli/id/2019/02/05/19A00734/sg"
+      },
+      {
+        label: "CondominioWeb - prevenzione incendi",
+        url: "https://www.condominioweb.com/il-perimento-parziale-del-condominio.13026"
+      }
+    ]
+  },
+  {
+    slug: "verifica-cancelli-automatizzati-impianti-e-documentazione",
+    title: "Verifica cancelli automatizzati: impianti, documentazione e controlli",
+    excerpt:
+      "Un approfondimento sulle automazioni di cancelli e basculanti, tra impianto elettrico, manutenzione e adempimenti da non dimenticare.",
+    category: "Impianti",
+    publishedAt: "2026-04-29",
+    author: "SIAM Condomini",
+    intro:
+      "I cancelli automatizzati richiedono una gestione attenta: impianto elettrico, sicurezza, documenti di conformita e manutenzione devono viaggiare insieme.",
+    body: [
+      "Il DM 22 gennaio 2008, n. 37 disciplina le attivita di installazione degli impianti negli edifici e resta il primo riferimento da tenere presente quando un condominio ha automazioni elettriche per cancelli, portoni o barriere.",
+      "Nella pratica amministrativa, oltre al rispetto della regola tecnica dell'impianto, conta la documentazione che l'installatore e i manutentori devono consegnare: dichiarazioni di conformita, eventuale marcatura CE, fascicolo tecnico e manuali di uso e manutenzione.",
+      "Le verifiche devono essere lette anche in chiave di sicurezza quotidiana: sensori, dispositivi anti-schiacciamento, chiusure, sistemi di sblocco e alimentazione elettrica vanno tenuti sotto controllo per ridurre il rischio per utenti e terzi.",
+      "Per l'amministratore una buona routine e semplice: tracciare gli interventi, verificare chi ha effettuato i controlli, chiedere aggiornamenti sulla documentazione e programmare la manutenzione prima che il guasto diventi emergenza."
+    ],
+    externalLinks: [
+      {
+        label: "Gazzetta Ufficiale - DM 22 gennaio 2008 n. 37",
+        url: "https://www.gazzettaufficiale.it/eli/id/2008/03/12/008G0060/sg"
+      },
+      {
+        label: "INAIL - CIVA servizi di verifica",
+        url: "https://www.inail.it/portale/it/inail-comunica/news/notizia.2019.05.dal-27-maggio-i-servizi-di-certificazione-e-verifica-di-impianti-e-apparecchi-si-richiedono-on-line-civa.html"
+      },
+      {
+        label: "CondominioWeb - cancello automatico",
+        url: "https://www.condominioweb.com/linstallazione-di-un-cancello-non-rappresenta-uninnovazione.11741"
+      }
+    ]
+  },
+  {
+    slug: "potabilita-dell-acqua-in-condominio-controlli-e-responsabilita",
+    title: "Potabilità dell'acqua in condominio: controlli, responsabilità e buone prassi",
+    excerpt:
+      "La qualità dell'acqua nei fabbricati interessa approvvigionamento, serbatoi, controlli e gestione corretta degli impianti.",
+    category: "Acqua",
+    publishedAt: "2026-04-26",
+    author: "SIAM Condomini",
+    intro:
+      "La potabilita dell'acqua non e un tema solo sanitario: in condominio richiede manutenzione, attenzione ai serbatoi e una gestione ordinata degli impianti.",
+    body: [
+      "Il riferimento normativo di base e il Decreto legislativo 23 febbraio 2023, n. 18, che disciplina la qualita delle acque destinate al consumo umano e aggiorna l'impianto normativo italiano in materia.",
+      "Per un condominio significa controllare l'intero percorso dell'acqua: punti di approvvigionamento, eventuali accumuli, distribuzione interna, pulizia di serbatoi e vasche e manutenzione degli impianti collegati.",
+      "Quando esistono impianti centralizzati o depositi di accumulo, la prevenzione e piu importante del problema: piano dei controlli, interventi di pulizia periodica e verifiche affidate a professionisti riducono molto il rischio di criticita.",
+      "La gestione corretta della documentazione aiuta l'amministratore anche nel rapporto con i condomini, perche rende chiaro cosa e stato fatto, quando e con quali esiti, evitando discussioni poco utili e verifiche duplicate."
+    ],
+    externalLinks: [
+      {
+        label: "Gazzetta Ufficiale - D.Lgs. 18/2023",
+        url: "https://www.gazzettaufficiale.it/eli/id/2023/03/06/23G00025/sg"
+      },
+      {
+        label: "Ministero della Salute - acqua destinata al consumo umano",
+        url: "https://www.salute.gov.it/portale/acqua/homeAcqua.jsp"
+      },
+      {
+        label: "CondominioWeb - salute e qualità della vita in condominio",
+        url: "https://www.condominioweb.com/come-garantire-la-salute-in-condominio.18856"
+      }
+    ]
+  },
+  {
     slug: "verifiche-impianti-elettrici-cancelli-basculanti-automatizzate",
     title: "Verifiche impianti elettrici, cancelli e basculanti automatizzate",
     excerpt:
