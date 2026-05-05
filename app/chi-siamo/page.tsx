@@ -37,22 +37,17 @@ export default function AboutPage() {
           </div>
 
           <div className="grid gap-4">
-            <div className="relative h-72 overflow-hidden rounded-3xl border border-border shadow-soft">
-              <Image src="/images/stock/meeting.jpg" alt="Team SIAM in riunione" fill className="object-cover" />
-            </div>
-            <div className="grid grid-cols-[0.9fr_1.1fr] gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft">
-              <Image
-                src="/images/brand/old-site.jpg"
-                alt="Screenshot vecchio sito"
-                width={180}
-                height={140}
-                className="h-full rounded-xl border border-border object-cover"
-              />
-              <div className="text-sm text-muted-foreground">
-                <p className="font-semibold text-primary">Una struttura piu chiara per chi visita il sito</p>
-                <p className="mt-2">
-                  Il nuovo sito rende piu semplice trovare servizi, contatti e richieste rapide, con una navigazione
-                  piu ordinata e immediata.
+            <div className="relative h-[390px] overflow-hidden rounded-3xl border border-border shadow-soft">
+              <Image src="/images/brand/old-site.jpg" alt="SIAM Condomini" fill className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
+              <div className="absolute bottom-0 p-6 text-white">
+                <p className="text-xs uppercase tracking-[0.14em] text-white/80">SIAM Condomini</p>
+                <p className="mt-2 max-w-sm text-lg font-semibold leading-tight">
+                  SIAM al servizio del tuo condominio
+                </p>
+                <p className="mt-3 max-w-md text-sm leading-relaxed text-white/90">
+                  Gestione, consulenza e pratiche condominiali raccontate con un’identita visiva piu pulita e
+                  immediata.
                 </p>
               </div>
             </div>
