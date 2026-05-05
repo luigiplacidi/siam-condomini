@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { leadTypeMap, modalSchemaMap } from "@/lib/form-schemas";
+import { sendLeadEmails } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
 import type { ModalId } from "@/lib/site-content";
 
@@ -36,7 +37,7 @@ export async function POST(request: Request) {
 
     const data = parsed.data as Record<string, unknown>;
 
-    await prisma.leadRequest.create({
+    const lead = await prisma.leadRequest.create({
       data: {
         type: leadTypeMap[payload.modalId],
         fullName: String(data.fullName ?? ""),
@@ -56,7 +57,34 @@ export async function POST(request: Request) {
       }
     });
 
-    return NextResponse.json({ ok: true }, { status: 201 });
+    const emailData = data as Record<string, string | boolean | null | undefined>;
+
+    const emailResult = await sendLeadEmails({
+      modalId: payload.modalId,
+      leadId: lead.id,
+      data: emailData
+    });
+
+    await prisma.leadRequest.update({
+      where: { id: lead.id },
+      data: {
+        status: emailResult.internalSent
+          ? "emailed"
+          : process.env.RESEND_API_KEY
+            ? "email_failed"
+            : "new"
+      }
+    });
+
+    return NextResponse.json(
+      {
+        ok: true,
+        leadId: lead.id,
+        emailSent: emailResult.internalSent,
+        confirmationSent: emailResult.confirmationSent
+      },
+      { status: 201 }
+    );
   } catch {
     return NextResponse.json(
       {

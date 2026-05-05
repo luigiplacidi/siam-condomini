@@ -19,10 +19,12 @@ Controlli:
 - Console browser e Network tab su `POST /api/lead`
 - Validazione zod in `lib/form-schemas.ts`
 - Disponibilita DB (`DATABASE_URL` valida)
+- Configurazione email (`RESEND_API_KEY`, `RESEND_FROM`, `RESEND_LEAD_TO`)
 
 Azioni:
 - Se DB down, risolvere connessione Neon
 - Se payload invalido, adeguare schema o campi modale
+- Se le email non partono, verificare Resend e il dominio mittente
 
 ### 2) News non visibili da DB
 
@@ -51,6 +53,7 @@ Cadenza consigliata: settimanale.
 
 Checklist:
 - Verifica lead raccolti in `LeadRequest`
+- Verifica stato email dei lead (`new`, `emailed`, `email_failed`)
 - Verifica link esterni news
 - Verifica pagina contatti e recapiti
 - Verifica deploy stato green su Vercel

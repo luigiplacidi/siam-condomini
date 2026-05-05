@@ -9,6 +9,7 @@ Prima versione del nuovo sito web SIAM Condomini realizzata con Next.js, pronta 
 - Framer Motion
 - React Hook Form + Zod
 - Prisma ORM + Neon Postgres
+- Resend per invio email transazionali
 
 ## Quick Start
 
@@ -25,20 +26,21 @@ cp .env.example .env.local
 ```
 
 3. Aggiorna `DATABASE_URL` con la connessione Neon.
+4. Se vuoi attivare l'invio email, imposta anche `RESEND_API_KEY`, `RESEND_FROM` e `RESEND_LEAD_TO`.
 
-4. Allinea schema DB:
+5. Allinea schema DB:
 
 ```bash
 npm run db:push
 ```
 
-5. (Opzionale) carica news iniziali:
+6. (Opzionale) carica news iniziali:
 
 ```bash
 npm run db:seed
 ```
 
-6. Avvia progetto:
+7. Avvia progetto:
 
 ```bash
 npm run dev
@@ -54,7 +56,17 @@ npm run dev
 
 ## API
 
-- `POST /api/lead`: riceve submit dei form modali e salva su `LeadRequest`.
+- `POST /api/lead`: riceve submit dei form modali, salva su `LeadRequest` e invia email tramite Resend.
+
+## Variabili ambiente principali
+
+- `DATABASE_URL`
+- `NEXT_PUBLIC_SITE_URL`
+- `NEXT_PUBLIC_RESERVED_AREA_URL`
+- `RESEND_API_KEY`
+- `RESEND_FROM`
+- `RESEND_LEAD_TO`
+- `NEXT_PUBLIC_GA_MEASUREMENT_ID` e `NEXT_PUBLIC_META_PIXEL_ID` solo se vuoi attivare gli script opzionali con consenso
 
 ## Documentazione team
 

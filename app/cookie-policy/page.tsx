@@ -10,60 +10,61 @@ export default function CookiePolicyPage() {
     <section className="section-shell pt-14 pb-20">
       <p className="kicker">Informative legali</p>
       <h1 className="mt-3 text-4xl font-semibold tracking-tight text-primary sm:text-5xl">Cookie Policy</h1>
-      <p className="mt-4 text-sm text-muted-foreground">Ultimo aggiornamento: 23 aprile 2026</p>
+      <p className="mt-4 text-sm text-muted-foreground">Ultimo aggiornamento: 5 maggio 2026</p>
 
       <div className="mt-8 space-y-6 rounded-3xl border border-border bg-white p-8 shadow-soft">
         <div>
           <h2 className="text-xl font-semibold text-primary">1. Cosa sono i cookie</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            I cookie sono piccoli file di testo memorizzati nel browser durante la navigazione. Possono essere
-            necessari al funzionamento del sito oppure usati per finalita opzionali (es. analytics/marketing).
+            I cookie sono piccoli file di testo salvati nel browser. Alcuni sono tecnici e servono al funzionamento
+            del sito; altri sono opzionali e possono essere usati, solo con consenso, per finalita di analytics o
+            marketing.
           </p>
         </div>
 
         <div>
-          <h2 className="text-xl font-semibold text-primary">2. Categorie usate su questo sito</h2>
+          <h2 className="text-xl font-semibold text-primary">2. Cookie e dati tecnici che utilizziamo</h2>
           <ul className="mt-2 grid gap-2 text-sm leading-relaxed text-muted-foreground">
-            <li>
-              - <span className="font-semibold text-foreground">Tecnici necessari</span>: sempre attivi,
-              indispensabili al funzionamento del sito e alla gestione delle preferenze di consenso.
-            </li>
-            <li>
-              - <span className="font-semibold text-foreground">Preferenze</span>: opzionali, attivi solo con
-              consenso.
-            </li>
-            <li>
-              - <span className="font-semibold text-foreground">Analytics</span>: opzionali, attivi solo con
-              consenso preventivo.
-            </li>
-            <li>
-              - <span className="font-semibold text-foreground">Marketing</span>: opzionali, attivi solo con
-              consenso preventivo.
-            </li>
+            <li>- Cookie tecnici necessari: sempre attivi, indispensabili per il funzionamento del sito.</li>
+            <li>- Cookie di preferenza: salvano le scelte del banner e le impostazioni opzionali.</li>
+            <li>- Cookie analytics: attivati solo se autorizzi la categoria e se viene configurato lo script.</li>
+            <li>- Cookie marketing: attivati solo se autorizzi la categoria e se viene configurato lo script.</li>
           </ul>
         </div>
 
         <div>
-          <h2 className="text-xl font-semibold text-primary">3. Consenso e blocco preventivo</h2>
+          <h2 className="text-xl font-semibold text-primary">3. Come funziona il consenso</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            I cookie non tecnici e gli script di tracciamento opzionali sono bloccati di default e vengono attivati
-            solo dopo consenso esplicito tramite banner cookie. In qualsiasi momento puoi modificare o revocare il
-            consenso dal pulsante "Preferenze cookie" presente nel sito.
+            Al primo accesso compare un banner che ti permette di accettare tutti i cookie non necessari, rifiutare
+            quelli opzionali oppure scegliere categoria per categoria. Le preferenze vengono salvate in un cookie
+            tecnico e nel local storage per 12 mesi, salvo revoca anticipata.
           </p>
         </div>
 
         <div>
-          <h2 className="text-xl font-semibold text-primary">4. Conservazione del consenso</h2>
+          <h2 className="text-xl font-semibold text-primary">4. Blocco preventivo degli script opzionali</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            La scelta viene salvata in un cookie tecnico e in local storage per 12 mesi, salvo revoca anticipata.
+            Gli script di analytics e marketing non vengono caricati finche non esprimi un consenso esplicito. Se
+            in futuro saranno attivati servizi come Google Analytics o Meta Pixel, verranno caricati solo dopo
+            autorizzazione nella categoria corrispondente.
           </p>
         </div>
 
         <div>
-          <h2 className="text-xl font-semibold text-primary">5. Gestione da browser</h2>
+          <h2 className="text-xl font-semibold text-primary">5. Gestione delle preferenze</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            Puoi eliminare o bloccare i cookie anche dalle impostazioni del browser. La disabilitazione dei cookie
-            tecnici potrebbe compromettere alcune funzionalita del sito.
+            Puoi modificare o revocare il consenso in qualsiasi momento tramite il pulsante "Preferenze cookie"
+            presente nel sito. Puoi anche intervenire dalle impostazioni del browser, ma la disabilitazione dei
+            cookie tecnici potrebbe compromettere alcune funzionalita.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-semibold text-primary">6. Stato attuale del sito</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Se non vengono configurati strumenti opzionali, il sito mantiene attivi solo i cookie tecnici necessari
+            e il cookie di consenso. Nessun tracciamento di marketing o analytics viene avviato senza consenso e
+            senza la relativa configurazione tecnica.
           </p>
         </div>
       </div>
