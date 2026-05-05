@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --background: 42 24% 96%;
-  --foreground: 214 33% 15%;
-  --muted: 210 24% 92%;
-  --muted-foreground: 214 18% 38%;
-  --border: 210 21% 82%;
-  --primary: 209 58% 24%;
+  --background: 212 38% 98%;
+  --foreground: 214 36% 15%;
+  --muted: 212 32% 94%;
+  --muted-foreground: 214 16% 40%;
+  --border: 214 24% 84%;
+  --primary: 214 62% 24%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 195 33% 90%;
+  --secondary: 210 30% 91%;
   --secondary-foreground: 214 33% 15%;
-  --accent: 168 60% 31%;
+  --accent: 196 86% 42%;
   --accent-foreground: 0 0% 100%;
-  --danger: 10 57% 45%;
+  --danger: 7 67% 46%;
 }
 
 * {
@@ -29,9 +29,9 @@ body {
 body {
   color: hsl(var(--foreground));
   background:
-    radial-gradient(circle at 8% 0%, rgba(13, 62, 108, 0.17), transparent 36%),
-    radial-gradient(circle at 88% 16%, rgba(8, 122, 102, 0.15), transparent 34%),
-    linear-gradient(180deg, rgba(244, 247, 250, 0.7) 0%, rgba(250, 248, 243, 1) 45%);
+    radial-gradient(circle at 8% 0%, rgba(10, 58, 108, 0.15), transparent 36%),
+    radial-gradient(circle at 88% 16%, rgba(28, 145, 205, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(245, 248, 251, 0.82) 0%, rgba(251, 253, 255, 1) 48%);
 }
 
 main {

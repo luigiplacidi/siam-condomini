@@ -49,9 +49,10 @@ export default function AboutPage() {
                 className="h-full rounded-xl border border-border object-cover"
               />
               <div className="text-sm text-muted-foreground">
-                <p className="font-semibold text-primary">Dal vecchio sito a una presenza digitale moderna</p>
+                <p className="font-semibold text-primary">Una struttura piu chiara per chi visita il sito</p>
                 <p className="mt-2">
-                  Il nuovo progetto organizza meglio servizi e richieste rapide, con focus su chiarezza e usabilita.
+                  Il nuovo sito rende piu semplice trovare servizi, contatti e richieste rapide, con una navigazione
+                  piu ordinata e immediata.
                 </p>
               </div>
             </div>
