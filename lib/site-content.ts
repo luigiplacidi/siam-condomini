@@ -175,6 +175,130 @@ export type NewsArticle = {
 
 export const staticNewsPosts: NewsArticle[] = [
   {
+    slug: "verifiche-impianti-elettrici-cancelli-basculanti-automatizzate",
+    title: "Verifiche impianti elettrici, cancelli e basculanti automatizzate",
+    excerpt:
+      "Un vademecum pratico sugli adempimenti tecnici e documentali da tenere sotto controllo quando l'impianto serve cancelli e basculanti automatizzate.",
+    category: "Normativa",
+    publishedAt: "2026-04-28",
+    author: "SIAM Condomini",
+    intro:
+      "Approfondimento tecnico sulla manutenzione, sulla documentazione e sui profili di sicurezza da valutare in condomini con automazioni elettriche.",
+    body: [
+      "Quando un condominio dispone di cancelli, portoni o basculanti automatizzate, l'impianto va considerato nel suo insieme: parte elettrica, organi meccanici, dispositivi di sicurezza e documentazione di conformita.",
+      "Il riferimento operativo principale per installazione e manutenzione resta il DM 37/2008, mentre per le verifiche periodiche in ambito lavorativo possono entrare in gioco gli adempimenti previsti dal DPR 462/2001 e dalla piattaforma CIVA dell'INAIL.",
+      "Per i profili di prevenzione incendi, il DM 25 gennaio 2019 e rilevante nei casi in cui l'edificio o alcuni suoi spazi ricadano nelle condizioni di applicazione della disciplina antincendio per gli edifici di civile abitazione.",
+      "Nella pratica condominiale conviene verificare la disponibilita della dichiarazione di conformita, della marcatura CE ove prevista, del fascicolo tecnico dell'automazione e di un piano di manutenzione affidato a soggetti qualificati."
+    ],
+    externalLinks: [
+      {
+        label: "Gazzetta Ufficiale - DM 25 gennaio 2019",
+        url: "https://www.gazzettaufficiale.it/eli/id/2019/02/05/19A00734/sg"
+      },
+      {
+        label: "INAIL - servizio CIVA",
+        url: "https://www.inail.it/portale/it/inail-comunica/news/notizia.2019.05.dal-27-maggio-i-servizi-di-certificazione-e-verifica-di-impianti-e-apparecchi-si-richiedono-on-line-civa.html"
+      },
+      {
+        label: "CondominioWeb - cancelli automatici e ripartizione spese",
+        url: "https://www.condominioweb.com/cancello-automatico-in-condominio-ripartizione-costi-riguardanti-linstallazione-e-quelli-inerenti-luso.470"
+      }
+    ]
+  },
+  {
+    slug: "convivenza-in-condominio-regole-pratiche",
+    title: "Convivenza in condominio: regole pratiche per vivere meglio insieme",
+    excerpt:
+      "Piccoli accorgimenti quotidiani, buon senso e regole chiare aiutano a ridurre conflitti e a migliorare la vita comune.",
+    category: "Vita di condominio",
+    publishedAt: "2026-04-24",
+    author: "SIAM Condomini",
+    intro:
+      "La convivenza condominiale funziona quando comunicazione, rispetto degli spazi comuni e regole interne lavorano nella stessa direzione.",
+    body: [
+      "La convivenza in condominio nasce dal rispetto reciproco: orari di quiete, uso corretto degli spazi comuni, attenzione ai rumori e gestione ordinata dei rifiuti sono i primi ingredienti di una comunità serena.",
+      "Anche il regolamento condominiale ha un ruolo importante: non deve essere percepito come un elenco di divieti, ma come uno strumento per rendere prevedibili le regole di uso delle parti comuni e prevenire i conflitti prima che diventino contenziosi.",
+      "Una comunicazione chiara con l'amministratore e con gli altri condomini aiuta a gestire meglio lavori, accessi, urgenze e segnalazioni. Quando esiste un problema, affrontarlo presto evita che si trasformi in una frattura stabile tra vicini.",
+      "Un condominio ordinato e piu semplice da amministrare e spesso anche meno costoso, perche riduce interventi correttivi, discussioni ripetute e tempi morti nella gestione delle decisioni comuni."
+    ],
+    externalLinks: [
+      {
+        label: "CondominioWeb - vita di condominio",
+        url: "https://www.condominioweb.com/-vita-di-condominio/"
+      },
+      {
+        label: "CondominioWeb - rumori e regolamento di condominio",
+        url: "https://www.condominioweb.com/rumori-e-regolamento-di-condominio.21469"
+      }
+    ]
+  },
+  {
+    slug: "assicurazione-del-fabbricato-e-tutela-del-condominio",
+    title: "L'assicurazione del fabbricato e la tutela del condominio",
+    excerpt:
+      "Per proteggere il fabbricato e i condomini da danni materiali e responsabilita verso terzi, la polizza e uno strumento sempre utile da valutare.",
+    category: "Assicurazione",
+    publishedAt: "2026-04-18",
+    author: "SIAM Condomini",
+    intro:
+      "Una buona polizza fabbricati non elimina il rischio, ma aiuta il condominio a gestirne meglio gli effetti economici e responsabilita potenziali.",
+    body: [
+      "L'assicurazione del fabbricato non e in genere un obbligo generalizzato, ma rappresenta una scelta di prudenza molto utile per i condomini, soprattutto quando l'immobile ha impianti complessi, spazi comuni frequenti o una storia di sinistri.",
+      "Le polizze globali fabbricati servono a coprire danni all'edificio e, in molti casi, la responsabilita civile verso terzi. Prima della sottoscrizione va sempre verificato il perimetro delle coperture, le esclusioni, le franchigie e i massimali.",
+      "In ambito condominiale la polizza va anche coordinata con la manutenzione ordinaria, perche un'assicurazione non sostituisce la prevenzione: controlli periodici, documentazione in ordine e interventi tempestivi restano fondamentali.",
+      "Un amministratore attento dovrebbe rileggere la polizza almeno in occasione di lavori importanti, cambi di impianti, installazione di automazioni o variazioni significative dell'esposizione al rischio."
+    ],
+    externalLinks: [
+      {
+        label: "CondominioWeb - assicurazione fabbricato",
+        url: "https://www.condominioweb.com/contratto-di-assicurazione-polizza-globale-fabbricati-e-responsabilita-dellamministratore.12937"
+      },
+      {
+        label: "CondominioWeb - assicurazione fabbricato: elementi essenziali",
+        url: "https://www.condominioweb.com/assicurazione-globale-fabbricati-gli-elementi-essenziali-da-conoscere.17447"
+      }
+    ]
+  },
+  {
+    slug: "ricostruzione-e-open-data-laquila",
+    title: "Ricostruzione e open data: strumenti utili per i condomini dell'Aquila",
+    excerpt:
+      "Open data, dati di avanzamento e portali istituzionali possono aiutare i condomini a orientarsi meglio nei processi di ricostruzione.",
+    category: "Ricostruzione",
+    publishedAt: "2026-04-10",
+    author: "SIAM Condomini",
+    intro:
+      "I dati aperti e i portali istituzionali sulla ricostruzione rendono piu facile controllare informazioni, pratiche e avanzamento degli interventi.",
+    body: [
+      "Per il territorio dell'Aquila, gli open data sulla ricostruzione rappresentano una risorsa concreta per leggere lo stato delle pratiche, i numeri della ricostruzione e le informazioni georeferenziate disponibili per cittadini e tecnici.",
+      "Gli strumenti di consultazione pubblica aiutano anche i condomini a orientarsi quando devono verificare lo stato di un fabbricato, i riferimenti di una pratica o l'avanzamento degli interventi gia avviati.",
+      "Accanto ai portali istituzionali, alcuni articoli di approfondimento giuridico possono essere utili per comprendere gli effetti del perimento parziale o totale del condominio e il diritto alla ricostruzione delle parti comuni.",
+      "Per chi lavora in amministrazione condominiale, collegare dati pubblici, documenti tecnici e consulenza operativa significa avere una base piu solida per spiegare ai condomini cosa sta accadendo e quali sono i passaggi successivi."
+    ],
+    externalLinks: [
+      {
+        label: "USRA - Open data",
+        url: "https://usra.it/open-data/"
+      },
+      {
+        label: "USRA - Dati e numeri",
+        url: "https://usra.it/dati-e-numeri/"
+      },
+      {
+        label: "Comune dell'Aquila - Ricostruzione",
+        url: "https://www.comune.laquila.it/pagina943_ricostruzione.html"
+      },
+      {
+        label: "CondominioWeb - perimento totale del condominio",
+        url: "https://www.condominioweb.com/il-perimento-totale-del-condominio.13027"
+      },
+      {
+        label: "CondominioWeb - perimento parziale del condominio",
+        url: "https://www.condominioweb.com/il-perimento-parziale-del-condominio.13026"
+      }
+    ]
+  },
+  {
     slug: "il-vademecum-per-la-cura-del-verde-condominiale-anaci",
     title: "Il vademecum per la cura del verde condominiale (ANACI)",
     excerpt:
