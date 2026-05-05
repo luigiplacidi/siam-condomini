@@ -45,3 +45,21 @@ main {
 .kicker {
   @apply text-xs font-semibold uppercase tracking-[0.18em] text-primary/85;
 }
+
+@keyframes news-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.news-marquee-track {
+  animation: news-marquee 42s linear infinite;
+}
+
+.news-marquee-track:hover {
+  animation-play-state: paused;
+}

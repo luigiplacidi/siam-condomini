@@ -2,10 +2,11 @@ import { ArrowRight, ExternalLink, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { NewsCarousel, type NewsCarouselItem } from "@/components/home/news-carousel";
 import { ModalTriggerButton } from "@/components/modal/modal-trigger-button";
 import { Reveal } from "@/components/ui/reveal";
 import { getNewsPosts } from "@/lib/news";
-import { brand, punctualityHighlights, serviceGroups, trustBullets } from "@/lib/site-content";
+import { brand, punctualityHighlights, serviceGroups, staticNewsPosts, trustBullets } from "@/lib/site-content";
 
 const serviceImages: Record<string, string> = {
   gestione: "/images/stock/building.jpg",
@@ -13,8 +14,58 @@ const serviceImages: Record<string, string> = {
   "pratiche-condominiali": "/images/stock/documents.jpg"
 };
 
+const editorialSpotlightSlugs = [
+  "prevenzione-incendi-condominio-regole-e-adempimenti",
+  "verifica-cancelli-automatizzati-impianti-e-documentazione",
+  "potabilita-dell-acqua-in-condominio-controlli-e-responsabilita",
+  "convivenza-in-condominio-regole-pratiche",
+  "assicurazione-del-fabbricato-e-tutela-del-condominio"
+] as const;
+
+function formatNewsDate(value: string) {
+  return new Intl.DateTimeFormat("it-IT", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric"
+  }).format(new Date(`${value}T00:00:00`));
+}
+
 export default async function HomePage() {
   const latestNews = (await getNewsPosts()).slice(0, 2);
+  const spotlightPosts = editorialSpotlightSlugs
+    .map((slug) => staticNewsPosts.find((post) => post.slug === slug))
+    .filter((post): post is (typeof staticNewsPosts)[number] => Boolean(post));
+
+  const newsCarouselItems: NewsCarouselItem[] = [
+    ...latestNews.map((post) => ({
+      kind: "article" as const,
+      label: post.category,
+      title: post.title,
+      excerpt: post.excerpt,
+      href: `/news/${post.slug}`,
+      meta: formatNewsDate(post.publishedAt)
+    })),
+    ...spotlightPosts.slice(0, 3).map((post) => ({
+      kind: "article" as const,
+      label: "Approfondimento",
+      title: post.title,
+      excerpt: post.excerpt,
+      href: `/news/${post.slug}`,
+      meta: formatNewsDate(post.publishedAt)
+    })),
+    {
+      kind: "resource" as const,
+      label: "Riferimento",
+      title: "CondominioWeb",
+      excerpt:
+        "Norme, sentenze e guide per amministratori, avvocati, tecnici e condòmini. Una risorsa esterna da consultare quando serve un approfondimento autorevole.",
+      href: "https://www.condominioweb.com/",
+      meta: "25 anni di autorevolezza",
+      external: true
+    }
+  ].filter(
+    (item, index, items) => index === items.findIndex((candidate) => candidate.href === item.href)
+  );
 
   return (
     <>
@@ -140,7 +191,7 @@ export default async function HomePage() {
 
       <Reveal>
         <section className="section-shell">
-          <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr]">
+          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
             <div className="rounded-3xl border border-border bg-white p-8 shadow-soft">
               <p className="kicker">Accesso e documentazione</p>
               <h2 className="mt-3 text-3xl font-semibold text-primary">Comunicazione e documenti</h2>
@@ -158,97 +209,27 @@ export default async function HomePage() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-border bg-primary p-8 text-primary-foreground shadow-soft">
-              <p className="text-sm font-semibold uppercase tracking-wide">News</p>
-              <ul className="mt-5 grid gap-4">
-                {latestNews.map((post) => (
-                  <li key={post.slug} className="rounded-2xl bg-white/10 p-4">
-                    <p className="text-xs uppercase tracking-wide opacity-85">{post.publishedAt}</p>
-                    <h3 className="mt-2 text-lg font-semibold">{post.title}</h3>
-                    <p className="mt-2 text-sm opacity-90">{post.excerpt}</p>
-                    <Link
-                      href={`/news/${post.slug}`}
-                      className="mt-3 inline-flex items-center gap-2 text-sm font-semibold"
-                    >
-                      Leggi articolo <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-      </Reveal>
-
-      <Reveal>
-        <section className="section-shell pt-2">
-          <div className="rounded-3xl border border-border bg-white p-8 shadow-soft">
-            <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
-              <div>
-                <p className="kicker">Approfondimenti normativi</p>
-                <h2 className="mt-3 text-3xl font-semibold text-primary">
-                  Tre letture utili per chi amministra o vive il condominio
-                </h2>
-                <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-                  Una selezione di articoli tecnici SIAM e una risorsa esterna autorevole per consultare norme,
-                  sentenze e guide operative quando serve un riferimento in più.
-                </p>
+            <div>
+              <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+                <div>
+                  <p className="kicker">Editoriale SIAM</p>
+                  <h2 className="mt-3 text-3xl font-semibold text-primary">News e Approfondimenti normativi</h2>
+                  <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+                    Un carosello che scorre con gli ultimi articoli, i focus normativi piu utili e una risorsa
+                    editoriale esterna da consultare quando serve un riferimento in piu.
+                  </p>
+                </div>
+                <Link
+                  href="/news"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4"
+                >
+                  Vai a tutte le news <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
-              <Link
-                href="/news"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4"
-              >
-                Vai a tutte le news <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
 
-            <div className="mt-8 grid gap-5 md:grid-cols-3">
-              <article className="flex h-full flex-col rounded-2xl border border-border bg-secondary/35 p-5">
-                <p className="text-xs font-semibold uppercase tracking-wide text-primary/80">Normativa</p>
-                <h3 className="mt-3 text-xl font-semibold text-primary">Prevenzione incendi e adempimenti</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Regole, gestione quotidiana e documentazione per tenere sotto controllo i principali obblighi
-                  antincendio del condominio.
-                </p>
-                <Link
-                  href="/news/prevenzione-incendi-condominio-regole-e-adempimenti"
-                  className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
-                >
-                  Leggi articolo <ArrowRight className="h-4 w-4" />
-                </Link>
-              </article>
-
-              <article className="flex h-full flex-col rounded-2xl border border-border bg-secondary/35 p-5">
-                <p className="text-xs font-semibold uppercase tracking-wide text-primary/80">Impianti</p>
-                <h3 className="mt-3 text-xl font-semibold text-primary">Verifica cancelli automatizzati</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Impianti, documenti di conformita e controlli periodici quando il condominio ha automazioni o
-                  basculanti motorizzate.
-                </p>
-                <Link
-                  href="/news/verifica-cancelli-automatizzati-impianti-e-documentazione"
-                  className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
-                >
-                  Leggi articolo <ArrowRight className="h-4 w-4" />
-                </Link>
-              </article>
-
-              <article className="flex h-full flex-col rounded-2xl border border-border bg-secondary/35 p-5">
-                <p className="text-xs font-semibold uppercase tracking-wide text-primary/80">Riferimenti</p>
-                <h3 className="mt-3 text-xl font-semibold text-primary">CondominioWeb</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Norme, sentenze e guide operative per amministratori, tecnici e condòmini. Un supporto utile da
-                  consultare insieme alle fonti ufficiali.
-                </p>
-                <a
-                  href="https://www.condominioweb.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
-                >
-                  Vai al sito <ExternalLink className="h-4 w-4" />
-                </a>
-              </article>
+              <div className="mt-6">
+                <NewsCarousel items={newsCarouselItems} />
+              </div>
             </div>
           </div>
         </section>
