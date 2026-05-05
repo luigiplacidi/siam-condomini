@@ -191,24 +191,7 @@ export default async function HomePage() {
 
       <Reveal>
         <section className="section-shell">
-          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-            <div className="rounded-3xl border border-border bg-white p-8 shadow-soft">
-              <p className="kicker">Accesso e documentazione</p>
-              <h2 className="mt-3 text-3xl font-semibold text-primary">Comunicazione e documenti</h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                I condomini possono segnalare guasti, richiedere documentazione, consultare avvisi e scadenze e
-                contattare direttamente l'amministratore.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <ModalTriggerButton modalId="documentRequestModal" variant="secondary">
-                  Richiedi documentazione
-                </ModalTriggerButton>
-                <ModalTriggerButton modalId="faultReportModal" variant="danger">
-                  Segnala guasto
-                </ModalTriggerButton>
-              </div>
-            </div>
-
+          <div className="space-y-8">
             <div>
               <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
                 <div>
@@ -231,54 +214,67 @@ export default async function HomePage() {
                 <NewsCarousel items={newsCarouselItems} />
               </div>
             </div>
-          </div>
-        </section>
-      </Reveal>
 
-      <Reveal>
-        <section className="section-shell">
-          <div className="overflow-hidden rounded-3xl border border-border bg-white shadow-soft">
-            <div className="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
-              <div className="bg-gradient-to-br from-primary via-primary to-accent p-8 text-white">
-                <p className="kicker text-white/80">Risorsa editoriale</p>
-                <h2 className="mt-3 text-3xl font-semibold leading-tight">
-                  Problemi di condominio? Una biblioteca di riferimento sempre utile.
-                </h2>
-                <p className="mt-4 text-sm leading-relaxed text-white/90">
-                  Diritto condominiale, norme, sentenze e guide per amministratori, avvocati, tecnici e condòmini.
-                  Oltre 15.000 articoli e 25 anni di autorevolezza.
-                </p>
-                <a
-                  href="https://www.condominioweb.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-primary transition hover:bg-white/90"
-                >
-                  Vai a CondominioWeb <ExternalLink className="h-4 w-4" />
-                </a>
+            <div className="rounded-3xl border border-border bg-white p-8 shadow-soft">
+              <p className="kicker">Accesso e documentazione</p>
+              <h2 className="mt-3 text-3xl font-semibold text-primary">Comunicazione e documenti</h2>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                I condomini possono segnalare guasti, richiedere documentazione, consultare avvisi e scadenze e
+                contattare direttamente l'amministratore.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <ModalTriggerButton modalId="documentRequestModal" variant="secondary">
+                  Richiedi documentazione
+                </ModalTriggerButton>
+                <ModalTriggerButton modalId="faultReportModal" variant="danger">
+                  Segnala guasto
+                </ModalTriggerButton>
               </div>
+            </div>
 
-              <div className="grid gap-4 p-8">
-                <div className="rounded-2xl border border-border bg-secondary/45 p-5">
-                  <p className="text-sm font-semibold text-primary">Quando usarlo</p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    Per approfondire temi tecnici o giuridici, verificare orientamenti giurisprudenziali e trovare
-                    guide operative utili alla gestione quotidiana del condominio.
+            <div className="overflow-hidden rounded-3xl border border-border bg-white shadow-soft">
+              <div className="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
+                <div className="bg-gradient-to-br from-primary via-primary to-accent p-8 text-white">
+                  <p className="kicker text-white/80">Risorsa editoriale</p>
+                  <h2 className="mt-3 text-3xl font-semibold leading-tight">
+                    Problemi di condominio? Una biblioteca di riferimento sempre utile.
+                  </h2>
+                  <p className="mt-4 text-sm leading-relaxed text-white/90">
+                    Diritto condominiale, norme, sentenze e guide per amministratori, avvocati, tecnici e condòmini.
+                    Oltre 15.000 articoli e 25 anni di autorevolezza.
                   </p>
+                  <a
+                    href="https://www.condominioweb.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-primary transition hover:bg-white/90"
+                  >
+                    Vai a CondominioWeb <ExternalLink className="h-4 w-4" />
+                  </a>
                 </div>
-                <div className="rounded-2xl border border-border bg-secondary/45 p-5">
-                  <p className="text-sm font-semibold text-primary">Come lo integriamo qui</p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    Lo trattiamo come risorsa esterna di approfondimento, affiancata agli articoli SIAM e ai
-                    riferimenti normativi ufficiali.
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-border bg-secondary/45 p-5">
-                  <p className="text-sm font-semibold text-primary">Accesso rapido</p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    Un collegamento visibile ma discreto, utile per chi cerca subito casi pratici, sentenze e
-                    aggiornamenti.
-                  </p>
+
+                <div className="grid gap-4 p-8">
+                  <div className="rounded-2xl border border-border bg-secondary/45 p-5">
+                    <p className="text-sm font-semibold text-primary">Quando usarlo</p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      Per approfondire temi tecnici o giuridici, verificare orientamenti giurisprudenziali e trovare
+                      guide operative utili alla gestione quotidiana del condominio.
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-border bg-secondary/45 p-5">
+                    <p className="text-sm font-semibold text-primary">Come lo integriamo qui</p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      Lo trattiamo come risorsa esterna di approfondimento, affiancata agli articoli SIAM e ai
+                      riferimenti normativi ufficiali.
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-border bg-secondary/45 p-5">
+                    <p className="text-sm font-semibold text-primary">Accesso rapido</p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      Un collegamento visibile ma discreto, utile per chi cerca subito casi pratici, sentenze e
+                      aggiornamenti.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
