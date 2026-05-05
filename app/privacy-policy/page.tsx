@@ -60,8 +60,8 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-xl font-semibold text-primary">5. Modalita di trattamento e conservazione</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             I dati sono trattati con strumenti informatici e misure di sicurezza adeguate. Le richieste inviate
-            tramite sito vengono conservate per il tempo necessario a gestire il contatto, fornire assistenza e
-            adempiere agli obblighi previsti dalla normativa applicabile.
+            tramite sito vengono conservate per il tempo necessario a gestire il contatto, fornire assistenza,
+            inviare eventuali risposte via email e adempiere agli obblighi previsti dalla normativa applicabile.
           </p>
         </div>
 

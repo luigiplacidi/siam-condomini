@@ -62,9 +62,10 @@ export default function CookiePolicyPage() {
         <div>
           <h2 className="text-xl font-semibold text-primary">6. Stato attuale del sito</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            Se non vengono configurati strumenti opzionali, il sito mantiene attivi solo i cookie tecnici necessari
-            e il cookie di consenso. Nessun tracciamento di marketing o analytics viene avviato senza consenso e
-            senza la relativa configurazione tecnica.
+            Ad oggi il sito utilizza solo cookie tecnici necessari al funzionamento, cookie di preferenza per
+            salvare le scelte del banner e il cookie di consenso. Non sono attivi cookie di analytics o marketing,
+            né altri strumenti di profilazione, salvo una futura attivazione esplicita e coerente con il consenso
+            raccolto.
           </p>
         </div>
       </div>
