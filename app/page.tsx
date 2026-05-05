@@ -1,4 +1,4 @@
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight, ExternalLink, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -175,6 +175,57 @@ export default async function HomePage() {
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+        </section>
+      </Reveal>
+
+      <Reveal>
+        <section className="section-shell">
+          <div className="overflow-hidden rounded-3xl border border-border bg-white shadow-soft">
+            <div className="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
+              <div className="bg-gradient-to-br from-primary via-primary to-accent p-8 text-white">
+                <p className="kicker text-white/80">Risorsa editoriale</p>
+                <h2 className="mt-3 text-3xl font-semibold leading-tight">
+                  Problemi di condominio? Una biblioteca di riferimento sempre utile.
+                </h2>
+                <p className="mt-4 text-sm leading-relaxed text-white/90">
+                  Diritto condominiale, norme, sentenze e guide per amministratori, avvocati, tecnici e condòmini.
+                  Oltre 15.000 articoli e 25 anni di autorevolezza.
+                </p>
+                <a
+                  href="https://www.condominioweb.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-primary transition hover:bg-white/90"
+                >
+                  Vai a CondominioWeb <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
+
+              <div className="grid gap-4 p-8">
+                <div className="rounded-2xl border border-border bg-secondary/45 p-5">
+                  <p className="text-sm font-semibold text-primary">Quando usarlo</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    Per approfondire temi tecnici o giuridici, verificare orientamenti giurisprudenziali e trovare
+                    guide operative utili alla gestione quotidiana del condominio.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-border bg-secondary/45 p-5">
+                  <p className="text-sm font-semibold text-primary">Come lo integriamo qui</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    Lo trattiamo come risorsa esterna di approfondimento, affiancata agli articoli SIAM e ai
+                    riferimenti normativi ufficiali.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-border bg-secondary/45 p-5">
+                  <p className="text-sm font-semibold text-primary">Accesso rapido</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    Un collegamento visibile ma discreto, utile per chi cerca subito casi pratici, sentenze e
+                    aggiornamenti.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
