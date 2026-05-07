@@ -103,7 +103,7 @@ export function ModalForm({ modal, onSuccess }: ModalFormProps) {
   });
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
+    <form onSubmit={onSubmit} className="space-y-3 sm:space-y-4">
       <div className="hidden" aria-hidden="true">
         <label>
           Sito web
@@ -124,10 +124,10 @@ export function ModalForm({ modal, onSuccess }: ModalFormProps) {
           const isPrivacyField = field.name === "privacyConsent";
           return (
             <div key={field.name} className="space-y-1">
-              <label className="flex items-start gap-3 text-sm text-foreground">
+              <label className="flex items-start gap-2.5 text-xs leading-relaxed text-foreground sm:gap-3 sm:text-sm">
                 <input
                   type="checkbox"
-                  className="mt-0.5 h-4 w-4 rounded border-border"
+                  className="mt-0.5 h-4 w-4 shrink-0 rounded border-border"
                   {...form.register(field.name)}
                 />
                 <span>
@@ -155,10 +155,10 @@ export function ModalForm({ modal, onSuccess }: ModalFormProps) {
 
         if (field.type === "textarea") {
           return (
-            <label key={field.name} className="grid gap-2">
+            <label key={field.name} className="grid gap-1.5 sm:gap-2">
               <span className="text-sm font-medium text-foreground">{field.label}</span>
               <textarea
-                rows={4}
+                rows={3}
                 className="w-full rounded-xl border border-border bg-white px-3 py-2 text-sm text-foreground focus:border-primary focus:outline-none"
                 {...form.register(field.name)}
               />
@@ -168,11 +168,11 @@ export function ModalForm({ modal, onSuccess }: ModalFormProps) {
         }
 
         return (
-          <label key={field.name} className="grid gap-2">
+          <label key={field.name} className="grid gap-1.5 sm:gap-2">
             <span className="text-sm font-medium text-foreground">{field.label}</span>
             <input
               type={field.type}
-              className="h-11 rounded-xl border border-border bg-white px-3 text-sm text-foreground focus:border-primary focus:outline-none"
+              className="h-10 rounded-xl border border-border bg-white px-3 text-sm text-foreground focus:border-primary focus:outline-none sm:h-11"
               {...form.register(field.name)}
             />
             {error ? <span className="text-xs text-danger">{String(error)}</span> : null}
@@ -180,7 +180,7 @@ export function ModalForm({ modal, onSuccess }: ModalFormProps) {
         );
       })}
 
-      <label className="grid gap-2 rounded-2xl border border-border bg-secondary/45 p-3">
+      <label className="grid gap-1.5 rounded-2xl border border-border bg-secondary/45 p-3 sm:gap-2">
         <span className="text-sm font-medium text-foreground">Verifica anti-spam</span>
         <span className="text-xs text-muted-foreground">
           Per favore risolvi: {challenge ? challenge.question : "caricamento..."}
@@ -189,7 +189,7 @@ export function ModalForm({ modal, onSuccess }: ModalFormProps) {
           type="text"
           inputMode="numeric"
           autoComplete="off"
-          className="h-11 rounded-xl border border-border bg-white px-3 text-sm text-foreground focus:border-primary focus:outline-none"
+          className="h-10 rounded-xl border border-border bg-white px-3 text-sm text-foreground focus:border-primary focus:outline-none sm:h-11"
           disabled={!challenge}
           {...form.register("challengeAnswer")}
         />
@@ -206,16 +206,18 @@ export function ModalForm({ modal, onSuccess }: ModalFormProps) {
         <p className="text-sm font-medium text-danger">Invio non riuscito. Riprova tra poco.</p>
       ) : null}
 
-      <Button type="submit" size="lg" className="w-full" disabled={form.formState.isSubmitting}>
-        {form.formState.isSubmitting ? (
-          <span className="inline-flex items-center gap-2">
-            <Loader2 className="h-4 w-4 animate-spin" />
-            Invio in corso...
-          </span>
-        ) : (
-          modal.submitLabel
-        )}
-      </Button>
+      <div className="pt-1">
+        <Button type="submit" size="lg" className="w-full" disabled={form.formState.isSubmitting}>
+          {form.formState.isSubmitting ? (
+            <span className="inline-flex items-center gap-2">
+              <Loader2 className="h-4 w-4 animate-spin" />
+              Invio in corso...
+            </span>
+          ) : (
+            modal.submitLabel
+          )}
+        </Button>
+      </div>
     </form>
   );
 }
