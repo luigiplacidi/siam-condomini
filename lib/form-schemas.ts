@@ -9,13 +9,19 @@ const phoneRequired = z.string().min(6, "Telefono richiesto");
 const privacyConsent = z.boolean().refine((value) => value, {
   message: "Devi accettare il consenso privacy"
 });
+const antiSpamFields = {
+  website: z.string().optional(),
+  challengeAnswer: z.string().min(1, "Completa la verifica anti-spam"),
+  challengeToken: z.string().min(1, "Verifica anti-spam non pronta")
+};
 
 export const contactSchema = z.object({
   fullName: fullNameField,
   email: emailField,
   phone: phoneOptional,
   message: z.string().min(6, "Messaggio troppo breve"),
-  privacyConsent
+  privacyConsent,
+  ...antiSpamFields
 });
 
 export const quoteSchema = z.object({
@@ -24,7 +30,8 @@ export const quoteSchema = z.object({
   phone: phoneRequired,
   buildingType: z.string().optional(),
   notes: z.string().min(6, "Inserisci qualche dettaglio"),
-  privacyConsent
+  privacyConsent,
+  ...antiSpamFields
 });
 
 export const faultReportSchema = z.object({
@@ -34,7 +41,8 @@ export const faultReportSchema = z.object({
   building: z.string().min(2, "Inserisci il condominio"),
   faultType: z.string().min(2, "Inserisci il tipo di guasto"),
   message: z.string().min(6, "Descrizione troppo breve"),
-  privacyConsent
+  privacyConsent,
+  ...antiSpamFields
 });
 
 export const documentRequestSchema = z.object({
@@ -43,7 +51,8 @@ export const documentRequestSchema = z.object({
   building: z.string().min(2, "Inserisci il riferimento del condominio"),
   requestType: z.string().min(2, "Inserisci il documento richiesto"),
   message: z.string().optional(),
-  privacyConsent
+  privacyConsent,
+  ...antiSpamFields
 });
 
 export const modalSchemaMap: Record<ModalId, z.ZodTypeAny> = {

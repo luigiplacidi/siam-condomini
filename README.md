@@ -26,7 +26,7 @@ cp .env.example .env.local
 ```
 
 3. Aggiorna `DATABASE_URL` con la connessione Neon.
-4. Se vuoi attivare l'invio email, imposta anche `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM` e `SMTP_LEAD_TO`.
+4. Se vuoi attivare l'invio email, imposta anche `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`, `SMTP_LEAD_TO` e `LEAD_CHALLENGE_SECRET`.
 
 5. Allinea schema DB:
 
@@ -70,7 +70,10 @@ npm run dev
 - `SMTP_PASS`
 - `SMTP_FROM`
 - `SMTP_LEAD_TO`
+- `LEAD_CHALLENGE_SECRET`
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` e `NEXT_PUBLIC_META_PIXEL_ID` solo se vuoi attivare gli script opzionali con consenso
+
+Le notifiche lead interne vengono inviate a `SMTP_LEAD_TO`; se la variabile non e configurata, il fallback e `siam.condomini@gmail.com`.
 
 ## Documentazione team
 

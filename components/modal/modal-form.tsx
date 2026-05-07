@@ -12,20 +12,33 @@ import { Button } from "@/components/ui/button";
 
 type FormValues = Record<string, string | boolean | undefined>;
 
+type LeadChallenge = {
+  question: string;
+  token: string;
+};
+
 type ModalFormProps = {
   modal: ModalDefinition;
   onSuccess: () => void;
 };
 
 function createDefaults(modal: ModalDefinition): FormValues {
-  return modal.fields.reduce<FormValues>((acc, field) => {
+  const defaults = modal.fields.reduce<FormValues>((acc, field) => {
     acc[field.name] = field.type === "checkbox" ? false : "";
     return acc;
   }, {});
+
+  return {
+    ...defaults,
+    website: "",
+    challengeAnswer: "",
+    challengeToken: ""
+  };
 }
 
 export function ModalForm({ modal, onSuccess }: ModalFormProps) {
   const [submitState, setSubmitState] = useState<"idle" | "success" | "error">("idle");
+  const [challenge, setChallenge] = useState<LeadChallenge | null>(null);
 
   const schema = useMemo(() => modalSchemaMap[modal.id], [modal.id]);
 
@@ -38,6 +51,36 @@ export function ModalForm({ modal, onSuccess }: ModalFormProps) {
     form.reset(createDefaults(modal));
     setSubmitState("idle");
   }, [form, modal]);
+
+  useEffect(() => {
+    let isActive = true;
+
+    async function loadChallenge() {
+      try {
+        const response = await fetch("/api/lead/challenge", { cache: "no-store" });
+        const nextChallenge = (await response.json()) as LeadChallenge;
+
+        if (!isActive) {
+          return;
+        }
+
+        setChallenge(nextChallenge);
+        form.setValue("challengeToken", nextChallenge.token);
+        form.setValue("challengeAnswer", "");
+      } catch {
+        if (isActive) {
+          setChallenge(null);
+          form.setValue("challengeToken", "");
+        }
+      }
+    }
+
+    loadChallenge();
+
+    return () => {
+      isActive = false;
+    };
+  }, [form, modal.id]);
 
   const onSubmit = form.handleSubmit(async (values) => {
     setSubmitState("idle");
@@ -61,6 +104,19 @@ export function ModalForm({ modal, onSuccess }: ModalFormProps) {
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
+      <div className="hidden" aria-hidden="true">
+        <label>
+          Sito web
+          <input
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            {...form.register("website")}
+          />
+        </label>
+      </div>
+      <input type="hidden" {...form.register("challengeToken")} />
+
       {modal.fields.map((field) => {
         const error = form.formState.errors[field.name]?.message;
 
@@ -123,6 +179,24 @@ export function ModalForm({ modal, onSuccess }: ModalFormProps) {
           </label>
         );
       })}
+
+      <label className="grid gap-2 rounded-2xl border border-border bg-secondary/45 p-3">
+        <span className="text-sm font-medium text-foreground">Verifica anti-spam</span>
+        <span className="text-xs text-muted-foreground">
+          Per favore risolvi: {challenge ? challenge.question : "caricamento..."}
+        </span>
+        <input
+          type="text"
+          inputMode="numeric"
+          autoComplete="off"
+          className="h-11 rounded-xl border border-border bg-white px-3 text-sm text-foreground focus:border-primary focus:outline-none"
+          disabled={!challenge}
+          {...form.register("challengeAnswer")}
+        />
+        {form.formState.errors.challengeAnswer?.message ? (
+          <span className="text-xs text-danger">{String(form.formState.errors.challengeAnswer.message)}</span>
+        ) : null}
+      </label>
 
       {submitState === "success" ? (
         <p className="text-sm font-medium text-accent">Richiesta inviata con successo.</p>

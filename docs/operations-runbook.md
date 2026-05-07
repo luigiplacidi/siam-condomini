@@ -20,6 +20,7 @@ Controlli:
 - Validazione zod in `lib/form-schemas.ts`
 - Disponibilita DB (`DATABASE_URL` valida)
 - Configurazione email (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`, `SMTP_LEAD_TO`)
+- Configurazione anti-spam (`LEAD_CHALLENGE_SECRET`, opzionale se `SMTP_PASS` e gia presente)
 
 Azioni:
 - Se DB down, risolvere connessione Neon

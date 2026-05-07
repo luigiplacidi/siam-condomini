@@ -25,6 +25,7 @@ npm run build
 - `SMTP_PASS`
 - `SMTP_FROM`
 - `SMTP_LEAD_TO`
+- `LEAD_CHALLENGE_SECRET`
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` e `NEXT_PUBLIC_META_PIXEL_ID` se usati
 
 4. Prisma schema allineato al DB target:

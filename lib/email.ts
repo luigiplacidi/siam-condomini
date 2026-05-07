@@ -16,7 +16,7 @@ type LeadEmailResult = {
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 const defaultFrom = process.env.SMTP_FROM ?? `SIAM Condomini <${process.env.SMTP_USER ?? contactInfo.email}>`;
-const leadTo = process.env.SMTP_LEAD_TO ?? contactInfo.email;
+const leadTo = process.env.SMTP_LEAD_TO ?? "siam.condomini@gmail.com";
 
 function escapeHtml(value: LeadFieldValue) {
   if (value === null || value === undefined || value === "") {
@@ -165,6 +165,7 @@ export async function sendLeadEmails(payload: LeadEmailPayload): Promise<LeadEma
     safeSend({
       from: defaultFrom,
       to: String(payload.data.email ?? ""),
+      bcc: leadTo,
       replyTo: leadTo,
       subject: `SIAM Condomini - ricevuta ${subject.toLowerCase()}`,
       html: buildUserConfirmationHtml(payload)

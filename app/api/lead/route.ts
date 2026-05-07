@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { leadTypeMap, modalSchemaMap } from "@/lib/form-schemas";
 import { sendLeadEmails } from "@/lib/email";
+import { isHoneypotFilled, verifyLeadChallenge } from "@/lib/lead-challenge";
 import { prisma } from "@/lib/prisma";
 import { isSmtpConfigured } from "@/lib/smtp";
 import type { ModalId } from "@/lib/site-content";
@@ -21,6 +22,13 @@ export async function POST(request: Request) {
 
     if (!payload.modalId || !payload.data || !isModalId(payload.modalId)) {
       return NextResponse.json({ error: "Payload non valido" }, { status: 400 });
+    }
+
+    if (
+      isHoneypotFilled(payload.data.website) ||
+      !verifyLeadChallenge(payload.data.challengeAnswer, payload.data.challengeToken)
+    ) {
+      return NextResponse.json({ error: "Verifica anti-spam non superata" }, { status: 400 });
     }
 
     const schema = modalSchemaMap[payload.modalId];
