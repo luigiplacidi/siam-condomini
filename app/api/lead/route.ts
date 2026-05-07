@@ -5,7 +5,7 @@ import { sendLeadEmails } from "@/lib/email";
 import { isHoneypotFilled, verifyLeadChallenge } from "@/lib/lead-challenge";
 import { logLeadError, logLeadInfo, logLeadWarn } from "@/lib/lead-logger";
 import { createLeadId, isBlobConfigured, saveLeadToBlob } from "@/lib/lead-storage";
-import { isSmtpConfigured } from "@/lib/smtp";
+import { isResendConfigured } from "@/lib/resend";
 import type { ModalId } from "@/lib/site-content";
 
 const modalIdSchema = ["contactModal", "quoteModal", "faultReportModal", "documentRequestModal"] as const;
@@ -77,7 +77,7 @@ export async function POST(request: Request) {
       leadId,
       emailDomain: getEmailDomain(data.email),
       blobConfigured: isBlobConfigured(),
-      smtpConfigured: isSmtpConfigured()
+      resendConfigured: isResendConfigured()
     });
 
     const emailData = data as Record<string, string | boolean | null | undefined>;
@@ -103,7 +103,7 @@ export async function POST(request: Request) {
         leadId,
         leadSaved: blobResult.saved,
         blobError: blobResult.error,
-        smtpConfigured: isSmtpConfigured(),
+        resendConfigured: isResendConfigured(),
         internalError: emailResult.internalError,
         confirmationError: emailResult.confirmationError
       });

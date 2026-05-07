@@ -26,9 +26,10 @@ export default function CookiePolicyPage() {
           <h2 className="text-xl font-semibold text-primary">2. Cookie e dati tecnici che utilizziamo</h2>
           <ul className="mt-2 grid gap-2 text-sm leading-relaxed text-muted-foreground">
             <li>- Cookie tecnici necessari: sempre attivi, indispensabili per il funzionamento del sito.</li>
-            <li>- Cookie di preferenza: salvano le scelte del banner e le impostazioni opzionali.</li>
+            <li>- Cookie e local storage di preferenza: salvano le scelte del banner e le impostazioni opzionali.</li>
+            <li>- Dati tecnici anti-spam: token temporaneo della challenge, usato solo per verificare l'invio del modulo.</li>
             <li>- Cookie analytics Google Analytics 4: attivati solo se autorizzi la categoria analytics.</li>
-            <li>- Cookie marketing: attivati solo se autorizzi la categoria e se viene configurato lo script.</li>
+            <li>- Cookie marketing: non attivi di default; caricati solo se autorizzi la categoria e se viene configurato lo script.</li>
           </ul>
         </div>
 
@@ -86,6 +87,12 @@ export default function CookiePolicyPage() {
                   <td className="p-3">Mantiene sincronizzate le preferenze cookie nel browser.</td>
                 </tr>
                 <tr className="border-t border-border">
+                  <td className="p-3 font-semibold text-foreground">challengeToken</td>
+                  <td className="p-3">Tecnico / sicurezza</td>
+                  <td className="p-3">Temporaneo, non salvato come cookie</td>
+                  <td className="p-3">Verifica anti-spam dei moduli tramite token firmato lato server.</td>
+                </tr>
+                <tr className="border-t border-border">
                   <td className="p-3 font-semibold text-foreground">_ga</td>
                   <td className="p-3">Analytics</td>
                   <td className="p-3">Fino a 2 anni</td>
@@ -113,7 +120,8 @@ export default function CookiePolicyPage() {
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             Il sito utilizza cookie tecnici necessari, cookie di preferenza per salvare le scelte del banner e,
             se configurato, Google Analytics 4 dopo consenso esplicito alla categoria analytics. Non vengono
-            caricati strumenti marketing o profilazione senza consenso nella categoria corrispondente.
+            caricati strumenti marketing o profilazione senza consenso nella categoria corrispondente. L'invio
+            dei moduli usa una challenge anti-spam tecnica che non richiede cookie di profilazione.
           </p>
         </div>
       </div>

@@ -16,7 +16,7 @@ type LeadChallenge = {
 function getChallengeSecret() {
   return (
     process.env.LEAD_CHALLENGE_SECRET ??
-    process.env.SMTP_PASS ??
+    process.env.RESEND_API_KEY ??
     "siam-condomini-local-lead-challenge"
   );
 }

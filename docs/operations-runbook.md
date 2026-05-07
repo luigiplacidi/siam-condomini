@@ -17,13 +17,13 @@ Controlli:
 - Console browser e Network tab su `POST /api/lead`
 - Validazione zod in `lib/form-schemas.ts`
 - Disponibilita Blob (`BLOB_READ_WRITE_TOKEN` valida)
-- Configurazione email (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`, `SMTP_LEAD_TO`)
-- Configurazione anti-spam (`LEAD_CHALLENGE_SECRET`, opzionale se `SMTP_PASS` e gia presente)
+- Configurazione email (`RESEND_API_KEY`, `RESEND_FROM`, `RESEND_LEAD_TO`)
+- Configurazione anti-spam (`LEAD_CHALLENGE_SECRET`, opzionale se `RESEND_API_KEY` e gia presente)
 
 Azioni:
 - Se `BLOB_READ_WRITE_TOKEN` manca o Blob non risponde, le email vengono comunque tentate; risolvere Blob per ripristinare il salvataggio lead
 - Se payload invalido, adeguare schema o campi modale
-- Se le email non partono, verificare credenziali SMTP Aruba/provider e mittente autorizzato
+- Se le email non partono, verificare `RESEND_API_KEY`, dominio/mittente Resend autorizzato e `RESEND_FROM`
 
 ### 2) Lead non salvati su Blob
 
@@ -33,7 +33,7 @@ Controlli:
 - Store Blob collegato al progetto Vercel corretto
 
 Nota:
-- Anche se Blob fallisce, l'API tenta comunque l'invio SMTP per non perdere il contatto operativo.
+- Anche se Blob fallisce, l'API tenta comunque l'invio Resend per non perdere il contatto operativo.
 
 ### 3) Build Vercel fallita
 
@@ -52,7 +52,7 @@ Cadenza consigliata: settimanale.
 
 Checklist:
 - Verifica lead salvati in Blob sotto `leads/YYYY/MM/DD/`
-- Verifica stato email nei JSON salvati e nei log `smtp_send_success` / `smtp_send_failed`
+- Verifica stato email nei JSON salvati e nei log `resend_send_success` / `resend_send_failed`
 - Verifica link esterni news
 - Verifica pagina contatti e recapiti
 - Verifica deploy stato green su Vercel

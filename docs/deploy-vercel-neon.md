@@ -2,7 +2,7 @@
 
 ## Obiettivo
 
-Pubblicare in sicurezza mantenendo allineati codice, env Vercel, Blob e SMTP.
+Pubblicare in sicurezza mantenendo allineati codice, env Vercel, Blob e Resend.
 
 ## Checklist pre-deploy
 
@@ -18,17 +18,13 @@ npm run build
 - `BLOB_READ_WRITE_TOKEN`
 - `NEXT_PUBLIC_SITE_URL`
 - `NEXT_PUBLIC_RESERVED_AREA_URL`
-- `SMTP_HOST`
-- `SMTP_PORT`
-- `SMTP_SECURE`
-- `SMTP_USER`
-- `SMTP_PASS`
-- `SMTP_FROM`
-- `SMTP_LEAD_TO`
+- `RESEND_API_KEY`
+- `RESEND_FROM`
+- `RESEND_LEAD_TO`
 - `LEAD_CHALLENGE_SECRET`
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` e `NEXT_PUBLIC_META_PIXEL_ID` se usati
 
-Nota: senza `BLOB_READ_WRITE_TOKEN` i moduli possono tentare l'invio email SMTP, ma i lead non vengono salvati su Blob.
+Nota: senza `BLOB_READ_WRITE_TOKEN` i moduli possono tentare l'invio email Resend, ma i lead non vengono salvati su Blob.
 
 ## Primo collegamento progetto Vercel (una volta)
 
@@ -60,7 +56,7 @@ vercel --prod
 - Homepage caricata
 - Navigazione pagine principali
 - Apertura modali e invio form
-- Invio email SMTP dai form modali
+- Invio email Resend dai form modali
 - Salvataggio lead JSON privato su Vercel Blob
 - Pagina news e dettaglio articolo
 - `https://dominio/sitemap.xml` e `https://dominio/robots.txt` raggiungibili

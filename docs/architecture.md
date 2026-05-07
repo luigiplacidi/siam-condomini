@@ -14,7 +14,7 @@
 - `app/`: routing e pagine
 - `app/api/lead/route.ts`: endpoint per invio richieste da modali
 - `lib/lead-storage.ts`: salvataggio JSON privato dei lead su Vercel Blob
-- `lib/email.ts` e `lib/smtp.ts`: composizione e invio email SMTP
+- `lib/email.ts` e `lib/resend.ts`: composizione e invio email Resend
 - `components/`: UI riutilizzabile (header, footer, modali, button)
 - `lib/`: contenuti statici, utility, schemi form, accesso dati
 - `prisma/`: schema DB e seed
@@ -34,7 +34,7 @@
 2. I form sono definiti in `lib/site-content.ts` (campi UI).
 3. Le regole di validazione sono in `lib/form-schemas.ts`.
 4. Submit verso `POST /api/lead`.
-5. API valida payload, invia email di notifica/conferma tramite SMTP e salva un JSON privato su Vercel Blob.
+5. API valida payload, invia email di notifica/conferma tramite Resend e salva un JSON privato su Vercel Blob.
 
 ## Modello dati
 
@@ -72,6 +72,6 @@ Campi principali:
 - `lib/email.ts` compone due email:
   - notifica interna verso SIAM
   - conferma automatica verso l'utente
-- L'invio usa SMTP solo se `SMTP_HOST`, `SMTP_USER` e `SMTP_PASS` sono disponibili.
+- L'invio usa Resend solo se `RESEND_API_KEY` e disponibile.
 
 Questa strategia evita blocchi in sviluppo e mantiene il sito funzionante anche in bootstrap.

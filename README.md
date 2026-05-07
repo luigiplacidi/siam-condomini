@@ -9,7 +9,7 @@ Prima versione del nuovo sito web SIAM Condomini realizzata con Next.js, pronta 
 - Framer Motion
 - React Hook Form + Zod
 - Vercel Blob per salvataggio richieste lead
-- SMTP Aruba/provider compatibile per invio email transazionali
+- Resend per invio email transazionali
 
 ## Quick Start
 
@@ -26,7 +26,7 @@ cp .env.example .env.local
 ```
 
 3. Aggiorna `BLOB_READ_WRITE_TOKEN` con il token Vercel Blob.
-4. Se vuoi attivare l'invio email, imposta anche `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`, `SMTP_LEAD_TO` e `LEAD_CHALLENGE_SECRET`.
+4. Se vuoi attivare l'invio email, imposta anche `RESEND_API_KEY`, `RESEND_FROM`, `RESEND_LEAD_TO` e `LEAD_CHALLENGE_SECRET`.
 
 5. Avvia progetto:
 
@@ -44,7 +44,7 @@ npm run dev
 
 ## API
 
-- `POST /api/lead`: riceve submit dei form modali, salva un JSON privato su Vercel Blob e invia email tramite SMTP.
+- `POST /api/lead`: riceve submit dei form modali, salva un JSON privato su Vercel Blob e invia email tramite Resend.
   Se Blob non e configurato o fallisce, l'API prova comunque a inviare le email e registra log strutturati.
 - `GET /api/lead/challenge`: genera la challenge anti-spam firmata lato server.
 
@@ -53,17 +53,13 @@ npm run dev
 - `BLOB_READ_WRITE_TOKEN`
 - `NEXT_PUBLIC_SITE_URL`
 - `NEXT_PUBLIC_RESERVED_AREA_URL`
-- `SMTP_HOST`
-- `SMTP_PORT`
-- `SMTP_SECURE`
-- `SMTP_USER`
-- `SMTP_PASS`
-- `SMTP_FROM`
-- `SMTP_LEAD_TO`
+- `RESEND_API_KEY`
+- `RESEND_FROM`
+- `RESEND_LEAD_TO`
 - `LEAD_CHALLENGE_SECRET`
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` e `NEXT_PUBLIC_META_PIXEL_ID` solo se vuoi attivare gli script opzionali con consenso
 
-Le notifiche lead interne vengono inviate a `SMTP_LEAD_TO`; se la variabile non e configurata, il fallback e `siam.condomini@gmail.com`.
+Le notifiche lead interne vengono inviate a `RESEND_LEAD_TO`; se la variabile non e configurata, il fallback e `siam.condomini@gmail.com`.
 
 ## Documentazione team
 

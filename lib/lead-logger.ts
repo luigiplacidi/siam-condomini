@@ -2,6 +2,10 @@ type LeadLogContext = Record<string, unknown>;
 
 function serializeError(error: unknown) {
   if (!(error instanceof Error)) {
+    if (typeof error === "object" && error !== null) {
+      return error;
+    }
+
     return { message: String(error) };
   }
 

@@ -37,13 +37,9 @@ cp .env.example .env.local
 - `BLOB_READ_WRITE_TOKEN`
 - `NEXT_PUBLIC_SITE_URL`
 - `NEXT_PUBLIC_RESERVED_AREA_URL`
-- `SMTP_HOST`
-- `SMTP_PORT`
-- `SMTP_SECURE`
-- `SMTP_USER`
-- `SMTP_PASS`
-- `SMTP_FROM`
-- `SMTP_LEAD_TO`
+- `RESEND_API_KEY`
+- `RESEND_FROM`
+- `RESEND_LEAD_TO`
 - `LEAD_CHALLENGE_SECRET`
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` e `NEXT_PUBLIC_META_PIXEL_ID` solo se attivi gli script opzionali
 
@@ -58,7 +54,7 @@ npm run dev
 - Home: `http://localhost:3000`
 - News index: `http://localhost:3000/news`
 - Form modale: submit da CTA (es. "Contattaci")
-- Email test: verifica `POST /api/lead` con SMTP configurato
+- Email test: verifica `POST /api/lead` con Resend configurato
 
 ## Primo contributo consigliato
 

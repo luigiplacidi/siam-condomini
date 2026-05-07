@@ -1,6 +1,6 @@
 import { contactInfo, modalDefinitions, type ModalId } from "@/lib/site-content";
 import { logLeadError, logLeadInfo, logLeadWarn } from "@/lib/lead-logger";
-import { getSmtpDiagnostics, getSmtpTransporter } from "@/lib/smtp";
+import { getResendClient, getResendDiagnostics } from "@/lib/resend";
 
 type LeadFieldValue = string | boolean | null | undefined;
 
@@ -18,8 +18,8 @@ type LeadEmailResult = {
 };
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-const defaultFrom = process.env.SMTP_FROM ?? `SIAM Condomini <${process.env.SMTP_USER ?? contactInfo.email}>`;
-const leadTo = process.env.SMTP_LEAD_TO ?? "siam.condomini@gmail.com";
+const defaultFrom = process.env.RESEND_FROM ?? "SIAM Condomini <noreply@siamcondomini.it>";
+const leadTo = process.env.RESEND_LEAD_TO ?? "siam.condomini@gmail.com";
 
 function escapeHtml(value: LeadFieldValue) {
   if (value === null || value === undefined || value === "") {
@@ -139,14 +139,14 @@ function buildUserConfirmationHtml(payload: LeadEmailPayload) {
 }
 
 export async function sendLeadEmails(payload: LeadEmailPayload): Promise<LeadEmailResult> {
-  const smtp = getSmtpTransporter();
-  const diagnostics = getSmtpDiagnostics();
+  const resend = getResendClient();
+  const diagnostics = getResendDiagnostics();
 
-  if (!smtp) {
-    logLeadWarn("smtp_not_configured", {
+  if (!resend) {
+    logLeadWarn("resend_not_configured", {
       leadId: payload.leadId,
       modalId: payload.modalId,
-      smtp: diagnostics
+      resend: diagnostics
     });
 
     return { internalSent: false, confirmationSent: false };
@@ -156,26 +156,36 @@ export async function sendLeadEmails(payload: LeadEmailPayload): Promise<LeadEma
   const subject = modal?.title ?? "Nuova richiesta dal sito";
   const internalSubject = `[SIAM Condomini] ${subject}`;
 
-  const safeSend = async (options: Parameters<typeof smtp.sendMail>[0]) => {
+  const safeSend = async (options: Parameters<typeof resend.emails.send>[0]) => {
     try {
-      const result = await smtp.sendMail(options);
-      logLeadInfo("smtp_send_success", {
+      const result = await resend.emails.send(options);
+
+      if (result.error) {
+        logLeadError("resend_send_failed", result.error, {
+          leadId: payload.leadId,
+          modalId: payload.modalId,
+          to: options.to,
+          bcc: options.bcc,
+          resend: diagnostics
+        });
+        return { error: result.error };
+      }
+
+      logLeadInfo("resend_send_success", {
         leadId: payload.leadId,
         modalId: payload.modalId,
         to: options.to,
         bcc: options.bcc,
-        messageId: result.messageId,
-        accepted: result.accepted,
-        rejected: result.rejected
+        messageId: result.data?.id
       });
       return { result };
     } catch (error) {
-      logLeadError("smtp_send_failed", error, {
+      logLeadError("resend_send_failed", error, {
         leadId: payload.leadId,
         modalId: payload.modalId,
         to: options.to,
         bcc: options.bcc,
-        smtp: diagnostics
+        resend: diagnostics
       });
       return { error };
     }
