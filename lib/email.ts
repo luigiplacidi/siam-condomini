@@ -1,5 +1,5 @@
 import { contactInfo, modalDefinitions, type ModalId } from "@/lib/site-content";
-import { getResendClient } from "@/lib/resend";
+import { getSmtpTransporter } from "@/lib/smtp";
 
 type LeadFieldValue = string | boolean | null | undefined;
 
@@ -15,8 +15,8 @@ type LeadEmailResult = {
 };
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-const defaultFrom = process.env.RESEND_FROM ?? "SIAM Condomini <onboarding@resend.dev>";
-const leadTo = process.env.RESEND_LEAD_TO ?? contactInfo.email;
+const defaultFrom = process.env.SMTP_FROM ?? `SIAM Condomini <${process.env.SMTP_USER ?? contactInfo.email}>`;
+const leadTo = process.env.SMTP_LEAD_TO ?? contactInfo.email;
 
 function escapeHtml(value: LeadFieldValue) {
   if (value === null || value === undefined || value === "") {
@@ -136,9 +136,9 @@ function buildUserConfirmationHtml(payload: LeadEmailPayload) {
 }
 
 export async function sendLeadEmails(payload: LeadEmailPayload): Promise<LeadEmailResult> {
-  const resend = getResendClient();
+  const smtp = getSmtpTransporter();
 
-  if (!resend) {
+  if (!smtp) {
     return { internalSent: false, confirmationSent: false };
   }
 
@@ -146,9 +146,9 @@ export async function sendLeadEmails(payload: LeadEmailPayload): Promise<LeadEma
   const subject = modal?.title ?? "Nuova richiesta dal sito";
   const internalSubject = `[SIAM Condomini] ${subject}`;
 
-  const safeSend = async (options: Parameters<typeof resend.emails.send>[0]) => {
+  const safeSend = async (options: Parameters<typeof smtp.sendMail>[0]) => {
     try {
-      return await resend.emails.send(options);
+      return await smtp.sendMail(options);
     } catch (error) {
       return { error };
     }

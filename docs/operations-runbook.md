@@ -19,12 +19,12 @@ Controlli:
 - Console browser e Network tab su `POST /api/lead`
 - Validazione zod in `lib/form-schemas.ts`
 - Disponibilita DB (`DATABASE_URL` valida)
-- Configurazione email (`RESEND_API_KEY`, `RESEND_FROM`, `RESEND_LEAD_TO`)
+- Configurazione email (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`, `SMTP_LEAD_TO`)
 
 Azioni:
 - Se DB down, risolvere connessione Neon
 - Se payload invalido, adeguare schema o campi modale
-- Se le email non partono, verificare Resend e il dominio mittente
+- Se le email non partono, verificare credenziali SMTP Aruba/provider e mittente autorizzato
 
 ### 2) News non visibili da DB
 

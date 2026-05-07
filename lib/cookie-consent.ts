@@ -2,6 +2,7 @@ export const COOKIE_CONSENT_STORAGE_KEY = "siam_cookie_consent_v1";
 export const COOKIE_CONSENT_COOKIE_NAME = "siam_cookie_consent";
 export const COOKIE_CONSENT_EVENT = "siam-cookie-consent-updated";
 export const COOKIE_PREFERENCES_EVENT = "siam-cookie-preferences-open";
+const COOKIE_CONSENT_MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000;
 
 export type CookieConsentPreferences = {
   necessary: true;
@@ -48,6 +49,16 @@ function parseCookieConsent(value: string | null): CookieConsentPreferences | nu
   } catch {
     return null;
   }
+}
+
+function isConsentExpired(preferences: CookieConsentPreferences) {
+  const updatedAt = new Date(preferences.updatedAt).getTime();
+
+  if (Number.isNaN(updatedAt)) {
+    return true;
+  }
+
+  return Date.now() - updatedAt > COOKIE_CONSENT_MAX_AGE_MS;
 }
 
 function getCookieValue(name: string) {
@@ -138,11 +149,22 @@ export function readCookieConsent() {
   const storageConsent = parseCookieConsent(storageValue);
 
   if (storageConsent) {
+    if (isConsentExpired(storageConsent)) {
+      window.localStorage.removeItem(COOKIE_CONSENT_STORAGE_KEY);
+      deleteCookieByName(COOKIE_CONSENT_COOKIE_NAME);
+      return null;
+    }
+
     return storageConsent;
   }
 
   const cookieConsent = parseCookieConsent(getCookieValue(COOKIE_CONSENT_COOKIE_NAME));
   if (cookieConsent) {
+    if (isConsentExpired(cookieConsent)) {
+      deleteCookieByName(COOKIE_CONSENT_COOKIE_NAME);
+      return null;
+    }
+
     window.localStorage.setItem(COOKIE_CONSENT_STORAGE_KEY, JSON.stringify(cookieConsent));
     return cookieConsent;
   }

@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { leadTypeMap, modalSchemaMap } from "@/lib/form-schemas";
 import { sendLeadEmails } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
+import { isSmtpConfigured } from "@/lib/smtp";
 import type { ModalId } from "@/lib/site-content";
 
 const modalIdSchema = ["contactModal", "quoteModal", "faultReportModal", "documentRequestModal"] as const;
@@ -70,7 +71,7 @@ export async function POST(request: Request) {
       data: {
         status: emailResult.internalSent
           ? "emailed"
-          : process.env.RESEND_API_KEY
+          : isSmtpConfigured()
             ? "email_failed"
             : "new"
       }

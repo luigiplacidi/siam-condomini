@@ -1,6 +1,7 @@
 "use client";
 
 import Script from "next/script";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import {
@@ -20,6 +21,7 @@ declare global {
 
 export function CookieControlledScripts() {
   const [consent, setConsent] = useState<CookieConsentPreferences | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     setConsent(readCookieConsent());
@@ -42,6 +44,17 @@ export function CookieControlledScripts() {
 
   const analyticsEnabled = Boolean(consent?.analytics && gaMeasurementId);
   const marketingEnabled = Boolean(consent?.marketing && metaPixelId);
+
+  useEffect(() => {
+    if (!analyticsEnabled || !gaMeasurementId || typeof window.gtag !== "function") {
+      return;
+    }
+
+    window.gtag("config", gaMeasurementId, {
+      anonymize_ip: true,
+      page_path: `${pathname}${window.location.search}`
+    });
+  }, [analyticsEnabled, gaMeasurementId, pathname]);
 
   return (
     <>

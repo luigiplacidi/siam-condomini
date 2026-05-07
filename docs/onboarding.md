@@ -37,9 +37,13 @@ cp .env.example .env.local
 - `DATABASE_URL`
 - `NEXT_PUBLIC_SITE_URL`
 - `NEXT_PUBLIC_RESERVED_AREA_URL`
-- `RESEND_API_KEY`
-- `RESEND_FROM`
-- `RESEND_LEAD_TO`
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_SECURE`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `SMTP_FROM`
+- `SMTP_LEAD_TO`
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` e `NEXT_PUBLIC_META_PIXEL_ID` solo se attivi gli script opzionali
 
 5. Allinea schema DB:
@@ -65,7 +69,7 @@ npm run dev
 - Home: `http://localhost:3000`
 - News index: `http://localhost:3000/news`
 - Form modale: submit da CTA (es. "Contattaci")
-- Email test: verifica `POST /api/lead` con `RESEND_API_KEY` configurata
+- Email test: verifica `POST /api/lead` con SMTP configurato
 
 ## Primo contributo consigliato
 

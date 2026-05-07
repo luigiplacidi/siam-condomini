@@ -18,9 +18,13 @@ npm run build
 - `DATABASE_URL`
 - `NEXT_PUBLIC_SITE_URL`
 - `NEXT_PUBLIC_RESERVED_AREA_URL`
-- `RESEND_API_KEY`
-- `RESEND_FROM`
-- `RESEND_LEAD_TO`
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_SECURE`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `SMTP_FROM`
+- `SMTP_LEAD_TO`
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` e `NEXT_PUBLIC_META_PIXEL_ID` se usati
 
 4. Prisma schema allineato al DB target:
@@ -59,8 +63,9 @@ vercel --prod
 - Homepage caricata
 - Navigazione pagine principali
 - Apertura modali e invio form
-- Invio email Resend dai form modali
+- Invio email SMTP dai form modali
 - Pagina news e dettaglio articolo
+- `https://dominio/sitemap.xml` e `https://dominio/robots.txt` raggiungibili
 - Nessun riferimento al vecchio numero urgenze
 
 ## Rollback

@@ -13,7 +13,7 @@ export default function PrivacyPolicyPage() {
     <section className="section-shell pt-14 pb-20">
       <p className="kicker">Informative legali</p>
       <h1 className="mt-3 text-4xl font-semibold tracking-tight text-primary sm:text-5xl">Privacy Policy</h1>
-      <p className="mt-4 text-sm text-muted-foreground">Ultimo aggiornamento: 5 maggio 2026</p>
+      <p className="mt-4 text-sm text-muted-foreground">Ultimo aggiornamento: 7 maggio 2026</p>
 
       <div className="mt-8 space-y-6 rounded-3xl border border-border bg-white p-8 shadow-soft">
         <div>
@@ -43,7 +43,8 @@ export default function PrivacyPolicyPage() {
             <li>- Gestire la tua richiesta e risponderti in modo puntuale.</li>
             <li>- Organizzare preventivi, assistenza, segnalazioni e richieste documentali.</li>
             <li>- Adempiere ad obblighi di legge e difendere diritti del titolare, se necessario.</li>
-            <li>- Inviare conferme automatiche e notifiche operative tramite il servizio email Resend.</li>
+            <li>- Inviare conferme automatiche e notifiche operative tramite SMTP Aruba o altro provider SMTP configurato.</li>
+            <li>- Misurare traffico e utilizzo del sito con Google Analytics 4, solo previo consenso analytics.</li>
           </ul>
         </div>
 
@@ -62,6 +63,7 @@ export default function PrivacyPolicyPage() {
             I dati sono trattati con strumenti informatici e misure di sicurezza adeguate. Le richieste inviate
             tramite sito vengono conservate per il tempo necessario a gestire il contatto, fornire assistenza,
             inviare eventuali risposte via email e adempiere agli obblighi previsti dalla normativa applicabile.
+            Le preferenze cookie vengono conservate per 12 mesi, salvo revoca anticipata.
           </p>
         </div>
 
@@ -69,7 +71,8 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-xl font-semibold text-primary">6. Destinatari e fornitori tecnici</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             I dati possono essere trattati da fornitori tecnici che supportano il sito e i suoi servizi:
-            hosting e deploy su Vercel, database PostgreSQL su Neon tramite Prisma, e invio email tramite Resend.
+            hosting e deploy su Vercel, database PostgreSQL su Neon tramite Prisma, invio email tramite Aruba
+            o provider SMTP configurato, e misurazione statistica tramite Google Analytics 4 quando autorizzata.
             Questi soggetti operano come responsabili del trattamento o fornitori autonomi secondo i ruoli
             contrattualmente previsti.
           </p>
@@ -78,9 +81,10 @@ export default function PrivacyPolicyPage() {
         <div>
           <h2 className="text-xl font-semibold text-primary">7. Trasferimenti e sicurezza</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            Alcuni fornitori tecnologici possono trattare i dati anche fuori dallo Spazio Economico Europeo. In tali
-            casi SIAM si affida, ove necessario, agli strumenti e alle garanzie previsti dalla normativa applicabile.
-            Adottiamo inoltre misure tecniche e organizzative ragionevoli per proteggere i dati trattati dal sito.
+            Alcuni fornitori tecnologici, inclusi Vercel, Neon e Google, possono trattare dati anche fuori dallo
+            Spazio Economico Europeo. In tali casi SIAM si affida, ove necessario, agli strumenti e alle garanzie
+            previsti dalla normativa applicabile. Adottiamo inoltre misure tecniche e organizzative ragionevoli
+            per proteggere i dati trattati dal sito.
           </p>
         </div>
 
@@ -100,7 +104,7 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-xl font-semibold text-primary">9. Cookie e strumenti di tracciamento</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             Per i cookie tecnici, il salvataggio del consenso e l'eventuale attivazione di strumenti opzionali
-            analytics/marketing, consulta la{" "}
+            analytics/marketing, inclusi Google Analytics 4 e l'eventuale Meta Pixel se configurato, consulta la{" "}
             <Link className="font-semibold text-primary underline underline-offset-2" href="/cookie-policy">
               Cookie Policy
             </Link>
