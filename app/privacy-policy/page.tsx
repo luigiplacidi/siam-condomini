@@ -71,7 +71,7 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-xl font-semibold text-primary">6. Destinatari e fornitori tecnici</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             I dati possono essere trattati da fornitori tecnici che supportano il sito e i suoi servizi:
-            hosting e deploy su Vercel, database PostgreSQL su Neon tramite Prisma, invio email tramite Aruba
+            hosting e deploy su Vercel, salvataggio delle richieste su Vercel Blob, invio email tramite Aruba
             o provider SMTP configurato, e misurazione statistica tramite Google Analytics 4 quando autorizzata.
             Questi soggetti operano come responsabili del trattamento o fornitori autonomi secondo i ruoli
             contrattualmente previsti.
@@ -81,7 +81,7 @@ export default function PrivacyPolicyPage() {
         <div>
           <h2 className="text-xl font-semibold text-primary">7. Trasferimenti e sicurezza</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            Alcuni fornitori tecnologici, inclusi Vercel, Neon e Google, possono trattare dati anche fuori dallo
+            Alcuni fornitori tecnologici, inclusi Vercel, Aruba e Google, possono trattare dati anche fuori dallo
             Spazio Economico Europeo. In tali casi SIAM si affida, ove necessario, agli strumenti e alle garanzie
             previsti dalla normativa applicabile. Adottiamo inoltre misure tecniche e organizzative ragionevoli
             per proteggere i dati trattati dal sito.

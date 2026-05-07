@@ -10,7 +10,7 @@ Portare una nuova persona a eseguire il progetto in locale e fare il primo contr
 - npm 10+
 - Accesso al repository GitHub
 - Accesso progetto Vercel (per env condivise)
-- Database Neon (o URL DB condiviso)
+- Accesso Vercel Blob o env `BLOB_READ_WRITE_TOKEN`
 
 ## Setup locale
 
@@ -34,7 +34,7 @@ cp .env.example .env.local
 ```
 
 4. Inserisci in `.env.local` i valori reali:
-- `DATABASE_URL`
+- `BLOB_READ_WRITE_TOKEN`
 - `NEXT_PUBLIC_SITE_URL`
 - `NEXT_PUBLIC_RESERVED_AREA_URL`
 - `SMTP_HOST`
@@ -46,18 +46,6 @@ cp .env.example .env.local
 - `SMTP_LEAD_TO`
 - `LEAD_CHALLENGE_SECRET`
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` e `NEXT_PUBLIC_META_PIXEL_ID` solo se attivi gli script opzionali
-
-5. Allinea schema DB:
-
-```bash
-npm run db:push
-```
-
-6. Carica dati iniziali news (opzionale ma consigliato):
-
-```bash
-npm run db:seed
-```
 
 7. Avvia app:
 

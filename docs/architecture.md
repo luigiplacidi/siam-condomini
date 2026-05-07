@@ -6,12 +6,14 @@
 - Tailwind CSS
 - Framer Motion
 - React Hook Form + Zod
-- Prisma ORM + PostgreSQL (Neon)
+- Vercel Blob per salvataggio richieste lead
+- Prisma ORM solo per eventuale gestione news da database opzionale
 
 ## Struttura cartelle
 
 - `app/`: routing e pagine
 - `app/api/lead/route.ts`: endpoint per invio richieste da modali
+- `lib/lead-storage.ts`: salvataggio JSON privato dei lead su Vercel Blob
 - `lib/email.ts` e `lib/smtp.ts`: composizione e invio email SMTP
 - `components/`: UI riutilizzabile (header, footer, modali, button)
 - `lib/`: contenuti statici, utility, schemi form, accesso dati
@@ -32,20 +34,20 @@
 2. I form sono definiti in `lib/site-content.ts` (campi UI).
 3. Le regole di validazione sono in `lib/form-schemas.ts`.
 4. Submit verso `POST /api/lead`.
-5. API valida payload, salva in `LeadRequest` e prova a inviare email di notifica e conferma tramite SMTP.
+5. API valida payload, invia email di notifica/conferma tramite SMTP e salva un JSON privato su Vercel Blob.
 
 ## Modello dati
 
-### `LeadRequest`
+### Lead JSON su Blob
 
-Tabella per richieste da modali sito.
+File JSON privato per richieste da modali sito.
 
 Campi principali:
 - `type` (`CONTACT | QUOTE | FAULT | DOCUMENT`)
-- `fullName`, `email`, `phone`
-- campi specifici (`buildingType`, `building`, `faultType`, `documentType`)
-- `message`, `privacyConsent`, `status`, `createdAt`
-- `status` puo essere aggiornato a `emailed` o `email_failed` in base all'esito dell'invio
+- `data` con campi inviati dal form validato
+- `email` con esito invio interno/conferma
+- `createdAt`
+- path Blob: `leads/YYYY/MM/DD/<lead-id>.json`
 
 ### `NewsPost`
 
@@ -66,7 +68,7 @@ Campi principali:
 ## Flusso email
 
 - Le richieste dei moduli passano da `POST /api/lead`.
-- I dati validi vengono salvati nel DB.
+- I dati validi vengono salvati come JSON privato in Vercel Blob se `BLOB_READ_WRITE_TOKEN` e disponibile.
 - `lib/email.ts` compone due email:
   - notifica interna verso SIAM
   - conferma automatica verso l'utente

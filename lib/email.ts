@@ -1,5 +1,6 @@
 import { contactInfo, modalDefinitions, type ModalId } from "@/lib/site-content";
-import { getSmtpTransporter } from "@/lib/smtp";
+import { logLeadError, logLeadInfo, logLeadWarn } from "@/lib/lead-logger";
+import { getSmtpDiagnostics, getSmtpTransporter } from "@/lib/smtp";
 
 type LeadFieldValue = string | boolean | null | undefined;
 
@@ -12,6 +13,8 @@ type LeadEmailPayload = {
 type LeadEmailResult = {
   internalSent: boolean;
   confirmationSent: boolean;
+  internalError?: string;
+  confirmationError?: string;
 };
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
@@ -137,8 +140,15 @@ function buildUserConfirmationHtml(payload: LeadEmailPayload) {
 
 export async function sendLeadEmails(payload: LeadEmailPayload): Promise<LeadEmailResult> {
   const smtp = getSmtpTransporter();
+  const diagnostics = getSmtpDiagnostics();
 
   if (!smtp) {
+    logLeadWarn("smtp_not_configured", {
+      leadId: payload.leadId,
+      modalId: payload.modalId,
+      smtp: diagnostics
+    });
+
     return { internalSent: false, confirmationSent: false };
   }
 
@@ -148,8 +158,25 @@ export async function sendLeadEmails(payload: LeadEmailPayload): Promise<LeadEma
 
   const safeSend = async (options: Parameters<typeof smtp.sendMail>[0]) => {
     try {
-      return await smtp.sendMail(options);
+      const result = await smtp.sendMail(options);
+      logLeadInfo("smtp_send_success", {
+        leadId: payload.leadId,
+        modalId: payload.modalId,
+        to: options.to,
+        bcc: options.bcc,
+        messageId: result.messageId,
+        accepted: result.accepted,
+        rejected: result.rejected
+      });
+      return { result };
     } catch (error) {
+      logLeadError("smtp_send_failed", error, {
+        leadId: payload.leadId,
+        modalId: payload.modalId,
+        to: options.to,
+        bcc: options.bcc,
+        smtp: diagnostics
+      });
       return { error };
     }
   };
@@ -174,6 +201,14 @@ export async function sendLeadEmails(payload: LeadEmailPayload): Promise<LeadEma
 
   return {
     internalSent: !("error" in internalResult) || !internalResult.error,
-    confirmationSent: !("error" in confirmationResult) || !confirmationResult.error
+    confirmationSent: !("error" in confirmationResult) || !confirmationResult.error,
+    internalError:
+      "error" in internalResult && internalResult.error instanceof Error
+        ? internalResult.error.message
+        : undefined,
+    confirmationError:
+      "error" in confirmationResult && confirmationResult.error instanceof Error
+        ? confirmationResult.error.message
+        : undefined
   };
 }

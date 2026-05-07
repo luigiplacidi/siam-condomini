@@ -6,7 +6,7 @@ Questa cartella contiene la documentazione operativa per lavorare sul progetto i
 
 1. [Onboarding sviluppatori](./onboarding.md)
 2. [Architettura applicativa](./architecture.md)
-3. [Deploy Vercel + Neon](./deploy-vercel-neon.md)
+3. [Deploy Vercel + Blob](./deploy-vercel-neon.md)
 4. [Gestione contenuti e pagine](./content-workflow.md)
 5. [Runbook operativo e manutenzione](./operations-runbook.md)
 

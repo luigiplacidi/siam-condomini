@@ -33,6 +33,23 @@ function getSmtpOptions(): SMTPTransport.Options | null {
   };
 }
 
+export function getSmtpDiagnostics() {
+  const port = Number(process.env.SMTP_PORT ?? "465");
+
+  return {
+    configured: isSmtpConfigured(),
+    hasHost: Boolean(process.env.SMTP_HOST),
+    host: process.env.SMTP_HOST ?? null,
+    hasUser: Boolean(process.env.SMTP_USER),
+    user: process.env.SMTP_USER ?? null,
+    hasPass: Boolean(process.env.SMTP_PASS),
+    port: Number.isNaN(port) ? null : port,
+    secure: parseBoolean(process.env.SMTP_SECURE, port === 465),
+    from: process.env.SMTP_FROM ?? null,
+    leadTo: process.env.SMTP_LEAD_TO ?? "siam.condomini@gmail.com"
+  };
+}
+
 export function isSmtpConfigured() {
   return Boolean(getSmtpOptions());
 }

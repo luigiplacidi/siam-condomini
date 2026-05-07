@@ -1,6 +1,6 @@
 # SIAM Condomini
 
-Prima versione del nuovo sito web SIAM Condomini realizzata con Next.js, pronta per deploy su Vercel con database Neon tramite Prisma.
+Prima versione del nuovo sito web SIAM Condomini realizzata con Next.js, pronta per deploy su Vercel con salvataggio lead su Vercel Blob.
 
 ## Stack
 
@@ -8,7 +8,7 @@ Prima versione del nuovo sito web SIAM Condomini realizzata con Next.js, pronta 
 - Tailwind CSS
 - Framer Motion
 - React Hook Form + Zod
-- Prisma ORM + Neon Postgres
+- Vercel Blob per salvataggio richieste lead
 - SMTP Aruba/provider compatibile per invio email transazionali
 
 ## Quick Start
@@ -25,22 +25,10 @@ npm install
 cp .env.example .env.local
 ```
 
-3. Aggiorna `DATABASE_URL` con la connessione Neon.
+3. Aggiorna `BLOB_READ_WRITE_TOKEN` con il token Vercel Blob.
 4. Se vuoi attivare l'invio email, imposta anche `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`, `SMTP_LEAD_TO` e `LEAD_CHALLENGE_SECRET`.
 
-5. Allinea schema DB:
-
-```bash
-npm run db:push
-```
-
-6. (Opzionale) carica news iniziali:
-
-```bash
-npm run db:seed
-```
-
-7. Avvia progetto:
+5. Avvia progetto:
 
 ```bash
 npm run dev
@@ -56,11 +44,13 @@ npm run dev
 
 ## API
 
-- `POST /api/lead`: riceve submit dei form modali, salva su `LeadRequest` e invia email tramite SMTP.
+- `POST /api/lead`: riceve submit dei form modali, salva un JSON privato su Vercel Blob e invia email tramite SMTP.
+  Se Blob non e configurato o fallisce, l'API prova comunque a inviare le email e registra log strutturati.
+- `GET /api/lead/challenge`: genera la challenge anti-spam firmata lato server.
 
 ## Variabili ambiente principali
 
-- `DATABASE_URL`
+- `BLOB_READ_WRITE_TOKEN`
 - `NEXT_PUBLIC_SITE_URL`
 - `NEXT_PUBLIC_RESERVED_AREA_URL`
 - `SMTP_HOST`

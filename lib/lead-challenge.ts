@@ -17,7 +17,6 @@ function getChallengeSecret() {
   return (
     process.env.LEAD_CHALLENGE_SECRET ??
     process.env.SMTP_PASS ??
-    process.env.DATABASE_URL ??
     "siam-condomini-local-lead-challenge"
   );
 }

@@ -1,8 +1,8 @@
-# Deploy Vercel + Neon
+# Deploy Vercel + Blob
 
 ## Obiettivo
 
-Pubblicare in sicurezza mantenendo allineati codice, env e schema DB.
+Pubblicare in sicurezza mantenendo allineati codice, env Vercel, Blob e SMTP.
 
 ## Checklist pre-deploy
 
@@ -15,7 +15,7 @@ npm run build
 ```
 
 3. Env presenti su Vercel:
-- `DATABASE_URL`
+- `BLOB_READ_WRITE_TOKEN`
 - `NEXT_PUBLIC_SITE_URL`
 - `NEXT_PUBLIC_RESERVED_AREA_URL`
 - `SMTP_HOST`
@@ -28,11 +28,7 @@ npm run build
 - `LEAD_CHALLENGE_SECRET`
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` e `NEXT_PUBLIC_META_PIXEL_ID` se usati
 
-4. Prisma schema allineato al DB target:
-
-```bash
-npm run db:push
-```
+Nota: senza `BLOB_READ_WRITE_TOKEN` i moduli possono tentare l'invio email SMTP, ma i lead non vengono salvati su Blob.
 
 ## Primo collegamento progetto Vercel (una volta)
 
@@ -65,6 +61,7 @@ vercel --prod
 - Navigazione pagine principali
 - Apertura modali e invio form
 - Invio email SMTP dai form modali
+- Salvataggio lead JSON privato su Vercel Blob
 - Pagina news e dettaglio articolo
 - `https://dominio/sitemap.xml` e `https://dominio/robots.txt` raggiungibili
 - Nessun riferimento al vecchio numero urgenze
