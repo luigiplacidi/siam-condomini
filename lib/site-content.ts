@@ -31,7 +31,10 @@ export const contactInfo = {
   phone: "+390862319151",
   phoneDisplay: "(+39) 0862319151",
   email: "siam.condomini@gmail.com",
-  address: "Via Carlo Forti, Nucleo industriale Bazzano Nord, L'Aquila"
+  legalName: "SIAM s.r.l.",
+  vatNumber: "01956310666",
+  sdiCode: "USAL8PV",
+  address: "Via Carlo Forti snc, 67100 L'Aquila"
 };
 
 export const navItems = [

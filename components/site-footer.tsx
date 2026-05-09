@@ -58,6 +58,16 @@ export function SiteFooter() {
             </li>
           </ul>
         </div>
+
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Dati societari</p>
+          <ul className="mt-3 grid gap-2 text-sm text-foreground">
+            <li>{contactInfo.legalName}</li>
+            <li>{contactInfo.address}</li>
+            <li>P.IVA {contactInfo.vatNumber}</li>
+            <li>Codice SDI {contactInfo.sdiCode}</li>
+          </ul>
+        </div>
       </div>
 
       <div className="border-t border-border/80 bg-white">

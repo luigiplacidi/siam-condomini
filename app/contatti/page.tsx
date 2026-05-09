@@ -62,7 +62,15 @@ export default function ContactPage() {
 
       <div className="mt-10 grid gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
         <article className="rounded-3xl border border-border bg-white p-6 shadow-soft">
-          <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Contatti diretti</p>
+          <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Intestazione societaria</p>
+          <div className="mt-4 rounded-2xl border border-border bg-secondary/35 px-4 py-4 text-sm text-foreground">
+            <p className="font-semibold text-primary">{contactInfo.legalName}</p>
+            <p className="mt-1">{contactInfo.address}</p>
+            <p className="mt-1">P.IVA {contactInfo.vatNumber}</p>
+            <p className="mt-1">Codice SDI {contactInfo.sdiCode}</p>
+          </div>
+
+          <p className="mt-6 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Contatti diretti</p>
           <ul className="mt-5 grid gap-4 text-sm">
             <li className="flex items-start gap-3 rounded-2xl border border-border bg-secondary/35 px-4 py-3">
               <Phone className="mt-0.5 h-4 w-4 text-primary" />
