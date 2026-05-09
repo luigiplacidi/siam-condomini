@@ -18,13 +18,13 @@ export type ModalDefinition = {
 };
 
 export const brand = {
-  name: "SIAM Condomini",
-  tagline: "SIAM al servizio del tuo condominio",
+  name: "SIAM s.r.l.",
+  tagline: "SIAM s.r.l. al servizio del tuo condominio",
   headline: "Amministratori di condomini a L'Aquila",
   subheadline:
     "Vi garantiamo una organizzazione professionale, trasparente, competente e all'avanguardia.",
   aboutShort:
-    "La SIAM opera da anni nella gestione dei condomini in tutto il territorio aquilano, con l'obiettivo di salvaguardare il condominio tramite una gestione attenta e scrupolosa sia dal punto di vista economico che di manutenzione."
+    "La SIAM s.r.l. opera da anni nella gestione dei condomini in tutto il territorio aquilano, con l'obiettivo di salvaguardare il condominio tramite una gestione attenta e scrupolosa sia dal punto di vista economico che di manutenzione."
 };
 
 export const contactInfo = {
@@ -44,7 +44,7 @@ export const navItems = [
 export const modalDefinitions: ModalDefinition[] = [
   {
     id: "contactModal",
-    title: "Contatta SIAM Condomini",
+    title: "Contatta SIAM s.r.l.",
     description: "Invia una richiesta rapida di informazioni.",
     submitLabel: "Invia richiesta",
     fields: [
@@ -181,7 +181,7 @@ export const staticNewsPosts: NewsArticle[] = [
       "Un articolo operativo sulle principali regole di prevenzione incendi che interessano gli edifici residenziali e il lavoro dell'amministratore.",
     category: "Prevenzione incendi",
     publishedAt: "2026-04-30",
-    author: "SIAM Condomini",
+    author: "SIAM s.r.l.",
     intro:
       "La prevenzione incendi in condominio non riguarda solo i grandi edifici: e un tema di organizzazione, controllo e manutenzione che interessa molte parti comuni.",
     body: [
@@ -208,7 +208,7 @@ export const staticNewsPosts: NewsArticle[] = [
       "Un approfondimento sulle automazioni di cancelli e basculanti, tra impianto elettrico, manutenzione e adempimenti da non dimenticare.",
     category: "Impianti",
     publishedAt: "2026-04-29",
-    author: "SIAM Condomini",
+    author: "SIAM s.r.l.",
     intro:
       "I cancelli automatizzati richiedono una gestione attenta: impianto elettrico, sicurezza, documenti di conformita e manutenzione devono viaggiare insieme.",
     body: [
@@ -239,7 +239,7 @@ export const staticNewsPosts: NewsArticle[] = [
       "La qualità dell'acqua nei fabbricati interessa approvvigionamento, serbatoi, controlli e gestione corretta degli impianti.",
     category: "Acqua",
     publishedAt: "2026-04-26",
-    author: "SIAM Condomini",
+    author: "SIAM s.r.l.",
     intro:
       "La potabilita dell'acqua non e un tema solo sanitario: in condominio richiede manutenzione, attenzione ai serbatoi e una gestione ordinata degli impianti.",
     body: [
@@ -270,7 +270,7 @@ export const staticNewsPosts: NewsArticle[] = [
       "Un vademecum pratico sugli adempimenti tecnici e documentali da tenere sotto controllo quando l'impianto serve cancelli e basculanti automatizzate.",
     category: "Normativa",
     publishedAt: "2026-04-28",
-    author: "SIAM Condomini",
+    author: "SIAM s.r.l.",
     intro:
       "Approfondimento tecnico sulla manutenzione, sulla documentazione e sui profili di sicurezza da valutare in condomini con automazioni elettriche.",
     body: [
@@ -301,7 +301,7 @@ export const staticNewsPosts: NewsArticle[] = [
       "Piccoli accorgimenti quotidiani, buon senso e regole chiare aiutano a ridurre conflitti e a migliorare la vita comune.",
     category: "Vita di condominio",
     publishedAt: "2026-04-24",
-    author: "SIAM Condomini",
+    author: "SIAM s.r.l.",
     intro:
       "La convivenza condominiale funziona quando comunicazione, rispetto degli spazi comuni e regole interne lavorano nella stessa direzione.",
     body: [
@@ -328,7 +328,7 @@ export const staticNewsPosts: NewsArticle[] = [
       "Per proteggere il fabbricato e i condomini da danni materiali e responsabilita verso terzi, la polizza e uno strumento sempre utile da valutare.",
     category: "Assicurazione",
     publishedAt: "2026-04-18",
-    author: "SIAM Condomini",
+    author: "SIAM s.r.l.",
     intro:
       "Una buona polizza fabbricati non elimina il rischio, ma aiuta il condominio a gestirne meglio gli effetti economici e responsabilita potenziali.",
     body: [
@@ -355,7 +355,7 @@ export const staticNewsPosts: NewsArticle[] = [
       "Open data, dati di avanzamento e portali istituzionali possono aiutare i condomini a orientarsi meglio nei processi di ricostruzione.",
     category: "Ricostruzione",
     publishedAt: "2026-04-10",
-    author: "SIAM Condomini",
+    author: "SIAM s.r.l.",
     intro:
       "I dati aperti e i portali istituzionali sulla ricostruzione rendono piu facile controllare informazioni, pratiche e avanzamento degli interventi.",
     body: [

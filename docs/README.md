@@ -1,4 +1,4 @@
-# Documentazione progetto SIAM Condomini
+# Documentazione progetto SIAM s.r.l.
 
 Questa cartella contiene la documentazione operativa per lavorare sul progetto in team.
 

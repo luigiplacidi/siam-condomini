@@ -18,7 +18,7 @@ type LeadEmailResult = {
 };
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-const defaultFrom = process.env.RESEND_FROM ?? "SIAM Condomini <noreply@siamcondomini.it>";
+const defaultFrom = process.env.RESEND_FROM ?? "SIAM s.r.l. <noreply@siamcondomini.it>";
 const leadTo = process.env.RESEND_LEAD_TO ?? "siam.condomini@gmail.com";
 
 function escapeHtml(value: LeadFieldValue) {
@@ -77,7 +77,7 @@ function buildAdminEmailHtml(payload: LeadEmailPayload) {
       <div style="max-width:680px;margin:0 auto;padding:32px 16px;">
         <div style="background:#ffffff;border:1px solid #d8e0e8;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(14,39,66,0.08);">
           <div style="padding:28px 28px 20px;background:linear-gradient(135deg,#0f3a74,#1d7dc9);color:#fff;">
-            <div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">SIAM Condomini</div>
+            <div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">SIAM s.r.l.</div>
             <h1 style="margin:10px 0 0;font-size:26px;line-height:1.2;">Nuova richiesta: ${escapeHtml(title)}</h1>
             <p style="margin:10px 0 0;font-size:14px;line-height:1.6;opacity:.92;">ID pratica: ${escapeHtml(
               payload.leadId
@@ -86,7 +86,7 @@ function buildAdminEmailHtml(payload: LeadEmailPayload) {
 
           <div style="padding:28px;">
             <p style="margin:0 0 18px;color:#334155;font-size:14px;line-height:1.7;">
-              È arrivata una nuova richiesta dal sito SIAM Condomini. I dettagli sono riportati di seguito.
+              È arrivata una nuova richiesta dal sito SIAM s.r.l. I dettagli sono riportati di seguito.
             </p>
 
             <table style="width:100%;border-collapse:collapse;border:1px solid #d8e0e8;border-radius:16px;overflow:hidden;">
@@ -114,7 +114,7 @@ function buildUserConfirmationHtml(payload: LeadEmailPayload) {
       <div style="max-width:680px;margin:0 auto;padding:32px 16px;">
         <div style="background:#ffffff;border:1px solid #d8e0e8;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(14,39,66,0.08);">
           <div style="padding:28px 28px 20px;background:linear-gradient(135deg,#0f3a74,#1d7dc9);color:#fff;">
-            <div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">SIAM Condomini</div>
+            <div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">SIAM s.r.l.</div>
             <h1 style="margin:10px 0 0;font-size:26px;line-height:1.2;">Abbiamo ricevuto ${escapeHtml(title)}</h1>
           </div>
 
@@ -154,7 +154,7 @@ export async function sendLeadEmails(payload: LeadEmailPayload): Promise<LeadEma
 
   const modal = modalDefinitions.find((entry) => entry.id === payload.modalId);
   const subject = modal?.title ?? "Nuova richiesta dal sito";
-  const internalSubject = `[SIAM Condomini] ${subject}`;
+  const internalSubject = `[SIAM s.r.l.] ${subject}`;
 
   const safeSend = async (options: Parameters<typeof resend.emails.send>[0]) => {
     try {
@@ -204,7 +204,7 @@ export async function sendLeadEmails(payload: LeadEmailPayload): Promise<LeadEma
       to: String(payload.data.email ?? ""),
       bcc: leadTo,
       replyTo: leadTo,
-      subject: `SIAM Condomini - ricevuta ${subject.toLowerCase()}`,
+      subject: `SIAM s.r.l. - ricevuta ${subject.toLowerCase()}`,
       html: buildUserConfirmationHtml(payload)
     })
   ]);

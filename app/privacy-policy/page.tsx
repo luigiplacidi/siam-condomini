@@ -4,8 +4,8 @@ import Link from "next/link";
 import { contactInfo } from "@/lib/site-content";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | SIAM Condomini",
-  description: "Informativa sul trattamento dei dati personali per il sito SIAM Condomini."
+  title: "Privacy Policy | SIAM s.r.l.",
+  description: "Informativa sul trattamento dei dati personali per il sito SIAM s.r.l."
 };
 
 export default function PrivacyPolicyPage() {
@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
         <div>
           <h2 className="text-xl font-semibold text-primary">1. Titolare del trattamento</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            Il titolare del trattamento e SIAM Condomini, con sede in {contactInfo.address}. Per richieste
+            Il titolare del trattamento e SIAM s.r.l., con sede in {contactInfo.address}. Per richieste
             relative alla privacy e all'esercizio dei diritti puoi scrivere a{" "}
             <a className="font-semibold text-primary underline underline-offset-2" href={`mailto:${contactInfo.email}`}>
               {contactInfo.email}
@@ -89,7 +89,7 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-xl font-semibold text-primary">7. Trasferimenti e sicurezza</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             Alcuni fornitori tecnologici, inclusi Vercel, Resend e Google, possono trattare dati anche fuori dallo
-            Spazio Economico Europeo. In tali casi SIAM si affida, ove necessario, agli strumenti e alle garanzie
+            Spazio Economico Europeo. In tali casi SIAM s.r.l. si affida, ove necessario, agli strumenti e alle garanzie
             previsti dalla normativa applicabile. Adottiamo inoltre misure tecniche e organizzative ragionevoli
             per proteggere i dati trattati dal sito.
           </p>

@@ -11,8 +11,8 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-3">
         <div>
           <div className="inline-flex items-center gap-3">
-            <Image src="/images/brand/logo-siam.png" alt="SIAM Condomini" width={112} height={42} className="h-10 w-auto" />
-            <p className="text-lg font-semibold text-primary">SIAM Condomini</p>
+            <Image src="/images/brand/logo-siam.png" alt="SIAM s.r.l." width={112} height={42} className="h-10 w-auto" />
+            <p className="text-lg font-semibold text-primary">SIAM s.r.l.</p>
           </div>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
             Amministratori di condomini a L'Aquila. Organizzazione professionale, trasparente, competente
@@ -62,7 +62,7 @@ export function SiteFooter() {
 
       <div className="border-t border-border/80 bg-white">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>Copyright 2026 © SIAM Condomini</p>
+          <p>Copyright 2026 © SIAM s.r.l.</p>
           <p>Tel: {contactInfo.phoneDisplay} | Email: {contactInfo.email}</p>
           <p className="inline-flex items-center gap-2">
             <Link className="underline underline-offset-2 hover:text-primary" href="/privacy-policy">

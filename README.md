@@ -1,6 +1,6 @@
-# SIAM Condomini
+# SIAM s.r.l.
 
-Prima versione del nuovo sito web SIAM Condomini realizzata con Next.js, pronta per deploy su Vercel con salvataggio lead su Vercel Blob.
+Prima versione del nuovo sito web SIAM s.r.l. realizzata con Next.js, pronta per deploy su Vercel con salvataggio lead su Vercel Blob.
 
 ## Stack
 

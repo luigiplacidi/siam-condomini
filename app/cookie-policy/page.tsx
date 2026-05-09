@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy | SIAM Condomini",
-  description: "Informativa cookie e gestione del consenso per il sito SIAM Condomini."
+  title: "Cookie Policy | SIAM s.r.l.",
+  description: "Informativa cookie e gestione del consenso per il sito SIAM s.r.l."
 };
 
 export default function CookiePolicyPage() {

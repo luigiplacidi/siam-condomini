@@ -11,7 +11,7 @@ export function FloatingContactWidget() {
       <a
         href={`tel:${contactInfo.phone}`}
         className="group inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white shadow-lg transition hover:scale-105 hover:bg-primary/90"
-        aria-label="Chiama SIAM"
+        aria-label="Chiama SIAM s.r.l."
       >
         <Phone className="h-5 w-5" />
         <span className="pointer-events-none absolute right-14 rounded-lg bg-slate-900 px-2 py-1 text-xs font-medium text-white opacity-0 transition group-hover:opacity-100">

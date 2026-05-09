@@ -5,9 +5,9 @@ import { ModalTriggerButton } from "@/components/modal/modal-trigger-button";
 import { brand, serviceGroups } from "@/lib/site-content";
 
 export const metadata: Metadata = {
-  title: "Chi siamo | SIAM Condomini",
+  title: "Chi siamo | SIAM s.r.l.",
   description:
-    "Scopri SIAM Condomini, amministratori di condomini a L'Aquila: gestione, consulenza e pratiche condominiali."
+    "Scopri SIAM s.r.l., amministratori di condomini a L'Aquila: gestione, consulenza e pratiche condominiali."
 };
 
 export default function AboutPage() {
@@ -18,7 +18,7 @@ export default function AboutPage() {
           <div>
             <p className="kicker">Chi siamo</p>
             <h1 className="mt-3 text-4xl font-semibold tracking-tight text-primary sm:text-5xl">
-              SIAM al servizio del tuo condominio
+              SIAM s.r.l. al servizio del tuo condominio
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground">{brand.aboutShort}</p>
             <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground">
@@ -38,12 +38,12 @@ export default function AboutPage() {
 
           <div className="grid gap-4">
             <div className="relative h-[390px] overflow-hidden rounded-3xl border border-border shadow-soft">
-              <Image src="/images/brand/old-site.jpg" alt="SIAM Condomini" fill className="object-cover" />
+              <Image src="/images/brand/old-site.jpg" alt="SIAM s.r.l." fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
               <div className="absolute bottom-0 p-6 text-white">
-                <p className="text-xs uppercase tracking-[0.14em] text-white/80">SIAM Condomini</p>
+                <p className="text-xs uppercase tracking-[0.14em] text-white/80">SIAM s.r.l.</p>
                 <p className="mt-2 max-w-sm text-lg font-semibold leading-tight">
-                  SIAM al servizio del tuo condominio
+                  SIAM s.r.l. al servizio del tuo condominio
                 </p>
                 <p className="mt-3 max-w-md text-sm leading-relaxed text-white/90">
                   Gestione, consulenza e pratiche condominiali raccontate con un’identita visiva piu pulita e

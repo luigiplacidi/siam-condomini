@@ -70,7 +70,7 @@ Campi principali:
 - Le richieste dei moduli passano da `POST /api/lead`.
 - I dati validi vengono salvati come JSON privato in Vercel Blob se `BLOB_READ_WRITE_TOKEN` e disponibile.
 - `lib/email.ts` compone due email:
-  - notifica interna verso SIAM
+  - notifica interna verso SIAM s.r.l.
   - conferma automatica verso l'utente
 - L'invio usa Resend solo se `RESEND_API_KEY` e disponibile.
 

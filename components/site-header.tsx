@@ -60,14 +60,14 @@ export function SiteHeader() {
             <a
               href={`tel:${contactInfo.phone}`}
               className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/12"
-              aria-label="Chiama SIAM"
+              aria-label="Chiama SIAM s.r.l."
             >
               <Phone className="h-4 w-4" />
             </a>
             <a
               href={`mailto:${contactInfo.email}`}
               className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/12"
-              aria-label="Scrivi a SIAM"
+              aria-label="Scrivi a SIAM s.r.l."
             >
               <Mail className="h-4 w-4" />
             </a>
@@ -85,7 +85,7 @@ export function SiteHeader() {
       >
         <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4 px-4">
           <Link href="/" className="inline-flex items-center">
-            <Image src="/images/brand/logo-siam.png" alt="SIAM Condomini" width={112} height={42} className="h-10 w-auto" priority />
+            <Image src="/images/brand/logo-siam.png" alt="SIAM s.r.l." width={112} height={42} className="h-10 w-auto" priority />
           </Link>
 
           <nav className="hidden items-center gap-6 md:flex">

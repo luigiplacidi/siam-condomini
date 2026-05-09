@@ -23,7 +23,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "SIAM Condomini | Amministratori di condomini a L'Aquila",
+  title: "SIAM s.r.l. | Amministratori di condomini a L'Aquila",
   description:
     "Amministrazione condominiale a L'Aquila con gestione professionale, trasparente e supporto rapido.",
   keywords: [
@@ -36,15 +36,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "it_IT",
     url: siteUrl,
-    title: "SIAM Condomini | Amministratori di condomini a L'Aquila",
+    title: "SIAM s.r.l. | Amministratori di condomini a L'Aquila",
     description:
       "Amministrazione condominiale a L'Aquila con gestione professionale, trasparente e supporto rapido.",
-    siteName: "SIAM Condomini",
-    images: [{ url: `${siteUrl}/images/brand/logo-siam.png`, width: 112, height: 42, alt: "SIAM Condomini" }]
+    siteName: "SIAM s.r.l.",
+    images: [{ url: `${siteUrl}/images/brand/logo-siam.png`, width: 112, height: 42, alt: "SIAM s.r.l." }]
   },
   twitter: {
     card: "summary_large_image",
-    title: "SIAM Condomini | Amministratori di condomini a L'Aquila",
+    title: "SIAM s.r.l. | Amministratori di condomini a L'Aquila",
     description:
       "Amministrazione condominiale a L'Aquila con gestione professionale, trasparente e supporto rapido.",
     images: [`${siteUrl}/images/brand/logo-siam.png`]

@@ -91,7 +91,7 @@ export default async function HomePage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/75 via-primary/20 to-transparent" />
               <div className="absolute bottom-0 p-6 text-white">
-                <p className="text-xs uppercase tracking-[0.14em] text-white/85">SIAM Condomini</p>
+                <p className="text-xs uppercase tracking-[0.14em] text-white/85">SIAM s.r.l.</p>
                 <p className="mt-2 max-w-sm text-base font-medium leading-relaxed">
                   Gestione trasparente, risposte rapide e comunicazione semplice per il tuo condominio.
                 </p>
@@ -157,7 +157,7 @@ export default async function HomePage() {
               <p className="kicker">Interventi e supporto</p>
               <h2 className="mt-3 text-3xl font-semibold text-primary">Affidabilita, trasparenza e rapidita</h2>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Il rapporto di fiducia tra amministratore e condomini e il fondamento del metodo SIAM.
+                Il rapporto di fiducia tra amministratore e condomini e il fondamento del metodo SIAM s.r.l.
                 Chiarezza, disponibilita, mediazione e rapidita di intervento sono i tratti distintivi del
                 servizio.
               </p>
@@ -195,7 +195,7 @@ export default async function HomePage() {
             <div>
               <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
                 <div>
-                  <p className="kicker">Editoriale SIAM</p>
+                  <p className="kicker">Editoriale SIAM s.r.l.</p>
                   <h2 className="mt-3 text-3xl font-semibold text-primary">News e Approfondimenti normativi</h2>
                   <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
                     Un carosello che scorre con gli ultimi articoli, i focus normativi piu utili e una risorsa
@@ -287,7 +287,7 @@ export default async function HomePage() {
           <div className="rounded-3xl border border-border bg-gradient-to-r from-primary to-accent p-8 text-white shadow-soft">
             <h2 className="text-3xl font-semibold">Hai bisogno di informazioni o stai cercando un nuovo amministratore?</h2>
             <p className="mt-3 max-w-3xl text-sm text-white/90">
-              Contatta SIAM oppure richiedi un preventivo direttamente dal sito.
+              Contatta SIAM s.r.l. oppure richiedi un preventivo direttamente dal sito.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <ModalTriggerButton modalId="contactModal" variant="secondary" size="lg">

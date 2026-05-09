@@ -37,7 +37,7 @@ model NewsPost {
   excerpt       String
   category      String
   publishedAt   DateTime
-  author        String   @default("SIAM Condomini")
+  author        String   @default("SIAM s.r.l.")
   intro         String?
   body          Json
   externalLinks Json?

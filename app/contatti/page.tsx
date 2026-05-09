@@ -10,18 +10,18 @@ import { brand, contactInfo } from "@/lib/site-content";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
-  title: "Contatti | SIAM Condomini",
-  description: "Contatti di SIAM Condomini: telefono, email, indirizzo e richieste rapide.",
+  title: "Contatti | SIAM s.r.l.",
+  description: "Contatti di SIAM s.r.l.: telefono, email, indirizzo e richieste rapide.",
   openGraph: {
-    title: "Contatti | SIAM Condomini",
-    description: "Contatti di SIAM Condomini: telefono, email, indirizzo e richieste rapide.",
+    title: "Contatti | SIAM s.r.l.",
+    description: "Contatti di SIAM s.r.l.: telefono, email, indirizzo e richieste rapide.",
     type: "website",
     url: `${siteUrl}/contatti`
   },
   twitter: {
     card: "summary",
-    title: "Contatti | SIAM Condomini",
-    description: "Contatti di SIAM Condomini: telefono, email, indirizzo e richieste rapide."
+    title: "Contatti | SIAM s.r.l.",
+    description: "Contatti di SIAM s.r.l.: telefono, email, indirizzo e richieste rapide."
   }
 };
 
@@ -34,8 +34,8 @@ export default function ContactPage() {
         data={{
           "@context": "https://schema.org",
           "@type": "ContactPage",
-          name: "Contatti SIAM Condomini",
-          description: "Contatti di SIAM Condomini: telefono, email, indirizzo e richieste rapide.",
+          name: "Contatti SIAM s.r.l.",
+          description: "Contatti di SIAM s.r.l.: telefono, email, indirizzo e richieste rapide.",
           url: `${siteUrl}/contatti`,
           mainEntity: {
             "@type": "LocalBusiness",
@@ -54,7 +54,7 @@ export default function ContactPage() {
       />
       <p className="kicker">Contatti</p>
       <h1 className="mt-3 text-4xl font-semibold tracking-tight text-primary sm:text-5xl">
-        Mettiti in contatto con SIAM
+        Mettiti in contatto con SIAM s.r.l.
       </h1>
       <p className="mt-4 max-w-3xl text-sm text-muted-foreground">
         Chiamaci, scrivici o invia una richiesta rapida tramite le modali del sito.
@@ -87,12 +87,12 @@ export default function ContactPage() {
 
         <article className="overflow-hidden rounded-3xl border border-border bg-white shadow-soft">
           <div className="relative min-h-[19rem] overflow-hidden">
-            <Image src="/images/brand/old-site.jpg" alt="SIAM Condomini" fill className="object-cover" />
+            <Image src="/images/brand/old-site.jpg" alt="SIAM s.r.l." fill className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/82 via-primary/25 to-transparent" />
             <div className="absolute bottom-0 p-6 text-white">
-              <p className="text-xs uppercase tracking-[0.14em] text-white/80">SIAM Condomini</p>
+              <p className="text-xs uppercase tracking-[0.14em] text-white/80">SIAM s.r.l.</p>
               <p className="mt-2 max-w-sm text-lg font-semibold leading-tight">
-                SIAM al servizio del tuo condominio
+                SIAM s.r.l. al servizio del tuo condominio
               </p>
               <p className="mt-3 max-w-md text-sm leading-relaxed text-white/90">
                 Contattaci per informazioni, documentazione o segnalazioni rapide: rispondiamo in modo chiaro e

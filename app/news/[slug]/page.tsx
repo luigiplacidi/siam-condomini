@@ -22,21 +22,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = await getNewsPostBySlug(slug);
 
   if (!post) {
-    return { title: "Articolo non trovato | SIAM Condomini" };
+    return { title: "Articolo non trovato | SIAM s.r.l." };
   }
 
   return {
-    title: `${post.title} | SIAM Condomini`,
+    title: `${post.title} | SIAM s.r.l.`,
     description: post.excerpt,
     openGraph: {
-      title: `${post.title} | SIAM Condomini`,
+      title: `${post.title} | SIAM s.r.l.`,
       description: post.excerpt,
       type: "article",
       url: `${siteUrl}/news/${slug}`
     },
     twitter: {
       card: "summary",
-      title: `${post.title} | SIAM Condomini`,
+      title: `${post.title} | SIAM s.r.l.`,
       description: post.excerpt
     }
   };

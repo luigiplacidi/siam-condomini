@@ -4,17 +4,17 @@ import Link from "next/link";
 import { getNewsPosts } from "@/lib/news";
 
 export const metadata: Metadata = {
-  title: "News | SIAM Condomini",
-  description: "Aggiornamenti e articoli pubblicati da SIAM Condomini.",
+  title: "News | SIAM s.r.l.",
+  description: "Aggiornamenti e articoli pubblicati da SIAM s.r.l.",
   openGraph: {
-    title: "News | SIAM Condomini",
-    description: "Aggiornamenti e articoli pubblicati da SIAM Condomini.",
+    title: "News | SIAM s.r.l.",
+    description: "Aggiornamenti e articoli pubblicati da SIAM s.r.l.",
     type: "website"
   },
   twitter: {
     card: "summary",
-    title: "News | SIAM Condomini",
-    description: "Aggiornamenti e articoli pubblicati da SIAM Condomini."
+    title: "News | SIAM s.r.l.",
+    description: "Aggiornamenti e articoli pubblicati da SIAM s.r.l."
   }
 };
 

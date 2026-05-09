@@ -1,6 +1,6 @@
 # Contributing
 
-Grazie per contribuire al progetto SIAM Condomini.
+Grazie per contribuire al progetto SIAM s.r.l.
 
 ## Workflow
 
