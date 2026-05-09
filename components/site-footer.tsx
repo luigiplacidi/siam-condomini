@@ -42,7 +42,7 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Contatti</p>
+          <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Contatti e dati societari</p>
           <ul className="mt-3 grid gap-3 text-sm">
             <li className="inline-flex items-start gap-2">
               <Phone className="mt-0.5 h-4 w-4 text-primary" />
@@ -56,16 +56,12 @@ export function SiteFooter() {
               <MapPin className="mt-0.5 h-4 w-4 text-primary" />
               <span>{contactInfo.address}</span>
             </li>
-          </ul>
-        </div>
-
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Dati societari</p>
-          <ul className="mt-3 grid gap-2 text-sm text-foreground">
-            <li>{contactInfo.legalName}</li>
-            <li>{contactInfo.address}</li>
-            <li>P.IVA {contactInfo.vatNumber}</li>
-            <li>Codice SDI {contactInfo.sdiCode}</li>
+            <li className="mt-2 rounded-2xl border border-border bg-white/70 p-4 text-sm text-foreground">
+              <p className="font-semibold text-primary">{contactInfo.legalName}</p>
+              <p className="mt-1">{contactInfo.address}</p>
+              <p className="mt-1">P.IVA {contactInfo.vatNumber}</p>
+              <p className="mt-1">Codice SDI {contactInfo.sdiCode}</p>
+            </li>
           </ul>
         </div>
       </div>
