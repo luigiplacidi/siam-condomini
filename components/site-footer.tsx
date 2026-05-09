@@ -43,26 +43,27 @@ export function SiteFooter() {
 
         <div>
           <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Contatti e dati societari</p>
-          <ul className="mt-3 grid gap-3 text-sm">
-            <li className="inline-flex items-start gap-2">
-              <Phone className="mt-0.5 h-4 w-4 text-primary" />
-              <a href={`tel:${contactInfo.phone}`}>{contactInfo.phoneDisplay}</a>
-            </li>
-            <li className="inline-flex items-start gap-2">
-              <Mail className="mt-0.5 h-4 w-4 text-primary" />
-              <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
-            </li>
-            <li className="inline-flex items-start gap-2">
-              <MapPin className="mt-0.5 h-4 w-4 text-primary" />
-              <span>{contactInfo.address}</span>
-            </li>
-            <li className="mt-2 rounded-2xl border border-border bg-white/70 p-4 text-sm text-foreground">
+          <div className="mt-3 rounded-lg border border-border bg-white/70 p-4 text-sm text-foreground">
+            <ul className="grid gap-3">
+              <li className="inline-flex items-start gap-2">
+                <Phone className="mt-0.5 h-4 w-4 text-primary" />
+                <a href={`tel:${contactInfo.phone}`}>{contactInfo.phoneDisplay}</a>
+              </li>
+              <li className="inline-flex items-start gap-2">
+                <Mail className="mt-0.5 h-4 w-4 text-primary" />
+                <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
+              </li>
+              <li className="inline-flex items-start gap-2">
+                <MapPin className="mt-0.5 h-4 w-4 text-primary" />
+                <span>{contactInfo.address}</span>
+              </li>
+            </ul>
+            <div className="mt-4 border-t border-border/80 pt-4">
               <p className="font-semibold text-primary">{contactInfo.legalName}</p>
-              <p className="mt-1">{contactInfo.address}</p>
               <p className="mt-1">P.IVA {contactInfo.vatNumber}</p>
               <p className="mt-1">Codice SDI {contactInfo.sdiCode}</p>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       </div>
 
