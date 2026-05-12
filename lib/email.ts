@@ -1,4 +1,4 @@
-import { contactInfo, modalDefinitions, type ModalId } from "@/lib/site-content";
+import { modalDefinitions, type ModalId } from "@/lib/site-content";
 import { logLeadError, logLeadInfo, logLeadWarn } from "@/lib/lead-logger";
 import { getResendClient, getResendDiagnostics, getResendFrom, getResendLeadTo } from "@/lib/resend";
 import { getSiteUrl } from "@/lib/site-url";
@@ -21,6 +21,8 @@ type LeadEmailResult = {
 const siteUrl = getSiteUrl();
 const defaultFrom = getResendFrom();
 const leadTo = getResendLeadTo();
+const replyToAddress = "info@siamcondomini.com";
+const logoUrl = `${siteUrl}/images/brand/logo-siam.png`;
 
 function escapeHtml(value: LeadFieldValue) {
   if (value === null || value === undefined || value === "") {
@@ -68,9 +70,15 @@ function buildRows(modalId: ModalId, data: Record<string, LeadFieldValue>) {
     .join("");
 }
 
+function buildHeaderLogo() {
+  return `
+    <div style="display:inline-block;background:#ffffff;border-radius:12px;padding:8px 12px;">
+      <img src="${logoUrl}" width="112" height="42" alt="SIAM s.r.l." style="display:block;width:112px;height:auto;border:0;" />
+    </div>
+  `;
+}
+
 function buildAdminEmailHtml(payload: LeadEmailPayload) {
-  const modal = modalDefinitions.find((entry) => entry.id === payload.modalId);
-  const title = modal?.title ?? "Nuova richiesta";
   const rows = buildRows(payload.modalId, payload.data);
 
   return `
@@ -78,11 +86,8 @@ function buildAdminEmailHtml(payload: LeadEmailPayload) {
       <div style="max-width:680px;margin:0 auto;padding:32px 16px;">
         <div style="background:#ffffff;border:1px solid #d8e0e8;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(14,39,66,0.08);">
           <div style="padding:28px 28px 20px;background:linear-gradient(135deg,#0f3a74,#1d7dc9);color:#fff;">
-            <div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">SIAM s.r.l.</div>
-            <h1 style="margin:10px 0 0;font-size:26px;line-height:1.2;">Nuova richiesta: ${escapeHtml(title)}</h1>
-            <p style="margin:10px 0 0;font-size:14px;line-height:1.6;opacity:.92;">ID pratica: ${escapeHtml(
-              payload.leadId
-            )}</p>
+            ${buildHeaderLogo()}
+            <h1 style="margin:18px 0 0;font-size:26px;line-height:1.2;">Nuova Richiesta da Sito Web</h1>
           </div>
 
           <div style="padding:28px;">
@@ -96,7 +101,7 @@ function buildAdminEmailHtml(payload: LeadEmailPayload) {
 
             <div style="margin-top:22px;padding:16px 18px;border-radius:14px;background:#f1f6fb;color:#0f172a;font-size:13px;line-height:1.6;">
               Ricevuta dal sito: <a href="${siteUrl}" style="color:#0f3a74;text-decoration:underline;">${siteUrl}</a><br />
-              Puoi rispondere direttamente all'utente usando il campo email presente nella richiesta.
+              Email di risposta: <a href="mailto:${replyToAddress}" style="color:#0f3a74;text-decoration:underline;">${replyToAddress}</a>
             </div>
           </div>
         </div>
@@ -106,8 +111,6 @@ function buildAdminEmailHtml(payload: LeadEmailPayload) {
 }
 
 function buildUserConfirmationHtml(payload: LeadEmailPayload) {
-  const modal = modalDefinitions.find((entry) => entry.id === payload.modalId);
-  const title = modal?.title ?? "la tua richiesta";
   const userEmail = String(payload.data.email ?? "");
 
   return `
@@ -115,8 +118,8 @@ function buildUserConfirmationHtml(payload: LeadEmailPayload) {
       <div style="max-width:680px;margin:0 auto;padding:32px 16px;">
         <div style="background:#ffffff;border:1px solid #d8e0e8;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(14,39,66,0.08);">
           <div style="padding:28px 28px 20px;background:linear-gradient(135deg,#0f3a74,#1d7dc9);color:#fff;">
-            <div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;">SIAM s.r.l.</div>
-            <h1 style="margin:10px 0 0;font-size:26px;line-height:1.2;">Abbiamo ricevuto ${escapeHtml(title)}</h1>
+            ${buildHeaderLogo()}
+            <h1 style="margin:18px 0 0;font-size:26px;line-height:1.2;">Abbiamo ricevuto la tua richiesta di contatto</h1>
           </div>
 
           <div style="padding:28px;">
@@ -125,9 +128,7 @@ function buildUserConfirmationHtml(payload: LeadEmailPayload) {
             </p>
             <p style="margin:16px 0 0;color:#334155;font-size:14px;line-height:1.7;">
               Se vuoi aggiungere ulteriori dettagli, puoi rispondere direttamente a questa email o scriverci a
-              <a href="mailto:${escapeHtml(contactInfo.email)}" style="color:#0f3a74;text-decoration:underline;"> ${escapeHtml(
-                contactInfo.email
-              )}</a>.
+              <a href="mailto:${replyToAddress}" style="color:#0f3a74;text-decoration:underline;"> ${replyToAddress}</a>.
             </p>
             <p style="margin:16px 0 0;color:#64748b;font-size:12px;line-height:1.6;">
               Questa conferma è stata inviata a ${escapeHtml(userEmail)}.
@@ -153,9 +154,8 @@ export async function sendLeadEmails(payload: LeadEmailPayload): Promise<LeadEma
     return { internalSent: false, confirmationSent: false };
   }
 
-  const modal = modalDefinitions.find((entry) => entry.id === payload.modalId);
-  const subject = modal?.title ?? "Nuova richiesta dal sito";
-  const internalSubject = `[SIAM s.r.l.] ${subject}`;
+  const internalSubject = "Nuova Richiesta da Sito Web";
+  const confirmationSubject = "SIAM s.r.l. - abbiamo ricevuto la tua richiesta di contatto";
 
   const safeSend = async (options: Parameters<typeof resend.emails.send>[0]) => {
     try {
@@ -196,7 +196,7 @@ export async function sendLeadEmails(payload: LeadEmailPayload): Promise<LeadEma
     safeSend({
       from: defaultFrom,
       to: leadTo,
-      replyTo: String(payload.data.email ?? leadTo),
+      replyTo: replyToAddress,
       subject: internalSubject,
       html: buildAdminEmailHtml(payload)
     }),
@@ -204,8 +204,8 @@ export async function sendLeadEmails(payload: LeadEmailPayload): Promise<LeadEma
       from: defaultFrom,
       to: String(payload.data.email ?? ""),
       bcc: leadTo,
-      replyTo: leadTo,
-      subject: `SIAM s.r.l. - ricevuta ${subject.toLowerCase()}`,
+      replyTo: replyToAddress,
+      subject: confirmationSubject,
       html: buildUserConfirmationHtml(payload)
     })
   ]);
