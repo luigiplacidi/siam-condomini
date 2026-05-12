@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { contactInfo, navItems } from "@/lib/site-content";
-import { ModalTriggerButton } from "@/components/modal/modal-trigger-button";
+import { ModalTriggerButton, RawModalTrigger } from "@/components/modal/modal-trigger-button";
 
 export function SiteFooter() {
   return (
@@ -51,7 +51,9 @@ export function SiteFooter() {
               </li>
               <li className="inline-flex items-start gap-2">
                 <Mail className="mt-0.5 h-4 w-4 text-primary" />
-                <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
+                <RawModalTrigger modalId="contactModal" className="text-left text-foreground hover:text-primary">
+                  {contactInfo.email}
+                </RawModalTrigger>
               </li>
               <li className="inline-flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 text-primary" />

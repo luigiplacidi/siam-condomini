@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { RawModalTrigger } from "@/components/modal/modal-trigger-button";
 import { contactInfo } from "@/lib/site-content";
 
 export const metadata: Metadata = {
@@ -21,9 +22,12 @@ export default function PrivacyPolicyPage() {
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             Il titolare del trattamento e SIAM s.r.l., con sede in {contactInfo.address}. Per richieste
             relative alla privacy e all'esercizio dei diritti puoi scrivere a{" "}
-            <a className="font-semibold text-primary underline underline-offset-2" href={`mailto:${contactInfo.email}`}>
+            <RawModalTrigger
+              modalId="contactModal"
+              className="font-semibold text-primary underline underline-offset-2"
+            >
               {contactInfo.email}
-            </a>
+            </RawModalTrigger>
             .
           </p>
         </div>
@@ -100,9 +104,12 @@ export default function PrivacyPolicyPage() {
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             Puoi esercitare i diritti previsti dagli artt. 15-22 del GDPR, tra cui accesso, rettifica, cancellazione,
             limitazione, opposizione e portabilita, scrivendo a{" "}
-            <a className="font-semibold text-primary underline underline-offset-2" href={`mailto:${contactInfo.email}`}>
+            <RawModalTrigger
+              modalId="contactModal"
+              className="font-semibold text-primary underline underline-offset-2"
+            >
               {contactInfo.email}
-            </a>
+            </RawModalTrigger>
             . Hai inoltre il diritto di proporre reclamo al Garante per la protezione dei dati personali.
           </p>
         </div>

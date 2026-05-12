@@ -24,6 +24,16 @@ const leadTo = getResendLeadTo();
 const replyToAddress = "info@siamcondomini.com";
 const logoUrl = `${siteUrl}/images/brand/logo-siam.png`;
 
+function getRequesterEmail(payload: LeadEmailPayload) {
+  const value = payload.data.email;
+
+  if (typeof value === "string" && value.trim()) {
+    return value.trim();
+  }
+
+  return leadTo;
+}
+
 function escapeHtml(value: LeadFieldValue) {
   if (value === null || value === undefined || value === "") {
     return "—";
@@ -80,6 +90,7 @@ function buildHeaderLogo() {
 
 function buildAdminEmailHtml(payload: LeadEmailPayload) {
   const rows = buildRows(payload.modalId, payload.data);
+  const requesterEmail = getRequesterEmail(payload);
 
   return `
     <div style="margin:0;padding:0;background:#f5f8fb;font-family:Arial,Helvetica,sans-serif;">
@@ -101,7 +112,9 @@ function buildAdminEmailHtml(payload: LeadEmailPayload) {
 
             <div style="margin-top:22px;padding:16px 18px;border-radius:14px;background:#f1f6fb;color:#0f172a;font-size:13px;line-height:1.6;">
               Ricevuta dal sito: <a href="${siteUrl}" style="color:#0f3a74;text-decoration:underline;">${siteUrl}</a><br />
-              Email di risposta: <a href="mailto:${replyToAddress}" style="color:#0f3a74;text-decoration:underline;">${replyToAddress}</a>
+              Email del richiedente: <a href="mailto:${escapeHtml(requesterEmail)}" style="color:#0f3a74;text-decoration:underline;">${escapeHtml(
+                requesterEmail
+              )}</a>
             </div>
           </div>
         </div>
@@ -196,7 +209,7 @@ export async function sendLeadEmails(payload: LeadEmailPayload): Promise<LeadEma
     safeSend({
       from: defaultFrom,
       to: leadTo,
-      replyTo: replyToAddress,
+      replyTo: getRequesterEmail(payload),
       subject: internalSubject,
       html: buildAdminEmailHtml(payload)
     }),

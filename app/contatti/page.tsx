@@ -3,7 +3,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { ModalTriggerButton } from "@/components/modal/modal-trigger-button";
+import { ModalTriggerButton, RawModalTrigger } from "@/components/modal/modal-trigger-button";
 import { StructuredData } from "@/components/seo/structured-data";
 import { brand, contactInfo } from "@/lib/site-content";
 import { getSiteUrl } from "@/lib/site-url";
@@ -82,7 +82,10 @@ export default function ContactPage() {
             <li className="flex items-start gap-3 rounded-2xl border border-border bg-secondary/35 px-4 py-3">
               <Mail className="mt-0.5 h-4 w-4 text-primary" />
               <span>
-                Email: <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
+                Email:{" "}
+                <RawModalTrigger modalId="contactModal" className="font-semibold text-primary underline underline-offset-2">
+                  {contactInfo.email}
+                </RawModalTrigger>
               </span>
             </li>
             <li className="flex items-start gap-3 rounded-2xl border border-border bg-secondary/35 px-4 py-3">

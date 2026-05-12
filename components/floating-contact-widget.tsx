@@ -19,16 +19,16 @@ export function FloatingContactWidget() {
         </span>
       </a>
 
-      <a
-        href={`mailto:${contactInfo.email}`}
+      <RawModalTrigger
+        modalId="contactModal"
         className="group inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white shadow-lg transition hover:scale-105 hover:bg-accent/90"
-        aria-label="Invia email"
+        aria-label="Apri contatto"
       >
         <Mail className="h-5 w-5" />
         <span className="pointer-events-none absolute right-14 rounded-lg bg-slate-900 px-2 py-1 text-xs font-medium text-white opacity-0 transition group-hover:opacity-100">
-          Email
+          Contatto
         </span>
-      </a>
+      </RawModalTrigger>
 
       <RawModalTrigger
         modalId="faultReportModal"

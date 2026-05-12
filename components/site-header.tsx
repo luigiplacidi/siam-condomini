@@ -38,13 +38,14 @@ export function SiteHeader() {
               <Phone className="h-3.5 w-3.5" />
               {contactInfo.phoneDisplay}
             </a>
-            <a
-              href={`mailto:${contactInfo.email}`}
-              className="inline-flex items-center gap-2 text-white/95 hover:text-white"
+            <RawModalTrigger
+              modalId="contactModal"
+              className="inline-flex items-center gap-2 bg-transparent text-white/95 hover:text-white"
+              aria-label="Apri contatto"
             >
               <Mail className="h-3.5 w-3.5" />
               {contactInfo.email}
-            </a>
+            </RawModalTrigger>
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address)}`}
               target="_blank"
@@ -64,13 +65,13 @@ export function SiteHeader() {
             >
               <Phone className="h-4 w-4" />
             </a>
-            <a
-              href={`mailto:${contactInfo.email}`}
+            <RawModalTrigger
+              modalId="contactModal"
               className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/12"
-              aria-label="Scrivi a SIAM s.r.l."
+              aria-label="Apri contatto"
             >
               <Mail className="h-4 w-4" />
-            </a>
+            </RawModalTrigger>
           </div>
         </div>
       </div>
