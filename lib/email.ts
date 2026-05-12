@@ -203,7 +203,6 @@ export async function sendLeadEmails(payload: LeadEmailPayload): Promise<LeadEma
     safeSend({
       from: defaultFrom,
       to: String(payload.data.email ?? ""),
-      bcc: leadTo,
       replyTo: replyToAddress,
       subject: confirmationSubject,
       html: buildUserConfirmationHtml(payload)
