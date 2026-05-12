@@ -17,8 +17,7 @@ export default function CookiePolicyPage() {
           <h2 className="text-xl font-semibold text-primary">1. Cosa sono i cookie</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             I cookie sono piccoli file di testo salvati nel browser. Alcuni sono tecnici e servono al funzionamento
-            del sito; altri sono opzionali e possono essere usati, solo con consenso, per finalita di analytics o
-            marketing.
+            del sito; altri sono opzionali e possono essere usati, solo con consenso, per finalita di analytics.
           </p>
         </div>
 
@@ -29,7 +28,6 @@ export default function CookiePolicyPage() {
             <li>- Cookie e local storage di preferenza: salvano le scelte del banner e le impostazioni opzionali.</li>
             <li>- Dati tecnici anti-spam: token temporaneo della challenge, usato solo per verificare l'invio del modulo.</li>
             <li>- Cookie analytics Google Analytics 4: attivati solo se autorizzi la categoria analytics.</li>
-            <li>- Cookie marketing: non attivi di default; caricati solo se autorizzi la categoria e se viene configurato lo script.</li>
           </ul>
         </div>
 
@@ -45,10 +43,9 @@ export default function CookiePolicyPage() {
         <div>
           <h2 className="text-xl font-semibold text-primary">4. Blocco preventivo degli script opzionali</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            Gli script di analytics e marketing non vengono caricati finche non esprimi un consenso esplicito.
+            Gli script di analytics non vengono caricati finche non esprimi un consenso esplicito.
             Google Analytics 4 viene caricato solo dopo consenso alla categoria analytics e solo se il relativo
-            ID di misurazione e configurato. L'eventuale Meta Pixel viene caricato solo dopo consenso alla categoria
-            marketing e solo se configurato.
+            ID di misurazione e configurato.
           </p>
         </div>
 
@@ -104,25 +101,9 @@ export default function CookiePolicyPage() {
                   <td className="p-3">Fino a 2 anni</td>
                   <td className="p-3">Google Analytics 4: conserva lo stato della sessione.</td>
                 </tr>
-                <tr className="border-t border-border">
-                  <td className="p-3 font-semibold text-foreground">_fbp, _fbc</td>
-                  <td className="p-3">Marketing</td>
-                  <td className="p-3">Variabile secondo Meta</td>
-                  <td className="p-3">Eventuali cookie Meta Pixel, solo se configurato e autorizzato.</td>
-                </tr>
               </tbody>
             </table>
           </div>
-        </div>
-
-        <div>
-          <h2 className="text-xl font-semibold text-primary">7. Stato attuale del sito</h2>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            Il sito utilizza cookie tecnici necessari, cookie di preferenza per salvare le scelte del banner e,
-            se configurato, Google Analytics 4 dopo consenso esplicito alla categoria analytics. Non vengono
-            caricati strumenti marketing o profilazione senza consenso nella categoria corrispondente. L'invio
-            dei moduli usa una challenge anti-spam tecnica che non richiede cookie di profilazione.
-          </p>
         </div>
       </div>
     </section>
