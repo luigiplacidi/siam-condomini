@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 
 import { getNewsPosts } from "@/lib/news";
+import { getSiteUrl } from "@/lib/site-url";
 
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+const siteUrl = getSiteUrl();
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();

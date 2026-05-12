@@ -5,12 +5,13 @@ import { notFound } from "next/navigation";
 import { StructuredData } from "@/components/seo/structured-data";
 import { brand } from "@/lib/site-content";
 import { getNewsPostBySlug, getNewsPosts } from "@/lib/news";
+import { getSiteUrl } from "@/lib/site-url";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const siteUrl = getSiteUrl();
 
 export async function generateStaticParams() {
   const posts = await getNewsPosts();

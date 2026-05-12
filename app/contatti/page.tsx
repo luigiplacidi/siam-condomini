@@ -6,8 +6,9 @@ import Link from "next/link";
 import { ModalTriggerButton } from "@/components/modal/modal-trigger-button";
 import { StructuredData } from "@/components/seo/structured-data";
 import { brand, contactInfo } from "@/lib/site-content";
+import { getSiteUrl } from "@/lib/site-url";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   title: "Contatti | SIAM s.r.l.",

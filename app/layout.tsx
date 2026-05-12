@@ -10,6 +10,7 @@ import { StructuredData } from "@/components/seo/structured-data";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { brand, contactInfo } from "@/lib/site-content";
+import { getSiteUrl } from "@/lib/site-url";
 
 import "./globals.css";
 
@@ -19,7 +20,7 @@ const inter = Inter({
   variable: "--font-inter"
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

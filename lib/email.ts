@@ -1,6 +1,7 @@
 import { contactInfo, modalDefinitions, type ModalId } from "@/lib/site-content";
 import { logLeadError, logLeadInfo, logLeadWarn } from "@/lib/lead-logger";
-import { getResendClient, getResendDiagnostics } from "@/lib/resend";
+import { getResendClient, getResendDiagnostics, getResendFrom, getResendLeadTo } from "@/lib/resend";
+import { getSiteUrl } from "@/lib/site-url";
 
 type LeadFieldValue = string | boolean | null | undefined;
 
@@ -17,9 +18,9 @@ type LeadEmailResult = {
   confirmationError?: string;
 };
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-const defaultFrom = process.env.RESEND_FROM ?? "SIAM s.r.l. <noreply@siamcondomini.it>";
-const leadTo = process.env.RESEND_LEAD_TO ?? "siam.condomini@gmail.com";
+const siteUrl = getSiteUrl();
+const defaultFrom = getResendFrom();
+const leadTo = getResendLeadTo();
 
 function escapeHtml(value: LeadFieldValue) {
   if (value === null || value === undefined || value === "") {
