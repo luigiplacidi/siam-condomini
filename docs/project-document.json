@@ -69,7 +69,7 @@
   },
   "contactInfo": {
     "phone": "(+39) 0862319151",
-    "email": "siam.condomini@gmail.com",
+    "email": "info@siamcondomini.com",
     "address": {
       "street": "Via Carlo Forti",
       "area": "Nucleo industriale Bazzano Nord",
@@ -512,7 +512,7 @@
             },
             {
               "label": "E-mail",
-              "value": "siam.condomini@gmail.com",
+              "value": "info@siamcondomini.com",
               "linkType": "mailto"
             },
             {
@@ -804,7 +804,7 @@
         "title": "Contatti",
         "items": [
           "Telefono: (+39) 0862319151",
-          "Email: siam.condomini@gmail.com",
+          "Email: info@siamcondomini.com",
           "Via Carlo Forti, Nucleo industriale Bazzano Nord, L'Aquila"
         ]
       }

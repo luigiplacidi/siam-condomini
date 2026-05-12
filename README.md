@@ -59,7 +59,7 @@ npm run dev
 - `LEAD_CHALLENGE_SECRET`
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` e `NEXT_PUBLIC_META_PIXEL_ID` solo se vuoi attivare gli script opzionali con consenso
 
-Le notifiche lead interne vengono inviate a `RESEND_LEAD_TO`; se la variabile non e configurata, il fallback e `siam.condomini@gmail.com`.
+Le notifiche lead interne vengono inviate a `RESEND_LEAD_TO`; se la variabile non e configurata, il fallback e `info@siamcondomini.com`.
 
 ## Documentazione team
 

@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 
 export const defaultResendFrom = "SIAM s.r.l. <info@send.siamcondomini.com>";
-export const defaultLeadTo = "siam.condomini@gmail.com";
+export const defaultLeadTo = "info@siamcondomini.com";
 
 let client: Resend | null = null;
 

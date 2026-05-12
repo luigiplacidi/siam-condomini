@@ -30,7 +30,7 @@ export const brand = {
 export const contactInfo = {
   phone: "+390862319151",
   phoneDisplay: "(+39) 0862319151",
-  email: "siam.condomini@gmail.com",
+  email: "info@siamcondomini.com",
   legalName: "SIAM s.r.l.",
   vatNumber: "01956310666",
   sdiCode: "USAL8PV",
